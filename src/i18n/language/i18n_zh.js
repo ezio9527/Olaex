@@ -2,10 +2,11 @@ module.exports =  {
 	nav:{
 		home:'首页',
 		currency:'法币交易',
-		contract:'合约交易',
+		contract:'永续合约',
 		assets:'资产管理',
 		help:'客户帮助',
-		about:'关于我们',
+    about:'关于我们',
+    earn:'余币宝',
 		log:'登录',
 		register:'注册',
 		Language:'中文简体',
@@ -151,7 +152,8 @@ module.exports =  {
 		carry:"站内转账",
 		wallet:"钱包",
 		contact:"合约",
-		currency:"法币",
+    currency:"法币",
+    earn:"余币宝",
 		walletAssets:"钱包资产",
 		contactAssets:"合约资产",
 		currencyAssets:"法币资产",
@@ -173,7 +175,9 @@ module.exports =  {
 		insideEnter:'内部转出',
 		insideInfo:'内部转入',
 		cancelEntrust:'撤销委托',
-		cancelSuccess:'撤销成功'
+		cancelSuccess:'撤销成功',
+    noInterest:'该类型暂无利息',
+    noBalance: '余币宝余额不足'
 	},
 	legal:{
 		title:'购买',
@@ -338,5 +342,10 @@ module.exports =  {
 		trasferSuccess:'转账成功',
 		updatePwd:'修改交易密码成功',
 		orderSuccess:'下单成功',
-	}
+	},
+  earn: {
+    title: '持币生息，稳健赚币',
+    des: '多种数字代币供您选择，灵活存取获得更大的投资空间。',
+    buy: '开始申购'
+  }
 }

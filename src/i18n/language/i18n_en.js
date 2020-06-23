@@ -6,6 +6,7 @@ module.exports =  {
 		assets:'Asset management',
 		help:'Customer help',
 		about:'About us',
+    earn:'earn',
 		log:'Sign in',
 		register:'Register',
 		Language:'English',
@@ -152,6 +153,7 @@ module.exports =  {
 		wallet:"Wallet",
 		contact:"Contract",
 		currency:'Legal currency',
+    earn:"earn",
 		walletAssets:"Wallet assets",
 		contactAssets:"Contractual assets",
 		currencyAssets:"French currency assets",
@@ -173,7 +175,9 @@ module.exports =  {
 		insideEnter:'Internal transfer out',
 		insideInfo:'Internal transfer in',
 		cancelEntrust:'Cancellation of entrustment',
-		cancelSuccess:'Undo successful'
+		cancelSuccess:'Undo successful',
+    noInterest:'No Interest',
+    noBalance: 'No Balance'
 	},
 	legal:{
 		title:'BUY',
@@ -339,5 +343,10 @@ module.exports =  {
 		trasferSuccess:'Transfer succeeded',
 		updatePwd:'Change transaction password succeeded',
 		orderSuccess:'checkout success'
-	}
+	},
+  earn: {
+    title: '持幣生息，穩健賺幣',
+    des: '多種數字代幣供您選擇，靈活存取獲得更大投資空間。',
+    buy: 'BUY'
+  }
 }

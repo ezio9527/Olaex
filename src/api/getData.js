@@ -51,14 +51,34 @@ export const bindAccountApi = data => fetch('/api/bindAccount',data,true);
 export const walletApi = data => fetch('/api/wallet',data,true);
 
 /**
+ * 余币宝收益
+ */
+export const earnListApi = data => fetch('/api/surplus',data,true);
+
+/**
+ * 余币宝资产
+ */
+export const earnApi = data => fetch('/api/surplus/user',data,true);
+
+/**
+ * 划转到余币宝
+ */
+export const earnInApi = data => fetch('/api/surplus/rollIn',data,true);
+
+/**
+ * 从余币宝划转出来
+ */
+export const earnOutApi = data => fetch('/api/surplus/rollOut',data,true);
+
+/**
  * 充币地址
  */
-export const rechargeAddressApi = () => fetch('/api/platformAddress',{},true); 
+export const rechargeAddressApi = () => fetch('/api/platformAddress',{},true);
 
 /**
  * 充币
  */
-export const rechargeApi = data => fetch('/api/recharge',data,true); 
+export const rechargeApi = data => fetch('/api/recharge',data,true);
 
 /**
  * 充币、提币记录
@@ -68,7 +88,7 @@ export const coinRecordApi = data => fetch('/api/coinRecord',data,true);
 /**
  * 提币
  */
-export const withdrawCoinApi = data => fetch('/api/withdrawCoin',data,true);  
+export const withdrawCoinApi = data => fetch('/api/withdrawCoin',data,true);
 
 /**
  * 提币页面信息
@@ -78,7 +98,7 @@ export const withdrawPageApi = data => fetch('/api/withdrawPage',data,true);
 /**
  * 添加，删除提币钱包地址
  */
-export const addAddressApi = data => fetch('/api/coin',data,true);  
+export const addAddressApi = data => fetch('/api/coin',data,true);
 
 /**
  * 钱包地址
@@ -88,7 +108,7 @@ export const walletAddressApi = data => fetch('/api/coinList',data,true);
 /**
  *内部转账页面信息
  */
-export const transferPageApi = () => fetch('/api/transferPage',{},true); 
+export const transferPageApi = () => fetch('/api/transferPage',{},true);
 
 /**
  *内部转账
@@ -103,7 +123,7 @@ export const transfersRcordApi = data => fetch('/api/transferRecordFlow',data,tr
 /**
  * 资产划转页面信息
  */
-export const convertPageApi = data => fetch('/api/convertPage ',data,true); 
+export const convertPageApi = data => fetch('/api/convertPage ',data,true);
 
 /**
  * 资产划转

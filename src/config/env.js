@@ -11,7 +11,7 @@ let baseUrl = '';
 let imgBaseUrl = '';
 
 if (process.env.NODE_ENV == 'development') { //开发中
-    baseUrl = 'http://154.89.120.97:8080'
+    baseUrl = 'http://192.168.0.116:8080'
 }else if(process.env.NODE_ENV == 'production'){
     baseUrl = 'https://bitaex.hnscf.cn'
 }

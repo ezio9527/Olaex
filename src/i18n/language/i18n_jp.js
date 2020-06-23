@@ -6,6 +6,7 @@ module.exports =  {
 		assets:'資產管理',
 		help:'客戶幫助',
 		about:'關於我們',
+    earn:'餘幣寶',
 		log:'登錄',
 		register:'註冊',
 		Language:'中文繁体',
@@ -152,6 +153,7 @@ module.exports =  {
 		wallet:"錢包",
 		contact:"合約",
 		currency:"法幣",
+    earn:"餘幣寶",
 		walletAssets:"錢包資產",
 		contactAssets:"合約資產",
 		currencyAssets:"法幣資產",
@@ -173,7 +175,9 @@ module.exports =  {
 		insideEnter:'內部轉出',
 		insideInfo:'內部轉入',
 		cancelEntrust:'撤銷委托',
-		cancelSuccess:'撤銷成功'
+		cancelSuccess:'撤銷成功',
+    noInterest:'該類型暫無利息',
+    noBalance: '餘幣寶餘額不足'
 	},
 	legal:{
 		title:'購買',
@@ -338,5 +342,10 @@ module.exports =  {
 		trasferSuccess:'轉賬成功',
 		updatePwd:'修改交易密碼成功',
 		orderSuccess:'下單成功'
-	}
+	},
+  earn: {
+	  title: '持幣生息，穩健賺幣',
+    des: '多種數字代幣供您選擇，靈活存取獲得更大投資空間。',
+    buy: '開始申購'
+  }
 }

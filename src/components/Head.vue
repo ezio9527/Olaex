@@ -8,11 +8,12 @@
 							<img src="../assets/logo.png" alt="" />
 						</div>
                         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleNav" router>
-                            <el-menu-item index="legalCoin">{{$t('nav.currency')}}</el-menu-item>
+                            <!--<el-menu-item index="legalCoin">{{$t('nav.currency')}}</el-menu-item>-->
                             <el-menu-item index="transaction">{{$t('nav.contract')}}</el-menu-item>
                             <el-menu-item index="assets">{{$t('nav.assets')}}</el-menu-item>
                             <el-menu-item index="contact">{{$t('nav.help')}}</el-menu-item>
                             <el-menu-item index="article">{{$t('nav.about')}}</el-menu-item>
+                            <el-menu-item index="earn">{{$t('nav.earn')}}</el-menu-item>
                         </el-menu>
 					</div>
 				</el-col>
@@ -74,7 +75,7 @@
                                                 </div>
                                             </div>
                                             <router-link to="set"><img src="../assets/set.png" alt="" /></router-link>
-                                            
+
                                         </div>
                                         <div class="user-assets betweenSpread">
                                             <div class="asset-box">
@@ -183,22 +184,22 @@ export default {
                    that.totalAssets = Number(res.data.valuationTotalPrice).toFixed(8);
                 }else{
                     that.totalAssets = Number(res.data.valuationTotalPrice).toFixed(4);
-                    
+
                 }
-                
+
             }
         },
         changeInput(){//隐藏显示资产
             var that = this;
             that.showImg = !that.showImg;
-            
+
         },
         openLogin(){
-            
-            
+
+
         },
         openRegister(){
-           
+
         },
         handleNav(key, keyPath) {//点击切换导航
 			// console.log(key, keyPath);
@@ -212,7 +213,7 @@ export default {
                 that.$i18n.locale = command;
 	  			sessionStorage.setItem('language',command);
 	  			that.fullscreenLoading = true;
-	  			
+
 		        setTimeout(() => {
 		        	that.reload();
 		          	that.fullscreenLoading = false;
@@ -235,9 +236,9 @@ export default {
                     that.reload();
 					sessionStorage.removeItem('userToken');
                     sessionStorage.removeItem('userInform');
-                    
+
 					that.$router.push('/login')
-					
+
 				}
 			}).catch(() => {
 			});
@@ -254,7 +255,7 @@ export default {
         }
     },
     components:{
-        
+
     }
 }
 </script>
@@ -328,7 +329,7 @@ export default {
                 }
             }
         }
-        
+
     }
     .change_language{
         margin-right: 40px;

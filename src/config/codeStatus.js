@@ -56,40 +56,40 @@ export default function codeStatus(codeStatus,callback){
 			tip = i18n.t('codeTxt.loginPwdError')
 			break;
 		case 2010:
-			tip = i18n.t('codeTxt.accountOr') 
+			tip = i18n.t('codeTxt.accountOr')
 			break;
 		case 2011:
-			tip = i18n.t('codeTxt.userNoFind') 
+			tip = i18n.t('codeTxt.userNoFind')
 			break;
 		case 2012:
-			tip = i18n.t('codeTxt.hasAcount') 
+			tip = i18n.t('codeTxt.hasAcount')
 			break;
 		case 2013:
-			tip = i18n.t('codeTxt.hasEmail') 
+			tip = i18n.t('codeTxt.hasEmail')
 			break;
 		case 2014:
-			tip = i18n.t('codeTxt.hasPhone') 
+			tip = i18n.t('codeTxt.hasPhone')
 			break;
 		case 2015:
 			tip = 'Not yet open'
 			break;
 		case 2016:
-			tip = i18n.t('codeTxt.AccountDisable') 
+			tip = i18n.t('codeTxt.AccountDisable')
 			break;
 		case 3001:
-			tip = i18n.t('codeTxt.lowWithdraw') 
+			tip = i18n.t('codeTxt.lowWithdraw')
 			break;
 		case 3002:
-			tip = i18n.t('codeTxt.appleWait') 
+			tip = i18n.t('codeTxt.appleWait')
 			break;
 		case 3003:
-			tip = i18n.t('codeTxt.addressError') 
+			tip = i18n.t('codeTxt.addressError')
 			break;
 		case 3004:
-			tip = i18n.t('codeTxt.lowBuy') 
+			tip = i18n.t('codeTxt.lowBuy')
 			break;
 		case 4001:
-			tip = i18n.t('verification.myself') 
+			tip = i18n.t('verification.myself')
 			break;
 		case 4002:
 			tip = i18n.t('codeTxt.cancelOrder')
@@ -193,12 +193,18 @@ export default function codeStatus(codeStatus,callback){
 		case 2047:
 			tip = i18n.t('person.updatePwd')
 			break;
+    case 20001:
+      tip = i18n.t('assets.noInterest')
+      break;
+    case 20002:
+      tip = i18n.t('assets.noBalance')
+      break;
 		case 2048:
 			tip = 'Completed'
 			break;
 		default:
 			break;
 	}
-	
+
 	callback(tip)
 }

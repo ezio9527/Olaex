@@ -9,7 +9,7 @@
                 </div>
             </div>
             <h2 v-else class="assets_title">{{$t('nav.assets')}}</h2>
-            
+
             <el-tabs class="titleBar" v-model="activeName" @tab-click="handleClick">
                 <el-tab-pane :label="$t('assets.account')" name="0"></el-tab-pane>
                 <el-tab-pane :label="$t('assets.recharge')" name="1"></el-tab-pane>
@@ -24,9 +24,9 @@
             	<el-tabs class="transtionBar cruntpage" v-model="activeIndex" @tab-click="handleIndex">
 	                <el-tab-pane :label="$t('assets.wallet')" name="0"></el-tab-pane>
 	                <el-tab-pane :label="$t('assets.contact')" name="1"></el-tab-pane>
-	                <el-tab-pane :label="$t('assets.currency')" name="2"></el-tab-pane>
+	                <el-tab-pane :label="$t('assets.earn')" name="2"></el-tab-pane>
 	            </el-tabs>
-	
+
 	            <el-table class="fishTable" :data="tableData" :empty-text="$t('tip.noRecord')">
 	                <el-table-column prop="type" :label="$t('table.coin')">
                         <template slot-scope="scope">
@@ -69,7 +69,7 @@
             <div v-if="activeName == '5'">
             	<Trasfer />
             </div>
-            
+
         </div>
         <Foot />
     </div>
@@ -82,7 +82,7 @@ import TurnUsdt from '@/components/TurnUsdt'
 import Trasfer from '@/components/Trasfer'
 import AssetsRecord from '@/components/AssetsRecord'
 import Foot from '@/components/Foot'
-import { walletApi } from '@/api/getData'
+import { walletApi, earnApi } from '@/api/getData'
 
 export default {
     data(){
@@ -125,40 +125,56 @@ export default {
     mounted(){
         this.coinType = this.$parent.getCoinType;
         this.walletFun();//钱包资产
+        this.earnFun();//余利宝资产
     },
     methods:{
-        async walletFun(){
-            var that = this;
-            var txt = '';
-            if(that.activeIndex == '0'){
-                txt = 'WALLET'
-            }else if(that.activeIndex == '1'){
-                txt = 'CONTRACT'
-            }else if(that.activeIndex == '2'){
-                txt = 'LEGAL'
-            }
-            var dataArr = new URLSearchParams();
-            if(that.coinType == 'USDT'){
-                var txtValue = 'BTC'
-            }else{
-                var txtValue = 'USDT'
-            }
-            dataArr.set('valuation',txtValue);//BTC
-            dataArr.set('hide','N');
-            dataArr.set('type',txt);
-            var res = await walletApi(dataArr);
-            that.tableData = [];
-            if(res.success){
-                var obj = res.data;
-                if(that.coinType == 'USDT'){
-                    that.totalPrice = (obj.valuationTotalPrice).toFixed(8);
-                }else{
-                    that.totalPrice = (obj.valuationTotalPrice).toFixed(4);  
-                }
-                that.cny = (obj.cny).toFixed(2);
-                that.tableData = obj.list;
-            }
-        },
+      async walletFun(){
+        var that = this;
+        var txt = '';
+        if(that.activeIndex == '0'){
+          txt = 'WALLET'
+        }else if(that.activeIndex == '1'){
+          txt = 'CONTRACT'
+        }else if(that.activeIndex == '2'){
+          txt = 'LEGAL'
+        }
+        var dataArr = new URLSearchParams();
+        if(that.coinType == 'USDT'){
+          var txtValue = 'BTC'
+        }else{
+          var txtValue = 'USDT'
+        }
+        dataArr.set('valuation',txtValue);//BTC
+        dataArr.set('hide','N');
+        dataArr.set('type',txt);
+        var res = await walletApi(dataArr);
+        that.tableData = [];
+        if(res.success){
+          var obj = res.data;
+          if(that.coinType == 'USDT'){
+            that.totalPrice = (obj.valuationTotalPrice).toFixed(8);
+          }else{
+            that.totalPrice = (obj.valuationTotalPrice).toFixed(4);
+          }
+          that.cny = (obj.cny).toFixed(2);
+          that.tableData = obj.list;
+        }
+      },
+      async earnFun(){
+        const dataArr = new URLSearchParams();
+        var res = await earnApi(dataArr);
+        this.tableData = [];
+        if(res.success){
+          var obj = res.data;
+          if(this.coinType == 'USDT'){
+            this.totalPrice = (obj.valuationTotalPrice).toFixed(8);
+          }else{
+            this.totalPrice = (obj.valuationTotalPrice).toFixed(4);
+          }
+          this.cny = (obj.cny).toFixed(2);
+          this.tableData = obj.list;
+        }
+      },
         handleClick(){//标题切换
 
         },
@@ -166,7 +182,7 @@ export default {
             this.walletFun();
         },
         pageChange(item){
-        	
+
         }
     },
     components:{
