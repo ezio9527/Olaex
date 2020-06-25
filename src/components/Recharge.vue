@@ -13,7 +13,7 @@
 							</el-option>
 					    </el-select>
 					</el-form-item>
-		        
+
 			        <div>
 			        	<p>{{$t('recharge.qrcode')}}</p>
 			        	<div id="qrcode"></div>
@@ -47,7 +47,7 @@
 					</div>
 					<el-button @click="submitFun('form')" class="themeBtn">{{$t('assets.recharge')}}</el-button>
 				</el-form>
-					
+
         	</el-col>
         	<el-col :xs="24" :sm="24" :md="12" :lg="12">
         		<div class="tipBox">
@@ -59,7 +59,7 @@
         		</div>
         	</el-col>
         </el-row>
-    	
+
     	<AssetPage :vauleType="vauleType" :changeValue="changeValue" />
     </div>
 </template>
@@ -74,7 +74,7 @@ export default {
     data(){
         return{
             form:{
-            	region:'USDT-ERC20',
+            	region:'USDT',
             	link:'',
             	number:'',
             	asset:'',
@@ -82,7 +82,8 @@ export default {
 			},
 			vauleType:1,
 			proveImg:'',
-			coinArr:['USDT-ERC20','USDT-OMIN','BTC','LTC','EOS','XRP','BCH','ETH','ETC'],
+			// coinArr:['USDT-ERC20','USDT-OMIN','BTC','LTC','EOS','XRP','BCH','ETH','ETC'],
+          coinArr:['USDT','BTC','ETH'],
             passwordType:false,
             eyeArr:[{
                 img:require('../assets/eye_close.png')
@@ -144,7 +145,7 @@ export default {
 				});
 				that.form.link = addressTxt;
 				var qrcode = new QRCode('qrcode', {
-					width: 140,  
+					width: 140,
 					height: 140,
 					text: addressTxt,
 				})
@@ -183,7 +184,7 @@ export default {
 		},
 		selectCoin(value){
 			var that = this;
-			document.getElementById('qrcode').innerHTML = ''; //清除二维码 
+			document.getElementById('qrcode').innerHTML = ''; //清除二维码
 			that.addressFun();
 			if(value == 'USDT-ERC20' || value == 'USDT-OMIN'){
 				that.coinImgAdd = require('../assets/USDT.png')
@@ -242,7 +243,7 @@ export default {
 			padding: 0;
 		}
 	}
-	
+
 	.avatar {
 	    width: 178px;
 	    height: 178px;
@@ -256,7 +257,7 @@ export default {
 			background: url('../assets/voucher-bj.png') no-repeat;
 			background-size: 100% 100%;
 			.el-upload {
-				
+
 				border-radius: 2px;
 				cursor: pointer;
 				position: relative;

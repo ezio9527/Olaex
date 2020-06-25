@@ -4,8 +4,15 @@
 		<el-row :gutter="60">
 			<el-col :xs="24" :sm="24" :md="12" :lg="12">
 				<el-form ref="form" :model="form">
-          <!--币种选择-->
-          <el-form-item :label="$t('recharge.select')" style="display: block;text-align: right">
+          <el-form-item class="title" prop="region" v-show="!(form.toValue == '余币宝' || form.toValue == 'earn' || form.toValue == '餘幣寶')">
+            <div class="content">
+              <img src="../assets/USDT.png" alt="" />
+              <span>USDT</span>
+            </div>
+            <p>{{$t('trasfer.available')}} {{abiliyPrice}} USDT </p>
+          </el-form-item>
+          <!--余币宝的币种选择-->
+          <el-form-item :label="$t('recharge.select')" style="display: block;text-align: right" v-show="form.toValue == '余币宝' || form.toValue == 'earn' || form.toValue == '餘幣寶'">
             <img :src="coinImgAdd" slot="label" style="vertical-align: middle"/>
             <el-select v-model="form.region" :placeholder="$t('form.select')" @change="selectCoin">
               <el-option v-for="item in coinArr" :key="item.id" :value="item">
@@ -35,11 +42,6 @@
 						</div>
 					</div>
 
-					<el-form-item :label="$t('trasfer.turn')" :rules="[{ required: true, message: $t('trasfer.turnEmpty')},{pattern:/^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$/,message:$t('trasfer.turnEmpty'),trigger:'blur'}]" prop="number">
-	                    <el-input v-model="form.number" autocomplete="off" :placeholder="$t('trasfer.turnEmpty')">
-	                    <template slot="append">{{form.region}}</template>
-	                    </el-input>
-	                </el-form-item>
 
 					<el-button @click="submitFun('form')" class="themeBtn">{{$t('trasfer.sureTurn')}}</el-button>
 				</el-form>
@@ -180,7 +182,6 @@ export default {
 						typeTxt = 'CONTRACT';
 					}else if(that.form.fromValue == '余币宝' || that.form.fromValue == 'earn' || that.form.fromValue == '餘幣寶'){
             typeTxt = 'EARN';
-            earnOutApi
             // 从余币宝划转出来
             dataArr.set('surplusId', this.earnId);
             dataArr.set('symbols',this.form.region);
@@ -259,15 +260,11 @@ export default {
 			}
 		},
 		selectTo(value){//选择To
-			var that = this;
-			var filtered  = (that.getTotal).filter(function(element){
-				return element != value
-			})
-			that.getFromArr = filtered;
-			if(value == that.form.fromValue){
-
-				that.form.fromValue = filtered[0];
-
+      this.getFromArr = this.getTotal.filter(function(element){
+        return element != value
+      });
+			if(value == this.form.fromValue){
+        this.form.fromValue = this.getFromArr[0];
 			}
 		},
     selectCoin(value){

@@ -157,6 +157,8 @@ module.exports =  {
 		walletAssets:"錢包資產",
 		contactAssets:"合約資產",
 		currencyAssets:"法幣資產",
+    earnAssets:"餘幣寶資產",
+    earnings:"餘幣寶收益",
 		copySuccess:'復制成功',
 		copyFail:'復制失敗',
 		copyAddress:'復制地址',
@@ -219,7 +221,8 @@ module.exports =  {
 		btn:'篩選',
 		walletAccount:'錢包賬戶',
 		contactAccount:'合約賬戶',
-		legalAccount:'法幣賬戶'
+		legalAccount:'法幣賬戶',
+    earnAccount:'餘幣寶賬戶'
 	},
 	trasfer:{
 		account:"對方賬戶",
@@ -345,7 +348,16 @@ module.exports =  {
 	},
   earn: {
 	  title: '持幣生息，穩健賺幣',
-    des: '多種數字代幣供您選擇，靈活存取獲得更大投資空間。',
-    buy: '開始申購'
+    subTitle: '多種數字代幣供您選擇，靈活存取獲得更大投資空間。',
+    buy: '開始申購',
+    des: '餘幣寶支持用戶隨時存取代幣資產，按天計息，無最低存幣限制。',
+    timeLimit: '期限',
+    reference: '參考年化',
+    prospectiveEarnings: '預期收益',
+    demand: '活期',
+    day: '每天',
+    success: '申购成功',
+    buyNum: '申購數量',
+    inputPlaceholder: '請輸入申購數量'
   }
 }

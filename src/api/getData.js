@@ -51,9 +51,14 @@ export const bindAccountApi = data => fetch('/api/bindAccount',data,true);
 export const walletApi = data => fetch('/api/wallet',data,true);
 
 /**
- * 余币宝收益
+ * 余币宝利息列表
  */
-export const earnListApi = data => fetch('/api/surplus',data,true);
+export const earningsApi = data => fetch('/api/surplus',data,true);
+
+/**
+ * 余币宝收益列表
+ */
+export const earnListApi = data => fetch('/api/surplus/list',data,true);
 
 /**
  * 余币宝资产

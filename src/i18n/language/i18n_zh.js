@@ -156,7 +156,9 @@ module.exports =  {
     earn:"余币宝",
 		walletAssets:"钱包资产",
 		contactAssets:"合约资产",
-		currencyAssets:"法币资产",
+    currencyAssets:"法币资产",
+    earnAssets:"余币宝资产",
+    earnings:"余币宝收益",
 		copySuccess:'复制成功',
 		copyFail:'复制失败',
 		copyAddress:'复制地址',
@@ -219,7 +221,8 @@ module.exports =  {
 		btn:'筛选',
 		walletAccount:'钱包账户',
 		contactAccount:'合约账户',
-		legalAccount:'法币账户'
+    legalAccount:'法币账户',
+    earnAccount:'余币宝账户'
 	},
 	trasfer:{
 		account:"对方账户",
@@ -345,7 +348,16 @@ module.exports =  {
 	},
   earn: {
     title: '持币生息，稳健赚币',
-    des: '多种数字代币供您选择，灵活存取获得更大的投资空间。',
-    buy: '开始申购'
+    subTitle: '多种数字代币供您选择，灵活存取获得更大的投资空间。',
+    buy: '开始申购',
+    des: '余币宝支持用户随时存取代币资产，按天计息，无最低存币限制。',
+    timeLimit: '期限',
+    reference: '参考年化',
+    prospectiveEarnings: '预期收益',
+    demand: '活期',
+    day: '每天',
+    success: '申购成功',
+    buyNum: '申购数量',
+    inputPlaceholder: '请输入申购数量'
   }
 }

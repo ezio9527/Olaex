@@ -157,6 +157,8 @@ module.exports =  {
 		walletAssets:"Wallet assets",
 		contactAssets:"Contractual assets",
 		currencyAssets:"French currency assets",
+    earnAssets:"Earn Assets",
+    earnings:"Earnings",
 		copySuccess:'Copy successful',
 		copyFail:'copy failed',
 		copyAddress:'Copy address',
@@ -219,7 +221,8 @@ module.exports =  {
 		btn:'screen',
 		walletAccount:'Wallet account',
 		contactAccount:'Contract account',
-		legalAccount:'French currency account'
+		legalAccount:'French currency account',
+    earnAccount:'Earn Account'
 	},
 	trasfer:{
 		account:"Opposite account",
@@ -346,7 +349,16 @@ module.exports =  {
 	},
   earn: {
     title: '持幣生息，穩健賺幣',
-    des: '多種數字代幣供您選擇，靈活存取獲得更大投資空間。',
-    buy: 'BUY'
+    subTitle: '多種數字代幣供您選擇，靈活存取獲得更大投資空間。',
+    buy: 'BUY',
+    des: '餘幣寶支持用戶隨時存取代幣資產，按天計息，無最低存幣限制。',
+    timeLimit: 'Time limit',
+    reference: 'Reference',
+    prospectiveEarnings: 'Prospective earnings',
+    demand: 'Due on demand',
+    day: 'Day',
+    success: 'Purchase succeeded',
+    buyNum: 'Desired Purchase Quantity',
+    inputPlaceholder: 'Desired Purchase Quantity'
   }
 }

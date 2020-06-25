@@ -48,7 +48,7 @@
         	</el-col>
         	<el-col :xs="24" :sm="24" :md="12" :lg="12">
         		<div class="tipBox">
-        			
+
         		</div>
         	</el-col>
         </el-row>
@@ -80,10 +80,11 @@ export default {
     data(){
         return{
 			activeIndex:'0',
-			coinArr:['USDT-ERC20','USDT-OMIN','BTC','LTC','EOS','XRP','BCH','ETH','ETC'],
+			// coinArr:['USDT-ERC20','USDT-OMIN','BTC','LTC','EOS','XRP','BCH','ETH','ETC'],
+      coinArr:['USDT','BTC','ETH'],
 			coinImgAdd:require('../assets/USDT.png'),
         	form:{
-				region:'USDT-ERC20',
+				region:'USDT',
 				link:'',
         		number:'',
         		asset:'',
