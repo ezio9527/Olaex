@@ -26,12 +26,12 @@
         </el-form-item>
       </el-form>
       <div class="right">
-        <p class="title">{{$t('nav.earn')}}</p>
+        <p class="title">{{form.region + $t('nav.earn')}}</p>
         <p class="des">余币宝支持用户随时存取代币资产，按天计息，无最低存币限制。</p>
         <div class="right-container">
           <div class="time-limit"><span>{{$t('earn.timeLimit')}}</span><span>{{$t('earn.demand')}}</span></div>
-          <div class="reference"><span>{{$t('earn.reference')}}</span><span>{{earn.accrual}}%</span></div>
-          <div class="prospective"><span>{{$t('earn.prospectiveEarnings')}}</span><span>0.0353/{{$t('earn.day')}}</span></div>
+          <div class="reference"><span>{{$t('earn.reference')}}</span><span>{{earn.accrual * 365}}%</span></div>
+          <div class="prospective"><span>{{$t('earn.prospectiveEarnings')}}</span><span>{{earn.accrual * form.number}}/{{$t('earn.day')}}</span></div>
           <el-button type="button" @click="submit('form')">{{$t('earn.buy')}}</el-button>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default {
       form:{
         region:'USDT',
         link:'',
-        number:'',
+        number:'1',
         asset:'',
         imageUrl:''
       },
@@ -86,7 +86,7 @@ export default {
             })
             this.$refs[form].resetFields();
           }else{
-            codeStatus(res.code,function(msg){
+            codeStatus(res.code,msg=>{
               this.$message.error(msg)
             })
           }
@@ -105,7 +105,7 @@ export default {
         this.$set(this.form, 'region', this.coinArr[0] || 'USDT')
         this.selectCoin(this.coinArr[0])
       }else{
-        codeStatus(res.code,function(msg){
+        codeStatus(res.code,msg => {
           this.$message.error(msg)
         })
       }

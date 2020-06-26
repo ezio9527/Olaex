@@ -42,6 +42,11 @@
 						</div>
 					</div>
 
+          <el-form-item :label="$t('trasfer.turn')" :rules="[{ required: true, message: $t('trasfer.turnEmpty')},{pattern:/^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$/,message:$t('trasfer.turnEmpty'),trigger:'blur'}]" prop="number">
+            <el-input v-model="form.number" autocomplete="off" :placeholder="$t('trasfer.turnEmpty')">
+              <template slot="append">{{form.region}}</template>
+            </el-input>
+          </el-form-item>
 
 					<el-button @click="submitFun('form')" class="themeBtn">{{$t('trasfer.sureTurn')}}</el-button>
 				</el-form>
