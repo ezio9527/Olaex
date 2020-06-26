@@ -4,7 +4,7 @@
         	<h2>{{$t('verification.registerName')+$t('nav.account')}}</h2>
             <el-tabs v-model="activeName" @tab-click="handleClick">
                 <el-tab-pane :label="$t('verification.email')" name="0"></el-tab-pane>
-                <el-tab-pane :label="$t('verification.phone')" name="1"></el-tab-pane>
+                <!--<el-tab-pane :label="$t('verification.phone')" name="1"></el-tab-pane>-->
             </el-tabs>
             <el-form :model="form" ref="form">
                 <el-form-item v-if="activeName == '0'" :rules="[{ required: true, message: $t('form.loginEmail')}]" prop="email">
@@ -17,7 +17,7 @@
                         <Area @selectValue="selectValue" />
                     </el-form-item>
                 </div>
-                
+
 
                 <el-form-item :rules="[{ required: true, message: $t('form.loginPwdEmpty')},{pattern:/^[A-Za-z0-9]{6,16}$/,message:$t('form.loginPwdRight'),trigger:'blur'}]" prop="pwd">
                     <el-input v-model="form.pwd" :type="passwordType ? 'text' : 'password'" autocomplete="off" :placeholder="$t('form.loginPwdEmpty')">
@@ -25,7 +25,7 @@
                     </el-input>
                 </el-form-item>
 
-                <el-form-item :rules="[{ required: true, message: $t('form.inviteEmpty')}]" prop="invite">
+                <el-form-item :rules="[{ required: false, message: $t('form.inviteEmpty')}]" prop="invite">
                     <el-input v-model="form.invite" autocomplete="off" :placeholder="$t('form.inviteEmpty')"></el-input>
                 </el-form-item>
 
@@ -35,7 +35,7 @@
 	                    <i v-else class="el-input__icon themeFont" slot="suffix">{{$t('form.code')}}{{count}}</i>
                     </el-input>
                 </el-form-item>
-                
+
                 <p>
                     <el-checkbox v-model="checked">
                         {{$t('verification.agree')}}
@@ -112,11 +112,11 @@ export default {
             var that = this;
             if(that.activeName == '1'){//手机
                 if(that.form.areaCode == ''){
-                    that.$message.error(that.$t('layer.emptyArea')); 
+                    that.$message.error(that.$t('layer.emptyArea'));
                     return false;
                 }
                 if(that.form.phone == ''){
-                    that.$message.error(that.$t('form.phone')); 
+                    that.$message.error(that.$t('form.phone'));
                     return false;
                 }
                 var account = that.form.phone;
@@ -124,7 +124,7 @@ export default {
                 var areaCode = that.form.areaCode;
             }else{//邮箱
                 if(that.form.email == ''){
-                    that.$message.error(that.$t('form.loginEmail')); 
+                    that.$message.error(that.$t('form.loginEmail'));
                     return false;
                 }
                 var account = that.form.email;
@@ -151,7 +151,7 @@ export default {
                             clearInterval(that.clock)
                             that.count = ''
                             that.totalTime = 600
-                            that.ifDisable = false 
+                            that.ifDisable = false
                         }
                     },1000)
                 }else{
@@ -166,17 +166,17 @@ export default {
             that.$refs[form].validate(async (valid) => {
                 if(valid){
                     if(!that.checked){
-                        that.$message.error(that.$t('layer.select')); 
+                        that.$message.error(that.$t('layer.select'));
                         return false;
                     }
-                
+
                     if(that.activeName == '0'){
                         var account = that.form.email;
                         var areaType = '';
                         var areaCodeTxt = '';
                     }else if(that.activeName == '1'){
                         if(that.form.areaCode == ''){
-                            that.$message.error(that.$t('layer.emptyArea')); 
+                            that.$message.error(that.$t('layer.emptyArea'));
                             return false;
                         }
                         var account = that.form.phone;
@@ -201,7 +201,7 @@ export default {
                         setTimeout(function(){
                             that.$router.push('/login');
                         },800)
-                        
+
                     }else{
                         codeStatus(res.code,function(res){
                             that.$message.error(res);
@@ -287,7 +287,7 @@ export default {
                 }
             }
         }
-        
+
     }
 }
 </style>

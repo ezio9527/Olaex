@@ -18,34 +18,34 @@
 			        	<p>{{$t('recharge.qrcode')}}</p>
 			        	<div id="qrcode"></div>
 			        </div>
-					<el-form-item :label="$t('recharge.address')" prop="link">
-	                    <el-input v-model="form.link" autocomplete="off" readonly>
-	                    	<i class="el-icon-document-copy" style="width: 100%;cursor: pointer;" slot="suffix" @click="handleCopy"></i>
-	                    </el-input>
-	                </el-form-item>
-	                <el-form-item :label="$t('recharge.num')" prop="number" :rules="[{ required: true, message: $t('recharge.numEmpty')},{pattern:/^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$/,message:$t('recharge.numEmpty'),trigger:'blur'}]">
-					    <el-input v-model="form.number" :placeholder="$t('recharge.numEmpty')"></el-input>
-					</el-form-item>
-					<el-form-item :label="$t('recharge.asset')" :rules="[{ required: true, message: $t('recharge.assetEmpty')},{pattern:/^[0-9]{6}$/,message:$t('form.assetsCruent'),trigger:'blur'}]" prop="asset">
-	                    <el-input v-model="form.asset" :type="passwordType ? 'text' : 'password'" autocomplete="off" :placeholder="$t('recharge.assetEmpty')">
-	                        <img class="eye" :src="eyeImg" slot="suffix" alt="" @click="handleEye" />
-	                    </el-input>
-	               </el-form-item>
-					<p>{{$t('recharge.rechargeImg')}}</p>
-					<div class="uploadDiv">
-						<el-upload
-						  class="avatar-uploader"
-						  v-model="form.imageUrl"
-						  :action="baseUrl+'/api/upload/img'"
-						  :show-file-list="false"
-						  :on-success="handleAvatarSuccess"
-						  :before-upload="beforeAvatarUpload">
-						  <img v-if="proveImg" :src="proveImg" class="avatar">
-						  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-						</el-upload>
-						<span>{{$t('recharge.uploadTip')}}</span>
-					</div>
-					<el-button @click="submitFun('form')" class="themeBtn">{{$t('assets.recharge')}}</el-button>
+					<!--<el-form-item :label="$t('recharge.address')" prop="link">-->
+	                    <!--<el-input v-model="form.link" autocomplete="off" readonly>-->
+	                    	<!--<i class="el-icon-document-copy" style="width: 100%;cursor: pointer;" slot="suffix" @click="handleCopy"></i>-->
+	                    <!--</el-input>-->
+	                <!--</el-form-item>-->
+	                <!--<el-form-item :label="$t('recharge.num')" prop="number" :rules="[{ required: true, message: $t('recharge.numEmpty')},{pattern:/^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$/,message:$t('recharge.numEmpty'),trigger:'blur'}]">-->
+					    <!--<el-input v-model="form.number" :placeholder="$t('recharge.numEmpty')"></el-input>-->
+					<!--</el-form-item>-->
+					<!--<el-form-item :label="$t('recharge.asset')" :rules="[{ required: true, message: $t('recharge.assetEmpty')},{pattern:/^[0-9]{6}$/,message:$t('form.assetsCruent'),trigger:'blur'}]" prop="asset">-->
+	                    <!--<el-input v-model="form.asset" :type="passwordType ? 'text' : 'password'" autocomplete="off" :placeholder="$t('recharge.assetEmpty')">-->
+	                        <!--<img class="eye" :src="eyeImg" slot="suffix" alt="" @click="handleEye" />-->
+	                    <!--</el-input>-->
+	               <!--</el-form-item>-->
+					<!--<p>{{$t('recharge.rechargeImg')}}</p>-->
+					<!--<div class="uploadDiv">-->
+						<!--<el-upload-->
+						  <!--class="avatar-uploader"-->
+						  <!--v-model="form.imageUrl"-->
+						  <!--:action="baseUrl+'/api/upload/img'"-->
+						  <!--:show-file-list="false"-->
+						  <!--:on-success="handleAvatarSuccess"-->
+						  <!--:before-upload="beforeAvatarUpload">-->
+						  <!--<img v-if="proveImg" :src="proveImg" class="avatar">-->
+						  <!--<i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
+						<!--</el-upload>-->
+						<!--<span>{{$t('recharge.uploadTip')}}</span>-->
+					<!--</div>-->
+					<!--<el-button @click="submitFun('form')" class="themeBtn">{{$t('assets.recharge')}}</el-button>-->
 				</el-form>
 
         	</el-col>
