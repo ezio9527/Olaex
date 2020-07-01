@@ -2,7 +2,8 @@ module.exports =  {
 	nav:{
 		home:'首页',
 		currency:'法币交易',
-		contract:'永续合约',
+    contract:'永续合约',
+    lever:'杠杆交易',
 		assets:'资产管理',
 		help:'客户帮助',
     about:'关于我们',
@@ -149,7 +150,9 @@ module.exports =  {
 		withdrawFail:'提币失败',
 		transfer:'资产划转',
 		record:"资产记录",
-		carry:"站内转账",
+    carry:"站内转账",
+    borrow:"借币",
+    repay: "还币",
 		wallet:"钱包",
 		contact:"合约",
     currency:"法币",
@@ -359,5 +362,18 @@ module.exports =  {
     success: '申购成功',
     buyNum: '申购数量',
     inputPlaceholder: '请输入申购数量'
+  },
+  borrow: {
+    title: '借币',
+    borrowNumber: '借币数量',
+    cashDeposit: '可用保证金',
+    monthlyInterestRate: '月利率',
+    exhaustedCredit: '已借额度',
+    all: '全部',
+    usable: '可借额度'
+  },
+  repay: {
+    title: '还币',
+    repayNumber: '还币数量'
   }
 }

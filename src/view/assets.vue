@@ -16,7 +16,9 @@
                 <el-tab-pane :label="$t('assets.withdraw')" name="2"></el-tab-pane>
                 <el-tab-pane :label="$t('assets.transfer')" name="3"></el-tab-pane>
                 <el-tab-pane :label="$t('assets.record')" name="4"></el-tab-pane>
-                <el-tab-pane :label="$t('assets.carry')" name="5"></el-tab-pane>
+                <!--<el-tab-pane :label="$t('assets.carry')" name="5"></el-tab-pane>-->
+              <el-tab-pane :label="$t('assets.borrow')" name="6"></el-tab-pane>
+              <el-tab-pane :label="$t('assets.repay')" name="7"></el-tab-pane>
             </el-tabs>
 			<!--账号信息-->
             <div v-if="activeName == '0'">
@@ -69,6 +71,14 @@
             <div v-if="activeName == '5'">
             	<Trasfer />
             </div>
+            <!--借币-->
+            <div v-if="activeName == '6'">
+              <Borrow />
+            </div>
+            <!--还币-->
+            <div v-if="activeName == '7'">
+              <Repay />
+            </div>
 
         </div>
         <Foot />
@@ -80,6 +90,8 @@ import Recharge from '@/components/Recharge'
 import Withdraw from '@/components/Withdraw'
 import TurnUsdt from '@/components/TurnUsdt'
 import Trasfer from '@/components/Trasfer'
+import Borrow from '@/components/Borrow'
+import Repay from '@/components/Repay'
 import AssetsRecord from '@/components/AssetsRecord'
 import Foot from '@/components/Foot'
 import { walletApi, earnApi } from '@/api/getData'
@@ -191,6 +203,8 @@ export default {
         Withdraw,
         Trasfer,
         TurnUsdt,
+        Borrow,
+        Repay,
         AssetsRecord,
         Foot
     }

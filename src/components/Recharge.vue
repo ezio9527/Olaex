@@ -3,28 +3,28 @@
         <el-row :gutter="60">
         	<el-col :xs="24" :sm="24" :md="12" :lg="12">
         		<el-form ref="form" :model="form">
-		           	<el-form-item class="alignment" :label="$t('recharge.select')">
-		           		<img :src="coinImgAdd" alt="" />
-					    <el-select v-model="form.region" :placeholder="$t('form.select')" @change="selectCoin">
-					      	<el-option v-for="item in coinArr" :key="item.id" :value="item">
-								<img v-if="item == 'USDT-ERC20' || item == 'USDT-OMIN'" src="../assets/USDT.png" />
-								<img v-else :src="require('../assets/'+ item +'.png')" />
-								<span>{{item}}</span>
-							</el-option>
-					    </el-select>
-					</el-form-item>
+		          <el-form-item class="alignment" :label="$t('recharge.select')">
+		            <img :src="coinImgAdd" alt="" />
+					      <el-select v-model="form.region" :placeholder="$t('form.select')" @change="selectCoin">
+					        <el-option v-for="item in coinArr" :key="item.id" :value="item">
+							    	<img v-if="item == 'USDT-ERC20' || item == 'USDT-OMIN'" src="../assets/USDT.png" />
+							    	<img v-else :src="require('../assets/'+ item +'.png')" />
+							    	<span>{{item}}</span>
+							    </el-option>
+					      </el-select>
+					    </el-form-item>
 
 			        <div>
 			        	<p>{{$t('recharge.qrcode')}}</p>
 			        	<div id="qrcode"></div>
 			        </div>
-					<!--<el-form-item :label="$t('recharge.address')" prop="link">-->
-	                    <!--<el-input v-model="form.link" autocomplete="off" readonly>-->
-	                    	<!--<i class="el-icon-document-copy" style="width: 100%;cursor: pointer;" slot="suffix" @click="handleCopy"></i>-->
-	                    <!--</el-input>-->
-	                <!--</el-form-item>-->
-	                <!--<el-form-item :label="$t('recharge.num')" prop="number" :rules="[{ required: true, message: $t('recharge.numEmpty')},{pattern:/^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$/,message:$t('recharge.numEmpty'),trigger:'blur'}]">-->
-					    <!--<el-input v-model="form.number" :placeholder="$t('recharge.numEmpty')"></el-input>-->
+					<el-form-item :label="$t('recharge.address')" prop="link">
+	          <el-input v-model="form.link" autocomplete="off" readonly>
+	          	<i class="el-icon-document-copy" style="width: 100%;cursor: pointer;" slot="suffix" @click="handleCopy"></i>
+	          </el-input>
+	        </el-form-item>
+          <!--<el-form-item :label="$t('recharge.num')" prop="number" :rules="[{ required: true, message: $t('recharge.numEmpty')},{pattern:/^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$/,message:$t('recharge.numEmpty'),trigger:'blur'}]">-->
+					  <!--<el-input v-model="form.number" :placeholder="$t('recharge.numEmpty')"></el-input>-->
 					<!--</el-form-item>-->
 					<!--<el-form-item :label="$t('recharge.asset')" :rules="[{ required: true, message: $t('recharge.assetEmpty')},{pattern:/^[0-9]{6}$/,message:$t('form.assetsCruent'),trigger:'blur'}]" prop="asset">-->
 	                    <!--<el-input v-model="form.asset" :type="passwordType ? 'text' : 'password'" autocomplete="off" :placeholder="$t('recharge.assetEmpty')">-->

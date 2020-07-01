@@ -7,14 +7,15 @@
 						<div class="logo_img" @click="comeback">
 							<img src="../assets/logo.png" alt="" />
 						</div>
-                        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleNav" router>
-                            <!--<el-menu-item index="legalCoin">{{$t('nav.currency')}}</el-menu-item>-->
-                            <el-menu-item index="transaction">{{$t('nav.contract')}}</el-menu-item>
-                            <el-menu-item index="assets">{{$t('nav.assets')}}</el-menu-item>
-                            <el-menu-item index="contact">{{$t('nav.help')}}</el-menu-item>
-                            <el-menu-item index="article">{{$t('nav.about')}}</el-menu-item>
-                            <el-menu-item index="earn">{{$t('nav.earn')}}</el-menu-item>
-                        </el-menu>
+              <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleNav" router>
+                <!--<el-menu-item index="legalCoin">{{$t('nav.currency')}}</el-menu-item>-->
+                <el-menu-item index="transaction">{{$t('nav.contract')}}</el-menu-item>
+                <el-menu-item index="lever-transaction">{{$t('nav.lever')}}</el-menu-item>
+                <el-menu-item index="assets">{{$t('nav.assets')}}</el-menu-item>
+                <el-menu-item index="earn">{{$t('nav.earn')}}</el-menu-item>
+                <!--<el-menu-item index="contact">{{$t('nav.help')}}</el-menu-item>-->
+                <!--<el-menu-item index="article">{{$t('nav.about')}}</el-menu-item>-->
+              </el-menu>
 					</div>
 				</el-col>
 				<el-col :xs="24" :sm="24" :md="8" :lg="8">
@@ -44,16 +45,18 @@
                             </div>
 							<!-- 切换中英文 -->
 							<div class="change_language">
-                                <el-dropdown @command="handleCommand" v-loading.fullscreen.lock="fullscreenLoading">
-                                    <span class="el-dropdown-link">
-                                        {{$t('nav.Language')}}<i class="el-icon-arrow-down el-icon--right"></i>
-                                    </span>
-                                    <el-dropdown-menu class="changeBg" slot="dropdown">
-                                        <el-dropdown-item command="zh"><span>中文简体</span></el-dropdown-item>
-										<el-dropdown-item command="en"><span>English</span></el-dropdown-item>
-                                        <el-dropdown-item command="jp"><span>中文繁体</span></el-dropdown-item>
-                                    </el-dropdown-menu>
-                                </el-dropdown>
+                <el-dropdown @command="handleCommand" v-loading.fullscreen.lock="fullscreenLoading">
+                  <span class="el-dropdown-link">
+                      {{$t('nav.Language')}}<i class="el-icon-arrow-down el-icon--right"></i>
+                  </span>
+                  <el-dropdown-menu class="changeBg" slot="dropdown">
+                    <!--<el-dropdown-item command="zh"><span>中文简体</span></el-dropdown-item>-->
+                    <el-dropdown-item command="en"><span>English</span></el-dropdown-item>
+                    <el-dropdown-item command="tw"><span>中文繁體</span></el-dropdown-item>
+                    <el-dropdown-item command="jp"><span>日本語</span></el-dropdown-item>
+                    <el-dropdown-item command="kr"><span>한국어</span></el-dropdown-item>
+                  </el-dropdown-menu>
+                </el-dropdown>
 							</div>
 							<div class="noTokenBox" v-if="getToken == null">
                                 <el-menu-item index="login">{{$t('nav.log')}}</el-menu-item>
@@ -67,36 +70,36 @@
 									</template>
 									<div class="userDrop">
 										<div class="user-top betweenSpread">
-                                            <div class="leftSpread">
-                                                <img src="../assets/default.png" style="width: 40px;height: 40px;border-radius: 10%;" />
-                                                <div class="userTxt">
-                                                    <span>{{userName}}</span>
-                                                    <p>{{realName}}</p>
-                                                </div>
-                                            </div>
-                                            <router-link to="set"><img src="../assets/set.png" alt="" /></router-link>
+                         <div class="leftSpread">
+                             <img src="../assets/default.png" style="width: 40px;height: 40px;border-radius: 10%;" />
+                             <div class="userTxt">
+                                 <span>{{userName}}</span>
+                                 <p>{{realName}}</p>
+                             </div>
+                         </div>
+                         <router-link to="set"><img src="../assets/set.png" alt="" /></router-link>
 
-                                        </div>
-                                        <div class="user-assets betweenSpread">
-                                            <div class="asset-box">
-                                                <p><span>{{$t('nav.person')}}</span><img @click="changeInput" :src="showImg ? openImg : closeImg" alt="" /></p>
-                                                <div class="leftSpread"><el-input :type="showImg == true ? 'text' : 'password'" readonly v-model="totalAssets"></el-input><span>{{coinTxt == 'USDT' ? 'BTC' : 'USDT'}}</span></div>
-                                            </div>
-                                            <div class="leftSpread"><img @click="changeCoin" src="../assets/blocked.png" alt="" /><span>{{coinTxt}}</span></div>
-                                        </div>
-                                        <div class="user-order">
-                                            <div class="user-order-left">
-                                                <p>{{$t('assets.wallet')}}</p>
-                                                <router-link :to="{path:'assets',query:{type:1}}"><img src="../assets/recharge-icon.png" />{{$t('assets.recharge')}}</router-link>
-                                                <router-link :to="{path:'assets',query:{type:2}}"><img src="../assets/withdraw-icon.png" />{{$t('assets.withdraw')}}</router-link>
-                                                <router-link :to="{path:'assets',query:{type:4}}"><img src="../assets/record-icon.png" />{{$t('assets.record')}}</router-link>
-                                            </div>
-                                            <div class="user-order-right">
-                                                <p>{{$t('nav.order')}}</p>
-                                                <router-link to="order"><img src="../assets/contact-icon.png" />{{$t('contract.title')}}</router-link>
-                                            </div>
-                                        </div>
-                                        <div class="userOUt leftSpread"><img src="../assets/out.png" alt="" /><el-button @click="outBtn" >{{$t('user.out')}}</el-button></div>
+                     </div>
+                     <div class="user-assets betweenSpread">
+                         <div class="asset-box">
+                             <p><span>{{$t('nav.person')}}</span><img @click="changeInput" :src="showImg ? openImg : closeImg" alt="" /></p>
+                             <div class="leftSpread"><el-input :type="showImg == true ? 'text' : 'password'" readonly v-model="totalAssets"></el-input><span>{{coinTxt == 'USDT' ? 'BTC' : 'USDT'}}</span></div>
+                         </div>
+                         <div class="leftSpread"><img @click="changeCoin" src="../assets/blocked.png" alt="" /><span>{{coinTxt}}</span></div>
+                     </div>
+                     <div class="user-order">
+                         <div class="user-order-left">
+                             <p>{{$t('assets.wallet')}}</p>
+                             <router-link :to="{path:'assets',query:{type:1}}"><img src="../assets/recharge-icon.png" />{{$t('assets.recharge')}}</router-link>
+                             <router-link :to="{path:'assets',query:{type:2}}"><img src="../assets/withdraw-icon.png" />{{$t('assets.withdraw')}}</router-link>
+                             <router-link :to="{path:'assets',query:{type:4}}"><img src="../assets/record-icon.png" />{{$t('assets.record')}}</router-link>
+                         </div>
+                         <div class="user-order-right">
+                             <p>{{$t('nav.order')}}</p>
+                             <router-link to="order"><img src="../assets/contact-icon.png" />{{$t('contract.title')}}</router-link>
+                         </div>
+                     </div>
+                     <div class="userOUt leftSpread"><img src="../assets/out.png" alt="" /><el-button @click="outBtn" >{{$t('user.out')}}</el-button></div>
 									</div>
 								</el-submenu>
 							</div>
@@ -208,17 +211,17 @@ export default {
 			this.$router.push('/');
         },
         handleCommand(command) {//切换语言
-			var that = this;
-	  		if(command != that.$i18n.locale){
-                that.$i18n.locale = command;
-	  			sessionStorage.setItem('language',command);
-	  			that.fullscreenLoading = true;
+          var that = this;
+            if(command != that.$i18n.locale){
+                    that.$i18n.locale = command;
+              sessionStorage.setItem('language',command);
+              that.fullscreenLoading = true;
 
-		        setTimeout(() => {
-		        	that.reload();
-		          	that.fullscreenLoading = false;
-		        }, 1000);
-	  		}
+                setTimeout(() => {
+                  that.reload();
+                    that.fullscreenLoading = false;
+                }, 1000);
+            }
         },
         outBtn(){
             var that = this;
@@ -294,7 +297,7 @@ export default {
     .right_nav {
         .leftSpread{
             .twoName{
-                width: 30x;
+                width: 30px;
                 height: 30px;
                 margin-right: 40px;
             }

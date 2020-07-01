@@ -3,6 +3,7 @@ module.exports =  {
 		home:'Home',
 		currency:'Transactions in French currency',
 		contract:'Contractual transactions',
+    lever:'Lever Transaction',
 		assets:'Asset management',
 		help:'Customer help',
 		about:'About us',
@@ -150,6 +151,8 @@ module.exports =  {
 		transfer:'Asset transfer',
 		record:"Asset records",
 		carry:"Transfer in station",
+    borrow:"Borrow",
+    repay: "Repay",
 		wallet:"Wallet",
 		contact:"Contract",
 		currency:'Legal currency',
@@ -360,5 +363,18 @@ module.exports =  {
     success: 'Purchase succeeded',
     buyNum: 'Desired Purchase Quantity',
     inputPlaceholder: 'Desired Purchase Quantity'
+  },
+  borrow: {
+    title: 'borrow',
+    borrowNumber: 'borrow number',
+    cashDeposit: 'usable cash deposit',
+    monthlyInterestRate: 'monthly interest rate',
+    exhaustedCredit: 'exhausted credit',
+    all: 'all',
+    usable: 'usable credit'
+  },
+  repay: {
+    title: 'repay',
+    repayNumber: 'repay number'
   }
 }
