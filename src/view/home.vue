@@ -82,7 +82,7 @@
                 <div class="leftSpread verticalBox">
                     <div class="leftSpread vertical">
                         <img src="../assets/android.png" />
-                        <img class="qrcode" src="../assets/uploadImg.png" />
+                        <img class="qrcode" src="../assets/download_android.png" />
                     </div>
                     <div class="leftSpread vertical">
                         <img src="../assets/ios.png" />
@@ -190,7 +190,7 @@ export default {
             }
             .el-carousel__indicator{
                 background-color: #4C648C;
-                
+
                 height: 4px;
                 &:nth-child(1){
                     border-radius:4px 0 0 4px;

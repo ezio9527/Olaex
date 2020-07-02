@@ -3,12 +3,13 @@
 		<!-- 资产流水 -->
 		<div class="assets_top">
 			<el-form ref="form" :model="form">
-	           	<el-form-item prop="region">
-				    <el-select v-model="form.region" :placeholder="form.select" @change="selectValue">
-				    	<el-option :label="$t('assets.walletAssets')" value="WALLET"></el-option>
-				    	<el-option :label="$t('assets.contactAssets')" value="CONTRACT"></el-option>
-						<el-option :label="$t('assets.earnAssets')" value="EARN"></el-option>
-				    </el-select>
+        <el-form-item prop="region">
+          <el-select v-model="form.region" :placeholder="form.select" @change="selectValue">
+            <el-option :label="$t('assets.walletAssets')" value="WALLET"></el-option>
+            <el-option :label="$t('assets.contactAssets')" value="CONTRACT"></el-option>
+            <el-option :label="$t('assets.earnAssets')" value="EARN"></el-option>
+            <el-option :label="$t('assets.leverAssets')" value="LEVER"></el-option>
+          </el-select>
 				</el-form-item>
 				<!-- <el-button class="themeBtn">{{$t('assetsRecord.btn')}}</el-button> -->
 			</el-form>
@@ -40,18 +41,18 @@ import pageTotal from '@/components/pageTotal'
 import { assetsRecordApi, earnListApi } from '@/api/getData'
 export default {
     data(){
-        return{
-          coin: 'USDT',
-        	form:{
-        		region:'WALLET'
-        	},
-        	tableData:[],
-            page:{
-                currentPage:1,
-                limit:10,
-                total:0,
-            },
+      return{
+        coin: 'USDT',
+      	form:{
+      		region:'WALLET'
+      	},
+      	tableData:[],
+        page:{
+          currentPage:1,
+          limit:10,
+          total:0,
         }
+      }
 	},
 	created(){
 		this.recordFun();

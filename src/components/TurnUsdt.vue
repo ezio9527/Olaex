@@ -88,17 +88,17 @@ export default {
 	},
 	computed:{
 		getTotal(){
-			var arr = [this.$t('assets.wallet'),this.$t('assets.contact'),this.$t('assets.earn')];
+			var arr = [this.$t('assets.wallet'),this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever')];
 			this.getTotalArr = arr;
 			return arr
 		},
 		getFrom(){
-			var arr = [this.$t('assets.wallet'),this.$t('assets.contact'),this.$t('assets.earn')];
+			var arr = [this.$t('assets.wallet'),this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever')];
 			this.getFromArr = arr;
 			return arr
 		},
 		getTo(){
-			var arr = [this.$t('assets.contact'),this.$t('assets.earn')];
+			var arr = [this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever')];
 			this.getToArr = arr;
 			return arr
 		},
@@ -141,11 +141,11 @@ export default {
 			var that = this;
 			if(that.form.typeTxt != ''){
 				var typeTxt = '';
-				if(that.form.fromValue == '钱包' || that.form.fromValue == 'Wallet' || that.form.fromValue == '錢包'){
+				if(that.form.fromValue == this.$t('assets.wallet')){
 					typeTxt = 'WALLET';
-				}else if(that.form.fromValue == '合约' || that.form.fromValue == 'Contract' || that.form.fromValue == '合約'){
+				}else if(that.form.fromValue == this.$t('assets.contact')){
 					typeTxt = 'CONTRACT';
-				}else if(that.form.fromValue == '余币宝' || that.form.fromValue == 'earn' || that.form.fromValue == '餘幣寶'){
+				}else if(that.form.fromValue == this.$t('assets.earn')){
           const dataArr = new URLSearchParams();
           dataArr.set('type', this.form.region);
           var res = await earnApi(dataArr);
@@ -159,7 +159,9 @@ export default {
             that.abiliyPrice = 0
           }
           return;
-				}
+				}else if(that.form.fromValue == this.$t('assets.lever')){
+          typeTxt = 'CURRENCY';
+        }
 				var dataArr = new URLSearchParams();
 				dataArr.set('type',that.form.region);
 				dataArr.set('from',typeTxt);
@@ -181,11 +183,11 @@ export default {
 				if(valid){
 					var dataArr = new URLSearchParams();
 					var typeTxt = '';
-					if(that.form.fromValue == '钱包' || that.form.fromValue == 'Wallet' || that.form.fromValue == '錢包'){
+          if(that.form.fromValue == this.$t('assets.wallet')){
 						typeTxt = 'WALLET';
-					}else if(that.form.fromValue == '合约' || that.form.fromValue == 'Contract' || that.form.fromValue == '合約'){
+          }else if(that.form.fromValue == this.$t('assets.contact')){
 						typeTxt = 'CONTRACT';
-					}else if(that.form.fromValue == '余币宝' || that.form.fromValue == 'earn' || that.form.fromValue == '餘幣寶'){
+          }else if(that.form.fromValue == this.$t('assets.earn')){
             typeTxt = 'EARN';
             // 从余币宝划转出来
             dataArr.set('surplusId', this.earnId);
@@ -205,13 +207,15 @@ export default {
               })
             }
             return
-					}
+          }else if(that.form.fromValue == this.$t('assets.lever')){
+            typeTxt = 'CURRENCY';
+          }
 					var toTypeTxt = '';
-					if(that.form.toValue == '钱包' || that.form.toValue == 'Wallet' || that.form.fromValue == '錢包'){
+          if(that.form.toValue == this.$t('assets.wallet')){
 						toTypeTxt = 'WALLET';
-					}else if(that.form.toValue == '合约' || that.form.toValue == 'Contract' || that.form.fromValue == '合約'){
+          }else if(that.form.toValue == this.$t('assets.contact')){
 						toTypeTxt = 'CONTRACT';
-					}else if(that.form.toValue == '余币宝' || that.form.toValue == 'earn' || that.form.toValue == '餘幣寶'){
+          }else if(that.form.toValue == this.$t('assets.earn')){
             // 划转到余币宝
             dataArr.set('surplusId', '0');
             dataArr.set('symbols',this.form.region);
@@ -230,6 +234,8 @@ export default {
               })
             }
             return
+          }else if(that.form.toValue == this.$t('assets.lever')){
+            toTypeTxt = 'CURRENCY';
           }
 					dataArr.set('type',that.form.region);
 					dataArr.set('from',typeTxt);

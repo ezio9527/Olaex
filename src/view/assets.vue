@@ -24,9 +24,10 @@
             <div v-if="activeName == '0'">
 
             	<el-tabs class="transtionBar cruntpage" v-model="activeIndex" @tab-click="handleIndex">
-	                <el-tab-pane :label="$t('assets.wallet')" name="0"></el-tab-pane>
-	                <el-tab-pane :label="$t('assets.contact')" name="1"></el-tab-pane>
-	                <el-tab-pane :label="$t('assets.earn')" name="2"></el-tab-pane>
+                <el-tab-pane :label="$t('assets.wallet')" name="0"></el-tab-pane>
+                <el-tab-pane :label="$t('assets.contact')" name="1"></el-tab-pane>
+                <el-tab-pane :label="$t('assets.earn')" name="2"></el-tab-pane>
+                <el-tab-pane :label="$t('assets.lever')" name="3"></el-tab-pane>
 	            </el-tabs>
 
 	            <el-table class="fishTable" :data="tableData" :empty-text="$t('tip.noRecord')">
@@ -148,7 +149,10 @@ export default {
         }else if(that.activeIndex == '1'){
           txt = 'CONTRACT'
         }else if(that.activeIndex == '2'){
-          txt = 'LEGAL'
+          // txt = 'LEGAL'
+          txt = 'SAVING'
+        }else if(that.activeIndex == '3'){
+          txt = 'CURRENCY'
         }
         var dataArr = new URLSearchParams();
         if(that.coinType == 'USDT'){
@@ -260,45 +264,48 @@ export default {
         margin: 20px 0;
     }
     .cruntpage{
-        .el-tabs__nav{
-		    display: contents;
-        	&>div:nth-child(2).is-active{
-        		background: url(../assets/left-active.png) no-repeat;
-        		background-size: 100% 100%;
-        	}
-        	&>div:nth-child(3).is-active{
-        		background:#87D8EA;
-        	}
-        	&>div:nth-child(4).is-active{
-        		background: url(../assets/right-active.png) no-repeat;
-        		background-size: 100% 100%;
-        	}
-        	.is-active{
-        		color: #FFFFFF!important;
-        	}
-        	.el-tabs__item{
-        		&:nth-child(2){
-        			background: url(../assets/left.png) no-repeat;
-        			background-size: 100% 100%;
-        			width: 120px;
-        		}
-        		&:nth-child(3){
-        			width:110px;
-					height:40px;
-					-webkit-transform:skew(-22deg);
-					-moz-transform:skew(-22deg);
-					-o-transform:skew(-22deg);
-					-ms-transform:skew(-22deg);
-					transform:skew(-22deg);
-					background:#262A38;
-        		}
-        		&:nth-child(4){
-        			background: url(../assets/right.png) no-repeat;
-        			background-size: 100% 100%;
-        			width: 120px;
-        		}
-        	}
-        }
+      .el-tabs__nav{
+		  display: contents;
+      	&>div:nth-child(2).is-active{
+      		background: url(../assets/left-active.png) no-repeat;
+      		background-size: 100% 100%;
+      	}
+        &>div:nth-child(3).is-active, &>div:nth-child(4).is-active{
+      		background:#87D8EA;
+      	}
+      	&>div:nth-child(5).is-active{
+      		background: url(../assets/right-active.png) no-repeat;
+      		background-size: 100% 100%;
+      	}
+      	.is-active{
+      		color: #FFFFFF!important;
+      	}
+      	.el-tabs__item{
+          &:nth-child(2){
+      			background: url(../assets/left.png) no-repeat;
+      			background-size: 100% 100%;
+      			width: 120px;
+      		}
+          &:nth-child(3) {
+            margin-right: 8px;
+          }
+          &:nth-child(3),&:nth-child(4){
+      			width:110px;
+            height:40px;
+            -webkit-transform:skew(-22deg);
+            -moz-transform:skew(-22deg);
+            -o-transform:skew(-22deg);
+            -ms-transform:skew(-22deg);
+            transform:skew(-22deg);
+            background:#262A38;
+      		}
+      		&:nth-child(5){
+      			background: url(../assets/right.png) no-repeat;
+      			background-size: 100% 100%;
+      			width: 120px;
+      		}
+      	}
+      }
     }
     .el-table tbody tr{
         margin: 0 20px;

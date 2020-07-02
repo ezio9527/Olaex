@@ -245,9 +245,24 @@ export const aboutApi = data => fetch('/api/common/article',data,false);
 /**
  * 新手指南，帮助中心
  */
- export const helpApi = data => fetch('/api/common/problem',data,false);
+export const helpApi = data => fetch('/api/common/problem',data,false);
 
- /**
-  * 官方公告
-  */
- export const noticeApi = data => fetch('/api/common/newsList',data,false);
+/**
+ * 官方公告
+ */
+export const noticeApi = data => fetch('/api/common/newsList',data,false);
+
+/**
+ * 借币
+ */
+export const borrowApi = data => fetch('/api/borrow',data,true);
+
+/**
+ * 借币信息查询
+ */
+export const borrowInfoApi = data => fetch('/api/borrow/basic',data,true);
+
+/**
+ * 还币
+ */
+export const repayApi = data => fetch('/api/repay',data,true);
