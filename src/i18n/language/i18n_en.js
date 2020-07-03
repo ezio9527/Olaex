@@ -350,7 +350,12 @@ module.exports =  {
 		addSuccess:'Successfully added',
 		trasferSuccess:'Transfer succeeded',
 		updatePwd:'Change transaction password succeeded',
-		orderSuccess:'checkout success'
+		orderSuccess:'checkout success',
+    capitalNotEnough: 'capital not enough！',
+    leverNotBalance: 'lever not balance',
+    borrowMax: 'borrow is max number',
+    noBorrowRecord: 'not have borrow record',
+    repayMax: 'repay is max number！'
 	},
   earn: {
     title: '持幣生息，穩健賺幣',

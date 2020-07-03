@@ -350,6 +350,11 @@ module.exports =  {
 		trasferSuccess:'成功した転送',
 		updatePwd:'正常に変更され、取引パスワード',
 		orderSuccess:'注文に成功しました',
+    capitalNotEnough: '元金不足、借りすぎ!',
+    leverNotBalance: 'レバレッジ残高不足',
+    borrowMax: '借りたお金の数量はすでに最高に達した',
+    noBorrowRecord: '暫時無借幣記録',
+    repayMax: '返済額が高すぎる!'
 	},
   earn: {
     title: 'お金を持ち利息を稼ぎ、着実に稼ぐ',

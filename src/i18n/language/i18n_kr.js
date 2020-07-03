@@ -350,6 +350,11 @@ module.exports =  {
 		trasferSuccess:'성공적인 이체',
 		updatePwd:'거래 비밀번호 변경',
 		orderSuccess:'성공적으로 주문',
+    capitalNotEnough: '가격은비밀번！',
+    leverNotBalance: '디지털 토큰, 유연한 액세',
+    borrowMax: '을 통화 자산을 입금하고, 최소 ',
+    noBorrowRecord: '치하는 거래에서 취소 할',
+    repayMax: '정이 존재하지 않습니！'
 	},
   earn: {
     title: '꾸준히 돈을 버는이자를 얻기 위해 돈을 들고',

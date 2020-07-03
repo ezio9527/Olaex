@@ -199,6 +199,21 @@ export default function codeStatus(codeStatus,callback){
     case 20002:
       tip = i18n.t('assets.noBalance')
       break;
+    case 20003:
+      tip = i18n.t('codeTxt.capitalNotEnough')
+      break;
+    case 20004:
+      tip = i18n.t('codeTxt.leverNotBalance')
+      break;
+    case 20005:
+      tip = i18n.t('codeTxt.borrowMax')
+      break;
+    case 20006:
+      tip = i18n.t('codeTxt.noBorrowRecord')
+      break;
+    case 20007:
+      tip = i18n.t('codeTxt.repayMax')
+      break;
 		case 2048:
 			tip = 'Completed'
 			break;

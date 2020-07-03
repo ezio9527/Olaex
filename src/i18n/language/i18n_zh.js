@@ -350,6 +350,11 @@ module.exports =  {
 		trasferSuccess:'转账成功',
 		updatePwd:'修改交易密码成功',
 		orderSuccess:'下单成功',
+    capitalNotEnough: '本金不足，借币数量过多！',
+    leverNotBalance: '杠杆账户余额不足',
+    borrowMax: '借币数量已达到最高',
+    noBorrowRecord: '暂无借币记录',
+    repayMax: '还款数过高！'
 	},
   earn: {
     title: '持币生息，稳健赚币',

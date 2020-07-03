@@ -349,7 +349,12 @@ module.exports =  {
 		addSuccess:'添加成功',
 		trasferSuccess:'轉賬成功',
 		updatePwd:'修改交易密碼成功',
-		orderSuccess:'下單成功'
+		orderSuccess:'下單成功',
+    capitalNotEnough: '本金不足，借幣數量過多！',
+    leverNotBalance: '槓桿賬戶餘額不足',
+    borrowMax: '借幣數量已達到最高',
+    noBorrowRecord: '暫無借幣記錄',
+    repayMax: '還款數過高！'
 	},
   earn: {
 	  title: '持幣生息，穩健賺幣',
