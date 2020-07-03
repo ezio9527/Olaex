@@ -373,10 +373,12 @@ module.exports =  {
     monthlyInterestRate: 'monthly interest rate',
     exhaustedCredit: 'exhausted credit',
     all: 'all',
-    usable: 'usable credit'
+    usable: 'usable credit',
+    numEmpty:'Please enter quantity'
   },
   repay: {
     title: 'repay',
-    repayNumber: 'repay number'
+    repayNumber: 'repay number',
+    numEmpty:'Please enter quantity'
   }
 }

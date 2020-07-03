@@ -1,6 +1,6 @@
 <template>
 	<div class="trasfer_div">
-		<!--借币-->
+		<!--还币-->
 		<el-row :gutter="60">
       <el-col :xs="24" :sm="24" :md="12" :lg="12">
         <el-form ref="form" :model="form">
@@ -14,17 +14,17 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item :label="$t('borrow.borrowNumber')" prop="number" :rules="[{ required: true, message: $t('withdraw.numEmpty')}]">
-            <el-input v-model="form.number" :placeholder="$t('withdraw.numEmpty')"></el-input>
+          <el-form-item :label="$t('repay.repayNumber')" prop="number" :rules="[{ required: true, message: $t('repay.numEmpty')}]">
+            <el-input v-model="form.number" :placeholder="$t('repay.numEmpty')"></el-input>
           </el-form-item>
 					<div style="margin-bottom:20px">
             <div class="betweenSpread">
-              <p>{{$t('borrow.cashDeposit')}}：{{price}} USDT </p>
-              <p>{{$t('borrow.monthlyInterestRate')}}：{{price}} USDT </p>
+              <p>{{$t('borrow.cashDeposit')}}：{{borrowInfo.totalPrice}} {{form.region}}</p>
+              <p>{{$t('borrow.monthlyInterestRate')}}：{{borrowInfo.accrual}} % </p>
             </div>
             <div class="betweenSpread">
-              <p>{{$t('borrow.exhaustedCredit')}}：{{price}} USDT </p>
-              <p>{{$t('borrow.usable')}}：{{price}} USDT </p>
+              <p>{{$t('borrow.exhaustedCredit')}}：{{borrowInfo.haveBorrowPrice}} {{form.region}} </p>
+              <p>{{$t('borrow.usable')}}：{{borrowInfo.mayBorrowPrice}} {{form.region}} </p>
             </div>
 					</div>
 					<el-form-item :label="$t('recharge.asset')" :rules="[{ required: true, message: $t('recharge.assetEmpty')},{pattern:/^[0-9]{6}$/,message:$t('form.assetsCruent'),trigger:'blur'}]" prop="asset">
@@ -34,59 +34,68 @@
           </el-form-item>
 					<el-button class="themeBtn" @click="submitFun('form')">{{$t('button.ok')}}</el-button>
 				</el-form>
-        	</el-col>
-        	<el-col :xs="24" :sm="24" :md="12" :lg="12">
-        		<div class="tipBox">
+      </el-col>
+        <el-col :xs="24" :sm="24" :md="12" :lg="12">
+        	<div class="tipBox">
 
-        		</div>
-        	</el-col>
-        </el-row>
+        	</div>
+        </el-col>
+    </el-row>
     	<el-table class="fishTable" :data="tableData" :empty-text="$t('tip.noRecord')">
-
-            <el-table-column prop="to" :label="$t('table.account')"></el-table-column>
-            <el-table-column prop="price" :label="$t('table.num')"></el-table-column>
-			<el-table-column prop="typeTxt" :label="$t('table.type')"></el-table-column>
-            <el-table-column prop="time" :label="$t('table.time')"></el-table-column>
-        </el-table>
-        <pageTotal v-if="page.total > 10" :page="page" @pageChange="pageChange"></pageTotal>
+        <el-table-column prop="typeTxt" :label="$t('table.type')"></el-table-column>
+        <el-table-column prop="flowPrice" :label="$t('table.num')"></el-table-column>
+        <el-table-column prop="createTime" :label="$t('table.time')"></el-table-column>
+      </el-table>
+    <pageTotal v-if="page.total > 10" :page="page" @pageChange="pageChange"></pageTotal>
 
 	</div>
 </template>
 <script>
 import pageTotal from '@/components/pageTotal'
-import { transferPageApi,transfersApi,transfersRcordApi } from '@/api/getData'
+import { borrowInfoApi, repayApi,assetsRecordApi } from '@/api/getData'
 import codeStatus from '@/config/codeStatus'
 export default {
-   data(){
-     return{
-       coinArr: ['USDT','BTC'],
-       coinImgAdd: require('../assets/USDT.png'),
-       	activeName:'0',
-       	form:{
-          region:'USDT',
-       		money:'',
-       		num:'',
-			    account:'',
-			    asset:'',
-       	},
-		    passwordType:false,
-          eyeArr:[{
-              img:require('../assets/eye_close.png')
-          },{
-              img:require('../assets/eye_open.png')
-          }],
-          eyeImg:require('../assets/eye_close.png'),
-          tableData:[],
-          page:{
-              currentPage:1,
-              limit:10,
-              total:0,
-		},
-		price:0,
-		cnyPrice:0,
-		fee:0
-	}
+ data(){
+   return {
+     coinArr: ['USDT', 'BTC'],
+     coinImgAdd: require('../assets/USDT.png'),
+     form: {
+       region: 'USDT',
+       money: '',
+       number: '',
+       account: '',
+       asset: '',
+     },
+     passwordType: false,
+     eyeArr: [
+       {
+         img: require('../assets/eye_close.png')
+       },
+       {
+         img: require('../assets/eye_open.png')
+       }
+     ],
+     eyeImg: require('../assets/eye_close.png'),
+     tableData: [],
+     page: {
+       currentPage: 1,
+       limit: 10,
+       total: 0,
+     },
+     borrowData: {}
+   }
 	},
+  computed: {
+    borrowInfo () {
+      return this.borrowData[this.form.region] ||
+        {
+          totalPrice: 0, //总资产
+          accrual: 0, //利息
+          haveBorrowPrice: 0, //已借数量
+          mayBorrowPrice: 0 //可借数量
+        }
+    }
+  },
 	created(){
 		this.formFun();
 	},
@@ -94,34 +103,25 @@ export default {
 		this.recordFun();
 	},
 	methods:{
-		async formFun(){//获取信息
-			var that = this;
-			var res = await transferPageApi();
-			if(res.success){
-				var obj = res.data;
-				that.price = Number(obj.price).toFixed(2);
-				that.cnyPrice = Number(obj.usdt).toFixed(2);
-				that.fee = Number(obj.fee).toFixed(2);
-			}
-		},
-		submitFun(form){//提交转账
+    async formFun(){//获取信息
+      const dataArr = new URLSearchParams();
+      dataArr.set('type',this.form.region);
+      const res = await borrowInfoApi(dataArr);
+      if(res.success){
+        res.data.forEach(item => {
+          this.$set(this.borrowData, item.type, item)
+        })
+      }
+    },
+		submitFun(form){//提交借币
 			var that = this;
 			that.$refs[form].validate(async (valid) => {
 				if(valid){
-					var method,numberTxt;
-					if(that.activeName == '0'){
-						method = 'USDT';
-						numberTxt = that.form.num;
-					}else{
-						method = 'CNY';
-						numberTxt = that.form.money;
-					}
 					var dataArr = new URLSearchParams();
-					dataArr.set('account',that.form.account);
-					dataArr.set('price',numberTxt);
-					dataArr.set('type',method);
-					dataArr.set('payPwd',that.form.asset);
-					var res = await transfersApi(dataArr);
+					dataArr.set('numbers',that.form.number);
+					dataArr.set('type',that.form.region);
+          dataArr.set('payPwd',that.form.asset);
+					var res = await repayApi(dataArr);
 					if(res.success){
 						that.$message({
 							type:'success',
@@ -139,38 +139,32 @@ export default {
 			})
 		},
 		handleEye(){//显示隐藏密码
-            var that = this;
-            that.passwordType = !that.passwordType;
-            if(that.passwordType){
-                that.eyeImg = that.eyeArr[1].img
-            }else{
-                that.eyeImg = that.eyeArr[0].img
-            }
+      var that = this;
+      that.passwordType = !that.passwordType;
+      if(that.passwordType){
+          that.eyeImg = that.eyeArr[1].img
+      }else{
+          that.eyeImg = that.eyeArr[0].img
+      }
 		},
 		async recordFun(){//转账记录
 			var that = this;
 			var dataArr = new URLSearchParams();
-			dataArr.set('current',that.page.currentPage);
+			dataArr.set('type','BORROW');
+      dataArr.set('current',that.page.currentPage);
 			dataArr.set('size',that.page.limit);
-			var res = await transfersRcordApi(dataArr);
+			var res = await assetsRecordApi(dataArr);
 			that.tableData = [];
 			if(res.success){
 				that.page.total = Number(res.data.total);
-				var obj = res.data.records;
+        var obj = res.data.records.records;
 				if(obj.length>0){
 					obj.forEach(element => {
-						switch (element.type) {
-							case '内部转出 USDT':
-								element.typeTxt = that.$t('assets.insideEnter')+' USDT'
-								break;
-							case '内部转入 USDT':
-								element.typeTxt = that.$t('assets.insideInfo')+' USDT'
-								break;
-							default:
-								break;
-						}
-						element.price = Number(element.price).toFixed(2);
-						that.tableData.push(element)
+            if (element.symbol == '-') {
+              element.typeTxt = this.$t('repay.title')
+              element.price = Number(element.price).toFixed(2);
+              that.tableData.push(element)
+            }
 					});
 				}
 			}else{
@@ -185,7 +179,14 @@ export default {
 		},
         handleClick(){
 
-        }
+        },
+    selectCoin(value){
+      if(value == 'USDT-ERC20' || value == 'USDT-OMIN'){
+        this.coinImgAdd = require('../assets/USDT.png')
+      }else{
+        this.coinImgAdd = require('../assets/'+ value +'.png')
+      }
+    }
 	},
 	components:{
         pageTotal

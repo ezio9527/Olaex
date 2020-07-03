@@ -372,10 +372,12 @@ module.exports =  {
     monthlyInterestRate: '月利率',
     exhaustedCredit: '已借額度',
     all: '全部',
-    usable: '可借額度'
+    usable: '可借額度',
+    numEmpty:'請輸入借幣數量'
   },
   repay: {
     title: '還幣',
-    repayNumber: '還幣數量'
+    repayNumber: '還幣數量',
+    numEmpty:'請輸入還幣數量'
   }
 }

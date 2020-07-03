@@ -372,10 +372,12 @@ module.exports =  {
     monthlyInterestRate: 'げっきん',
     exhaustedCredit: 'すでに限度額',
     all: 'すべて',
-    usable: '借りできる'
+    usable: '借りできる',
+    numEmpty:'転送量を入力してください',
   },
   repay: {
     title: 'まだ',
-    repayNumber: 'まだ幣数'
+    repayNumber: 'まだ幣数',
+    numEmpty:'転送量を入力してください',
   }
 }

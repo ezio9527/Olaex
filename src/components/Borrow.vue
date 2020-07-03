@@ -14,17 +14,17 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item :label="$t('borrow.borrowNumber')" prop="number" :rules="[{ required: true, message: $t('withdraw.numEmpty')}]">
-            <el-input v-model="form.number" :placeholder="$t('withdraw.numEmpty')"></el-input>
+          <el-form-item :label="$t('borrow.borrowNumber')" prop="number" :rules="[{ required: true, message: $t('borrow.numEmpty')}]">
+            <el-input v-model="form.number" :placeholder="$t('borrow.numEmpty')"></el-input>
           </el-form-item>
 					<div style="margin-bottom:20px">
             <div class="betweenSpread">
-              <p>{{$t('borrow.cashDeposit')}}：{{totalPrice}} USDT </p>
-              <p>{{$t('borrow.monthlyInterestRate')}}：{{accrual}} % </p>
+              <p>{{$t('borrow.cashDeposit')}}：{{borrowInfo.totalPrice}} {{form.region}}</p>
+              <p>{{$t('borrow.monthlyInterestRate')}}：{{borrowInfo.accrual}} % </p>
             </div>
             <div class="betweenSpread">
-              <p>{{$t('borrow.exhaustedCredit')}}：{{haveBorrowPrice}} USDT </p>
-              <p>{{$t('borrow.usable')}}：{{mayBorrowPrice}} USDT </p>
+              <p>{{$t('borrow.exhaustedCredit')}}：{{borrowInfo.haveBorrowPrice}} {{form.region}} </p>
+              <p>{{$t('borrow.usable')}}：{{borrowInfo.mayBorrowPrice}} {{form.region}} </p>
             </div>
 					</div>
 					<el-form-item :label="$t('recharge.asset')" :rules="[{ required: true, message: $t('recharge.assetEmpty')},{pattern:/^[0-9]{6}$/,message:$t('form.assetsCruent'),trigger:'blur'}]" prop="asset">
@@ -82,12 +82,20 @@ export default {
        limit: 10,
        total: 0,
      },
-     totalPrice: 0, //总资产
-     accrual: 0, //利息
-     haveBorrowPrice: 0, //已借数量
-     mayBorrowPrice: 0 //可借数量
+     borrowData: {}
    }
 	},
+  computed: {
+   borrowInfo () {
+     return this.borrowData[this.form.region] ||
+     {
+       totalPrice: 0, //总资产
+       accrual: 0, //利息
+       haveBorrowPrice: 0, //已借数量
+       mayBorrowPrice: 0 //可借数量
+     }
+   }
+  },
 	created(){
 		this.formFun();
 	},
@@ -96,16 +104,13 @@ export default {
 	},
 	methods:{
 		async formFun(){//获取信息
-			var that = this;
-      var dataArr = new URLSearchParams();
-      dataArr.set('type',that.form.region);
-			var res = await borrowInfoApi(dataArr);
+      const dataArr = new URLSearchParams();
+      dataArr.set('type',this.form.region);
+			const res = await borrowInfoApi(dataArr);
 			if(res.success){
-				var obj = res.data;
-				that.totalPrice = obj.totalPrice;
-				that.accrual = obj.accrual;
-        that.haveBorrowPrice = obj.haveBorrowPrice;
-        that.mayBorrowPrice = obj.mayBorrowPrice;
+			  res.data.forEach(item => {
+			    this.$set(this.borrowData, item.type, item)
+        })
 			}
 		},
 		submitFun(form){//提交借币
@@ -155,10 +160,11 @@ export default {
         var obj = res.data.records.records;
 				if(obj.length>0){
 					obj.forEach(element => {
-						element.typeTxt = element.name
-						element.price = Number(element.price).toFixed(2);
-            // createTime
-						that.tableData.push(element)
+					  if (element.symbol == '+') {
+              element.typeTxt = this.$t('borrow.title')
+              element.price = Number(element.price).toFixed(2);
+              that.tableData.push(element)
+            }
 					});
 				}
 			}else{

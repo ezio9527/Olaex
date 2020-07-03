@@ -372,10 +372,12 @@ module.exports =  {
     monthlyInterestRate: '통화유연한',
     exhaustedCredit: '없습니다',
     all: '수를',
-    usable: '적으로니다'
+    usable: '적으로니다',
+    numEmpty:'수량을 입력하십시오'
   },
   repay: {
     title: '도계',
-    repayNumber: '도계관심을'
+    repayNumber: '도계관심을',
+    numEmpty:'수량산 입력하십시오'
   }
 }
