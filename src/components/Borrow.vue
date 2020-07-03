@@ -105,7 +105,7 @@ export default {
 	methods:{
 		async formFun(){//获取信息
       const dataArr = new URLSearchParams();
-      dataArr.set('type',this.form.region);
+      dataArr.set('type','0');
 			const res = await borrowInfoApi(dataArr);
 			if(res.success){
 			  res.data.forEach(item => {
