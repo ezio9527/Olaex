@@ -134,7 +134,7 @@
 <script>
 import codeStatus from '@/config/codeStatus'
 import pageTotal from '@/components/pageTotal'
-import { contractListApi,cancelListApi,outContractApi,contractPlApi } from '@/api/getData'
+import { leverRecordApi,cancelListApi,outContractApi,contractPlApi } from '@/api/getData'
 export default {
     inject:['reload'],
     data(){
@@ -178,16 +178,18 @@ export default {
             var dataArr = new URLSearchParams();
             var type = '';
             if(that.activeIndex == '0'){
-                type = 'N'
+                type = '1'
             }else if(that.activeIndex == '1'){
-                type = 'IN'
+                type = '2'
             }else if(that.activeIndex == '2'){
-                type = 'Y'
+              type = '3'
+            }else if(that.activeIndex == '3'){
+              type = '4'
             }
             dataArr.set('type',type);
             dataArr.set('current',that.page.currentPage);
             dataArr.set('size',that.page.limit);
-            var res = await contractListApi(dataArr);
+            var res = await leverRecordApi(dataArr);
             that.tableData = [];
             if(res.success){
                 that.page.total = Number(res.data.total);

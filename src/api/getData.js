@@ -266,3 +266,8 @@ export const borrowInfoApi = data => fetch('/api/borrow/basic',data,true);
  * 还币
  */
 export const repayApi = data => fetch('/api/repay',data,true);
+
+/**
+ * 杠杆交易记录
+ */
+export const leverRecordApi = data => fetch('/api/currencyRecord',data,true);
