@@ -28,7 +28,7 @@
                         <!-- </keep-alive> -->
                     </div>
                     <div style="padding:0 20px">
-                        <OrderRecord />
+                        <LeverRecord />
                     </div>
                 </div>
             </el-col>
@@ -106,8 +106,8 @@
                             </p>
                         </div>
                         <div class="lastBtn">
-                            <el-button class="buyBtn" @click="submitFun('BUY')" type="button">{{$t('transaction.buy')}}</el-button>
-                            <el-button class="sellBtn" @click="submitFun('SELL')" type="button">{{$t('transaction.sell')}}</el-button>
+                            <el-button class="buyBtn" @click="submitFun('BUY')" type="button">{{$t('transaction.buyIn')}}</el-button>
+                            <el-button class="sellBtn" @click="submitFun('SELL')" type="button">{{$t('transaction.sellOut')}}</el-button>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
     </div>
 </template>
 <script>
-import OrderRecord from '@/components/OrderRecord'
+import LeverRecord from '@/components/LeverRecord'
 import { leverageApi,ticketApi,tradeListApi,contractPageApi,contractApi } from '@/api/getData'
 import TradeView from '@/components/TradeView'
 import codeStatus from '@/config/codeStatus'
@@ -335,7 +335,7 @@ export default {
         clearInterval(this.wTimerList);
     },
     components:{
-        OrderRecord,TradeView
+        LeverRecord,TradeView
     }
 }
 </script>

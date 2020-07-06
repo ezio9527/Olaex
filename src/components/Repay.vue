@@ -20,7 +20,7 @@
 					<div style="margin-bottom:20px">
             <div class="betweenSpread">
               <p>{{$t('borrow.cashDeposit')}}：{{borrowInfo.totalPrice}} {{form.region}}</p>
-              <p>{{$t('borrow.monthlyInterestRate')}}：{{borrowInfo.accrual}} % </p>
+              <p>{{$t('borrow.monthlyInterestRate')}}：{{borrowInfo.accrual*100}} % </p>
             </div>
             <div class="betweenSpread">
               <p>{{$t('borrow.exhaustedCredit')}}：{{borrowInfo.haveBorrowPrice}} {{form.region}} </p>
