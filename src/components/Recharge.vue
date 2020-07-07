@@ -16,7 +16,7 @@
 
 			        <div>
 			        	<p>{{$t('recharge.qrcode')}}</p>
-			        	<div id="qrcode"></div>
+			        	<div id="qrcode" v-loading="qrCodeLoading"></div>
 			        </div>
 					<el-form-item :label="$t('recharge.address')" prop="link">
 	          <el-input v-model="form.link" autocomplete="off" readonly>
@@ -73,6 +73,7 @@ import codeStatus from '@/config/codeStatus'
 export default {
     data(){
         return{
+          qrCodeLoading: false,
             form:{
             	region:'USDT',
             	link:'',
@@ -133,6 +134,7 @@ export default {
 			})
 		},
 		async addressFun(){//充币地址
+      this.qrCodeLoading = true
 			var that = this;
 			var res = await rechargeAddressApi();
 			if(res.success){
@@ -150,6 +152,7 @@ export default {
 					text: addressTxt,
 				})
 			}
+      this.qrCodeLoading = false
 		},
     	handleCopy(){//复制代码
     		clip(this.form.link,event);
@@ -183,6 +186,7 @@ export default {
 			return (isJPG || isPNG) && isLt2M;
 		},
 		selectCoin(value){
+		  this.qrCodeLoading = true
 			var that = this;
 			document.getElementById('qrcode').innerHTML = ''; //清除二维码
 			that.addressFun();
@@ -191,6 +195,7 @@ export default {
 			}else{
 				that.coinImgAdd = require('../assets/'+ value +'.png')
 			}
+      this.qrCodeLoading = false
 		},
     },
     components:{

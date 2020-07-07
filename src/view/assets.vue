@@ -5,7 +5,7 @@
                 <div class="total_content">
                     <span class="title">{{$t('assets.assets')}}:</span>
                     <p class="assets"><span class="changeFont">{{totalPrice}}</span>{{coinType =="USDT" ? 'BTC' : 'USDT'}}<span></span></p>
-                    <span class="money">≈ {{cny}} CNY</span>
+                    <span class="money">≈ {{cny/7.0241}} USD</span>
                 </div>
             </div>
             <h2 v-else class="assets_title">{{$t('nav.assets')}}</h2>
