@@ -70,6 +70,10 @@
                         </ul>
                     </div>
                     <div class="transaction_right_div">
+                      <el-tabs class="titleBar" v-model="activeType" @tab-click="handleClick">
+                        <el-tab-pane :label="$t('transaction.buyIn')" name="0"></el-tab-pane>
+                        <el-tab-pane :label="$t('transaction.sellOut')" name="1"></el-tab-pane>
+                      </el-tabs>
                         <el-tabs class="transtionBar" v-model="activeIndex" @tab-click="handleIndex">
                             <el-tab-pane :label="$t('transaction.limit')" name="0"></el-tab-pane>
                             <el-tab-pane :label="$t('transaction.market')" name="1"></el-tab-pane>
@@ -78,36 +82,46 @@
                             <el-input-number v-if="activeIndex == '0'" v-model="goodPrice" @change="addPrice" @input="addPrice" :min="1" :placeholder="$t('transaction.goodPrice')"></el-input-number>
                             <el-input v-else autocomplete="off" disabled :placeholder="$t('transaction.market')"></el-input>
                             <!-- <el-input-number v-model="num" @change="addNum" @input="addNum" :placeholder="$t('transaction.num')"></el-input-number> -->
-                            <el-input class="upNum" v-model="num" @input="changeNum" :placeholder="$t('transaction.num')"></el-input>
-
-                            <p>≈ {{proportion.toFixed(2)}} CNY</p>
+                            <el-input class="upNum" v-model="num" @input="changeNum" :placeholder="activeType=='0'?$t('lever.buyNum'):$t('lever.sellNum')">
+                              <template slot="append">{{form.region.split('/')[0]}}</template>
+                            </el-input>
+                        </div>
+                        <div class="percentBtn">
+                          <el-button @click="setNum(0.25)" type="button">25%</el-button>
+                          <el-button @click="setNum(0.5)" type="button">50%</el-button>
+                          <el-button @click="setNum(0.75)" type="button">75%</el-button>
+                          <el-button @click="setNum(1)" type="button">100%</el-button>
+                        </div>
+                        <div class="priceBox">
+                          <el-input class="upNum" :value="proportion.toFixed(2)" disabled>
+                            <template slot="prepend">{{$t('lever.estimation')}}USDT</template>
+                          </el-input>
                         </div>
                         <div class="lever_div">
-                            <p style="color:#8E8E8E">{{$t('contract.lever')}}</p>
                             <!--<div class="radioBlock">-->
                                 <!--<div v-for="(item,index) in levarageArr" :key="item.id">-->
                                     <!--<el-radio v-model="sliderValue" :label="item.leverageId">{{item.name}}</el-radio>-->
                                     <!--<span v-if="levarageArr.length != (index+1)" class="line"></span>-->
                                 <!--</div>-->
                             <!--</div>-->
-                          <el-select v-model="sliderValue">
-                            <el-option v-for="(item,index) in levarageArr" :key="index" :value="item.leverageId" :label="item.name">
-                            </el-option>
-                          </el-select>
+                          <!--<el-select v-model="sliderValue">-->
+                            <!--<el-option v-for="(item,index) in levarageArr" :key="index" :value="item.leverageId" :label="item.name">-->
+                            <!--</el-option>-->
+                          <!--</el-select>-->
                         </div>
                         <div class="bondClass">
                             <p>
-                                <span>{{$t('contract.mustBond')}}</span>
-                                <span>{{num == '' ? 0 : num}} USDT</span>
+                                <span>{{$t('lever.mustBond')}}</span>
+                                <span>{{(feeRate * num).toFixed(8)}} {{form.region.split('/')[0]}}</span>
                             </p>
                             <p>
-                                <span>{{$t('contract.abliyBond')}}</span>
+                                <span>{{$t('lever.abliyBond')}}</span>
                                 <span>{{useBond}} USDT</span>
                             </p>
                         </div>
                         <div class="lastBtn">
-                            <el-button class="buyBtn" @click="submitFun('BUY')" type="button">{{$t('transaction.buyIn')}}</el-button>
-                            <el-button class="sellBtn" @click="submitFun('SELL')" type="button">{{$t('transaction.sellOut')}}</el-button>
+                            <el-button class="buyBtn" @click="submitFun('BUY')" type="button" v-show="activeType=='0'">{{$t('transaction.buyIn')}}</el-button>
+                            <el-button class="sellBtn" @click="submitFun('SELL')" type="button" v-show="activeType=='1'">{{$t('transaction.sellOut')}}</el-button>
                         </div>
                     </div>
                 </div>
@@ -117,15 +131,17 @@
 </template>
 <script>
 import LeverRecord from '@/components/LeverRecord'
-import { leverageApi,ticketApi,tradeListApi,contractPageApi,leverApi } from '@/api/getData'
+import { leverageApi,ticketApi,tradeListApi,leverPageApi,leverApi } from '@/api/getData'
 import TradeView from '@/components/TradeView'
 import codeStatus from '@/config/codeStatus'
 export default {
     data(){
         return{
+            activeType: '0',
             activeIndex:'0',
             goodPrice:1,
             num: '',
+            feeRate: 0,
             sliderValue:'',
             levarageArr:[],
             form:{
@@ -235,10 +251,10 @@ export default {
             var that = this;
             var dataArr = new URLSearchParams();
             dataArr.set('symbols',that.form.region);
-            var res = await contractPageApi(dataArr);
+            var res = await leverPageApi(dataArr);
             if(res.success){
                 that.useBond = res.data.price;
-                // that.proportion = res.data.cnyUsdt;
+                that.feeRate = res.data.feeRate;
             }
         },
         selectCoin(value){//选择币种
@@ -305,6 +321,13 @@ export default {
         handleIndex(){
 
         },
+        handleClick () {
+
+        },
+        setNum (percent) {
+          this.num = percent * (this.useBond / this.newPirce)
+          this.changeNum(this.num)
+        },
         changeNum(value){
             var that = this;
             var patrn = /^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$/;
@@ -313,7 +336,7 @@ export default {
                 that.proportion = 0;
                 return false;
             }else{
-                var cnyPrice = value * 7.23;
+                var cnyPrice = value * this.newPirce;
                 that.proportion = cnyPrice;
             }
         },
@@ -325,7 +348,7 @@ export default {
             if(value == undefined){
                 return;
             }else{
-                var cnyPrice = value * 7.23;
+                var cnyPrice = value * this.newPirce;
                 that.proportion = cnyPrice;
             }
 
@@ -505,9 +528,43 @@ export default {
                 }
             }
         }
+      .titleBar {
+        .el-tabs__nav.is-top {
+          width: 100%;
+          &>div:nth-child(2).is-active{
+            background: url(../assets/left-active.png) no-repeat;
+            background-size: 100% 100%;
+          }
+          &>div:nth-child(3).is-active{
+            background: url(../assets/right-active.png) no-repeat;
+            background-size: 100% 100%;
+          }
+          .is-active{
+            color: #FFFFFF!important;
+          }
+        }
+        .is-active{
+          color: #FFFFFF!important;
+        }
+        .el-tabs__item.is-top {
+          width: 50%;
+          text-align: center;
+        }
+        .el-tabs__item{
+          &:nth-child(2){
+            background: url(../assets/left.png) no-repeat;
+            background-size: 100% 100%;
+          }
+          &:nth-child(3){
+            background: url(../assets/right.png) no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+      }
         .transtionBar{
             text-align: center;
             .el-tabs__nav{
+              width: 100%;
                 display: contents;
                 &>div:nth-child(2).is-active{
                     background: url(../assets/left-active.png) no-repeat;
@@ -521,15 +578,15 @@ export default {
                     color: #FFFFFF!important;
                 }
                 .el-tabs__item{
+                  width: 50%;
+                  text-align: center;
                     &:nth-child(2){
                         background: url(../assets/left.png) no-repeat;
                         background-size: 100% 100%;
-                        width: 120px;
                     }
                     &:nth-child(3){
                         background: url(../assets/right.png) no-repeat;
                         background-size: 100% 100%;
-                        width: 120px;
                     }
                 }
             }
@@ -547,6 +604,12 @@ export default {
                 }
                 &>.el-input.is-disabled{
                     margin-top: 20px;
+                }
+                .el-input-group__prepend {
+                  background-color: transparent;
+                  border: 1px solid #3B3B3B;
+                  color: #ffffff;
+                  text-align: center;
                 }
                 .upNum{
                     margin-top: 20px;
@@ -644,6 +707,24 @@ export default {
                     }
                 }
             }
+            .percentBtn {
+              margin-top: 20px;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+              button {
+                width: 20%;
+                background-color: transparent;
+                border: 1px solid #3B3B3B;
+                color: #ffffff;
+                text-align: center;
+                padding: 10px;
+                &:last-child {
+                  width: 25%;
+                }
+              }
+            }
             .lastBtn{
                 margin-top: 20px;
                 display: flex;
@@ -651,7 +732,7 @@ export default {
                 justify-content: space-between;
                 align-items: center;
                 button{
-                    width: 44%;
+                    width: 100%;
                 }
                 .buyBtn{
                     background: #6FC1A1!important;

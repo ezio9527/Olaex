@@ -411,6 +411,9 @@ module.exports =  {
     to:"에",
     mustBond:'필요한 마진',
     abliyBond:'자유 마진',
-    time: '력하십시오'
+    time: '력하십시오',
+    buyNum: '买入数量',
+    sellNum: '卖出数量',
+    estimation: '估值'
   }
 }

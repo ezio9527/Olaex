@@ -286,8 +286,8 @@ export default {
 			}
 		}
         .logo_img img{
-            width: 110px;
-            height: 34px;
+            width: 112px;
+            height: 44px;
         }
         .el-icon-search,.logo_img:hover,.el-input__suffix:hover{
             cursor: pointer;

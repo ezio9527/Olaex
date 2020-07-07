@@ -409,8 +409,11 @@ module.exports =  {
     sell: '賣出委託',
     from:"從",
     to:"到",
-    mustBond:'所需保證金',
-    abliyBond:'可用保證金',
-    time: '交易時間'
+    mustBond:'手續費',
+    abliyBond:'可用',
+    time: '交易時間',
+    buyNum: '買入數量',
+    sellNum: '賣出數量',
+    estimation: '估值'
   }
 }

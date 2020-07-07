@@ -7,14 +7,32 @@
             <el-tab-pane :label="$t('lever.position')" name="3"></el-tab-pane>
         </el-tabs>
 
+      <template v-if="activeIndex!='0'">
         <el-table class="fishTable" :data="tableData" :empty-text="$t('tip.noRecord')">
-            <el-table-column width="90" prop="matchId" label="ID"></el-table-column>
-            <el-table-column prop="type" :label="$t('lever.type')"></el-table-column>
-            <el-table-column prop="symbols" :label="$t('lever.pair')"></el-table-column>
-            <el-table-column prop="unit" :label="$t('lever.current')"></el-table-column>
-            <el-table-column prop="numbers" :label="$t('lever.num')"></el-table-column>
-            <el-table-column prop="time" :label="$t('lever.time')"></el-table-column>
+          <el-table-column width="90" prop="matchId" label="ID"></el-table-column>
+          <el-table-column prop="type" :label="$t('lever.type')"></el-table-column>
+          <el-table-column prop="symbols" :label="$t('lever.pair')"></el-table-column>
+          <el-table-column prop="unit" :label="$t('lever.current')"></el-table-column>
+          <el-table-column prop="numbers" :label="$t('lever.num')"></el-table-column>
+          <el-table-column prop="time" :label="$t('lever.time')" ></el-table-column>
         </el-table>
+      </template>
+
+      <template v-else>
+        <el-table class="fishTable" :data="tableData" :empty-text="$t('tip.noRecord')">
+          <el-table-column width="90" prop="matchId" label="ID"></el-table-column>
+          <el-table-column prop="type" :label="$t('lever.type')"></el-table-column>
+          <el-table-column prop="symbols" :label="$t('lever.pair')"></el-table-column>
+          <el-table-column prop="unit" :label="$t('lever.current')"></el-table-column>
+          <el-table-column prop="numbers" :label="$t('lever.num')"></el-table-column>
+          <el-table-column :label="$t('contract.operation')" >
+            <template slot-scope="scope">
+              <span @click="cancelEntrustFun(scope.row.matchId)">{{$t('assets.cancelEntrust')}}</span>
+            </template>
+          </el-table-column>
+        </el-table>
+      </template>
+
         <pageTotal v-if="page.total > 10" :page="page" @pageChange="pageChange"></pageTotal>
 
         <!-- 设置止盈止损弹窗 -->
@@ -87,7 +105,7 @@
 <script>
 import codeStatus from '@/config/codeStatus'
 import pageTotal from '@/components/pageTotal'
-import { leverRecordApi,cancelListApi,outContractApi,contractPlApi } from '@/api/getData'
+import { leverRecordApi,leverCancelApi,outContractApi,contractPlApi } from '@/api/getData'
 export default {
     inject:['reload'],
     data(){
@@ -154,7 +172,6 @@ export default {
                       element.type = that.$t('lever.sell')
                     }
                     // element.totalPrice = (element.totalPrice).toFixed(1);//交易总额
-                    element.numbers = (element.numbers).toFixed(1);//交易数量
                     var exitType = '';
                     switch (element.exitType){
                       case 'HANDLE':
@@ -254,8 +271,8 @@ export default {
         async cancelEntrustFun(id){//撤销委托
             var that = this;
             var dataArr = new URLSearchParams();
-            dataArr.set('compactId',id);
-            var res = await cancelListApi(dataArr);
+            dataArr.set('matchId',id);
+            var res = await leverCancelApi(dataArr);
             that.resultFun(res)
         },
         resultFun(res,type){

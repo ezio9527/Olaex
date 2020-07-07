@@ -409,8 +409,11 @@ module.exports =  {
     sell: '売却依頼',
     from:"から",
     to:"に",
-    mustBond:'必要なマージン',
-    abliyBond:'自由マージン',
-    time: '时间'
+    mustBond:'手数料',
+    abliyBond:'自由',
+    time: '时间',
+    buyNum: '买入数量',
+    sellNum: '卖出数量',
+    estimation: '估值'
   }
 }

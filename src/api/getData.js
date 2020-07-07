@@ -273,6 +273,16 @@ export const repayApi = data => fetch('/api/repay',data,true);
 export const leverApi = data => fetch('/api/currency',data,true);
 
 /**
+ * 撤销杠杆交易买入卖出
+ */
+export const leverCancelApi = data => fetch('/api/cancelCurrency',data,true);
+
+/**
+ * 杠杆交易详情
+ */
+export const leverPageApi = data => fetch('/api/currencyPage',data,true);
+
+/**
  * 杠杆交易记录
  */
 export const leverRecordApi = data => fetch('/api/currencyRecord',data,true);

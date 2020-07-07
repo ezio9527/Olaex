@@ -84,12 +84,16 @@
                         </div>
                         <div class="lever_div">
                             <p style="color:#8E8E8E">{{$t('contract.lever')}}</p>
-                            <div class="radioBlock">
-                                <div v-for="(item,index) in levarageArr" :key="item.id">
-                                    <el-radio v-model="sliderValue" :label="item.leverageId">{{item.name}}</el-radio>
-                                    <span v-if="levarageArr.length != (index+1)" class="line"></span>
-                                </div>
-                            </div>
+                            <!--<div class="radioBlock">-->
+                                <!--<div v-for="(item,index) in levarageArr" :key="item.id">-->
+                                    <!--<el-radio v-model="sliderValue" :label="item.leverageId">{{item.name}}</el-radio>-->
+                                    <!--<span v-if="levarageArr.length != (index+1)" class="line"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                          <el-select v-model="sliderValue">
+                            <el-option v-for="(item,index) in levarageArr" :key="index" :value="item.leverageId" :label="item.name">
+                            </el-option>
+                          </el-select>
                         </div>
                         <div class="bondClass">
                             <p>
@@ -152,7 +156,7 @@ export default {
         that.wTimerList = setInterval(function(){
             that.ticketFun()
         },1000)
-        
+
     },
     methods:{
         async ticketFun(){//获取币种
@@ -161,7 +165,7 @@ export default {
             if(res.success){
                 var obj = res.data;
                 that.coinArr = [];
-                
+
                 obj.forEach(element => {
                     if(that.form.region == element.symbol){
                         that.form.region = element.symbol;
@@ -179,7 +183,7 @@ export default {
                     }
                     var imgValue = element.symbol.substr(0,3);
                     element.updateImg = require('../assets/'+imgValue+'.png');
-                    that.coinArr.push(element); 
+                    that.coinArr.push(element);
                 });
                 that.getIndex = that.getIndex+1;
                 this.tradeFun();
@@ -207,7 +211,7 @@ export default {
                 buyNum.sort(function(x,y){
                     return y[1]-x[1]
                 })
-                
+
                 that.buyHigh = buyNum[0][1];
 
                 sellArrObj.sort(function(x,y){
@@ -299,7 +303,7 @@ export default {
             }
         },
         handleIndex(){
-        	
+
         },
         changeNum(value){
             var that = this;
@@ -324,7 +328,7 @@ export default {
                 var cnyPrice = value * 7.23;
                 that.proportion = cnyPrice;
             }
-            
+
         }
     },
     beforeDestroy(){
@@ -347,7 +351,7 @@ export default {
     .transaction_left{
         height: 1300px;
         overflow-y: auto;
-        &::-webkit-scrollbar{/*滚动条整体部分，可以设置宽度啥的**/ 
+        &::-webkit-scrollbar{/*滚动条整体部分，可以设置宽度啥的**/
             width: 6px;
         }
         &::-webkit-scrollbar-thumb{/*滚动的滑块*/
@@ -384,7 +388,7 @@ export default {
                 margin:0 10px;
             }
         }
-        
+
         .el-form-item__content{
             display: flex;
             flex-direction: row;
@@ -552,7 +556,7 @@ export default {
                         color: #ffffff;
                     }
                 }
-                
+
                 .el-input-number{
                     width: 100%;
                     margin-top: 20px;

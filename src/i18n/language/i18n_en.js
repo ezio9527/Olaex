@@ -410,8 +410,11 @@ module.exports =  {
     sell: 'Sell to entrust',
     from:"From",
     to:"To",
-    mustBond:'Required margin',
-    abliyBond:'Free margin',
-    time: 'Time'
+    mustBond:'Free',
+    abliyBond:'Usable',
+    time: 'Time',
+    buyNum: 'Buy number',
+    sellNum: 'Sell number',
+    estimation: 'estimation'
   }
 }
