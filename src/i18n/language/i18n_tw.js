@@ -390,7 +390,7 @@ module.exports =  {
   lever:{
     title:'合約交易訂單',
     pair:'交易對',
-    type:'合約類型',
+    type:'類型',
     lever:'杠桿',
     profile:'當前盈虧',
     totalProfile:'總盈利',
@@ -410,6 +410,7 @@ module.exports =  {
     from:"從",
     to:"到",
     mustBond:'所需保證金',
-    abliyBond:'可用保證金'
+    abliyBond:'可用保證金',
+    time: '交易時間'
   }
 }

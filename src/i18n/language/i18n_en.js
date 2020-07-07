@@ -391,7 +391,7 @@ module.exports =  {
   lever:{
     title:'Contract order',
     pair:'Deal pair',
-    type:'Contract type',
+    type:'Type',
     lever:'lever',
     profile:'Current profit and loss',
     totalProfile:'Total profit',
@@ -411,6 +411,7 @@ module.exports =  {
     from:"From",
     to:"To",
     mustBond:'Required margin',
-    abliyBond:'Free margin'
+    abliyBond:'Free margin',
+    time: 'Time'
   }
 }

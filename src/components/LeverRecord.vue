@@ -8,59 +8,12 @@
         </el-tabs>
 
         <el-table class="fishTable" :data="tableData" :empty-text="$t('tip.noRecord')">
-            <el-table-column width="90" prop="symbols" :label="$t('lever.pair')"></el-table-column>
-            <el-table-column prop="compactType" :label="$t('lever.type')">
-                <template slot-scope="scope">
-                    {{scope.row.compactType == 'BUY' ? $t('transaction.buy') : $t('transaction.sell')}}
-                </template>
-            </el-table-column>
-            <el-table-column width="60" prop="leverName" :label="$t('lever.lever')"></el-table-column>
-            <!-- v-if="activeIndex == '0'" -->
-            <!-- 盈亏 -->
-            <el-table-column width="160" prop="pl" :label="$t('lever.profile')">
-                <template slot-scope="scope">
-                    <span class="greenColor" v-if="scope.row.pl>0 ">{{(scope.row.pl).toFixed(2)}}{{scope.row.computedPirce}}</span>
-                    <span class="redColor" v-else>{{(scope.row.pl).toFixed(2)}}{{scope.row.computedPirce}}</span>
-                </template>
-            </el-table-column>
-
-            <el-table-column prop="positionPrice" :label="$t('lever.bond')"></el-table-column>
-            <el-table-column prop="tradePrice" v-if="activeIndex == '0'  || activeIndex == '2' " :label="$t('lever.average')"></el-table-column>
-            <el-table-column prop="unit" v-if="activeIndex == '0'" :label="$t('lever.current')"></el-table-column>
-            <el-table-column prop="exitPrice" v-if="activeIndex == '2'" :label="$t('transaction.averagePrice')">
-
-            </el-table-column>
-            <el-table-column prop="totalPrice" :label="$t('lever.total')"></el-table-column>
+            <el-table-column width="90" prop="matchId" label="ID"></el-table-column>
+            <el-table-column prop="type" :label="$t('lever.type')"></el-table-column>
+            <el-table-column prop="symbols" :label="$t('lever.pair')"></el-table-column>
+            <el-table-column prop="unit" :label="$t('lever.current')"></el-table-column>
             <el-table-column prop="numbers" :label="$t('lever.num')"></el-table-column>
-            <el-table-column prop="fee" :label="$t('lever.fee')"></el-table-column>
-
-            <div v-if="activeIndex == '2'">
-                <el-table-column prop="stopProfit" :label="$t('lever.proPrice')">
-                    <template slot-scope="scope">
-                        {{(scope.row.stopProfit)}}
-                    </template>
-                </el-table-column>
-                <el-table-column prop="stopLoss" :label="$t('lever.lossPrice')">
-                    <template slot-scope="scope">
-                        {{(scope.row.stopLoss)}}
-                    </template>
-                </el-table-column>
-                <el-table-column prop="exitType" :label="$t('transaction.averageType')"></el-table-column>
-            </div>
-
-            <div v-if="activeIndex != '2'">
-                <el-table-column prop="compactId" :label="$t('lever.operation')">
-                    <template slot-scope="scope">
-                        <div class="operation_div" v-if="activeIndex == '0'">
-                            <span @click="setPrice(scope.row.compactId)">{{$t('transaction.updateContract')}}</span>
-                            <span @click="averageFun(scope.row.compactId)">{{$t('transaction.average')}}</span>
-                        </div>
-                        <div class="operation_div" v-if="activeIndex == '1'">
-                            <span @click="cancelEntrustFun(scope.row.compactId)">{{$t('assets.cancelEntrust')}}</span>
-                        </div>
-                    </template>
-                </el-table-column>
-            </div>
+            <el-table-column prop="time" :label="$t('lever.time')"></el-table-column>
         </el-table>
         <pageTotal v-if="page.total > 10" :page="page" @pageChange="pageChange"></pageTotal>
 
@@ -194,43 +147,30 @@ export default {
             if(res.success){
                 that.page.total = Number(res.data.total);
                 var obj = res.data.records;
-
                 obj.forEach(element => {
-                    var num = (element.pl) + '';
-                    var price = Number(num.substring(0,num.indexOf(".") + 3));
-                    element.pl = price;
-                    element.computedPirce = ('('+(((price / ((element.positionPrice)*(element.leverRate)) ))*100).toFixed(2)+'%)');
-                    element.positionPrice = (element.positionPrice).toFixed(1);
-                    element.tradePrice = (element.tradePrice).toFixed(2);//开仓价
-                    element.unit = (element.unit).toFixed(2);//当前价
-                    if(that.activeIndex == '2'){
-                        element.exitPrice = (element.exitPrice).toFixed(2);//平仓价
+                    if (element.matchType == 'BUY') {
+                      element.type = that.$t('lever.buy')
+                    } else {
+                      element.type = that.$t('lever.sell')
                     }
-                    element.totalPrice = (element.totalPrice).toFixed(1);//交易总额
+                    // element.totalPrice = (element.totalPrice).toFixed(1);//交易总额
                     element.numbers = (element.numbers).toFixed(1);//交易数量
-                    element.fee = (element.fee).toFixed(2);//手续费
-                    element.stopProfit == '' ?  element.stopProfit = '--' : element.stopProfit = (element.stopProfit).toFixed(2);
-                    if(element.stopLoss == ''){
-                        element.stopLoss = '--'
-                    }else{
-                        element.stopLoss = (element.stopLoss).toFixed(2)
-                    }
                     var exitType = '';
-					switch (element.exitType){
-						case 'HANDLE':
-							exitType = that.$t('assets.handWarehouse');
-							break;
-						case 'FIXED':
-							exitType = that.$t('assets.forceWarehouse');
-							break;
-						case 'PROFIT':
-							exitType = that.$t('assets.profileWarehouse');
-							break;
-						case 'LOSS':
-							exitType = that.$t('assets.lossWarehouse');
-							break;
-						default:
-							break;
+                    switch (element.exitType){
+                      case 'HANDLE':
+                        exitType = that.$t('assets.handWarehouse');
+                        break;
+                      case 'FIXED':
+                        exitType = that.$t('assets.forceWarehouse');
+                        break;
+                      case 'PROFIT':
+                        exitType = that.$t('assets.profileWarehouse');
+                        break;
+                      case 'LOSS':
+                        exitType = that.$t('assets.lossWarehouse');
+                        break;
+                      default:
+                        break;
                     }
                     element.exitType = exitType;
                     that.tableData.push(element)

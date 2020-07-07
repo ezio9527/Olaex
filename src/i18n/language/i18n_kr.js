@@ -410,6 +410,7 @@ module.exports =  {
     from:"에서",
     to:"에",
     mustBond:'필요한 마진',
-    abliyBond:'자유 마진'
+    abliyBond:'자유 마진',
+    time: '력하십시오'
   }
 }

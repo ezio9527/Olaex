@@ -117,7 +117,7 @@
 </template>
 <script>
 import LeverRecord from '@/components/LeverRecord'
-import { leverageApi,ticketApi,tradeListApi,contractPageApi,contractApi } from '@/api/getData'
+import { leverageApi,ticketApi,tradeListApi,contractPageApi,leverApi } from '@/api/getData'
 import TradeView from '@/components/TradeView'
 import codeStatus from '@/config/codeStatus'
 export default {
@@ -266,7 +266,7 @@ export default {
                 }
             }
         },
-        async submitFun(type){//合约交易
+        async submitFun(type){//杠杆交易
             var that = this;
             if(that.num == ''){
                 that.$message.error(that.$t('nav.numEmpty'));
@@ -284,11 +284,11 @@ export default {
             var dataArr = new URLSearchParams();
             dataArr.set('symbols',that.form.region);
             dataArr.set('unit',price);
-            dataArr.set('numbers',that.num);
-            dataArr.set('compactType',type);
+            dataArr.set('number',that.num);
+            dataArr.set('matchType',type);
             dataArr.set('dealWay',way);
             dataArr.set('leverageId',that.sliderValue);
-            var res = await contractApi(dataArr);
+            var res = await leverApi(dataArr);
             if(res.success){
                 codeStatus(res.code,function(msg){
                     that.$message({

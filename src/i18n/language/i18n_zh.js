@@ -390,7 +390,7 @@ module.exports =  {
   lever:{
     title:'合约交易订单',
     pair:'交易对',
-    type:'合约类型',
+    type:'类型',
     lever:'杠杆',
     profile:'当前盈亏',
     totalProfile:'总盈利',
@@ -410,6 +410,7 @@ module.exports =  {
     from:"从",
     to:"到",
     mustBond:'所需保证金',
-    abliyBond:'可用保证金'
+    abliyBond:'可用保证金',
+    time: '交易时间'
   }
 }

@@ -390,7 +390,7 @@ module.exports =  {
   lever:{
     title:'契約取引注文',
     pair:'取引ペア',
-    type:'契約タイプ',
+    type:'タイプ',
     lever:'レバー',
     profile:'現在の損益',
     totalProfile:'利益総額',
@@ -410,6 +410,7 @@ module.exports =  {
     from:"から",
     to:"に",
     mustBond:'必要なマージン',
-    abliyBond:'自由マージン'
+    abliyBond:'自由マージン',
+    time: '时间'
   }
 }

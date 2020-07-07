@@ -5,7 +5,7 @@
             <p>{{$t('verification.forgetTxt')}}</p>
             <el-tabs v-model="activeName" @tab-click="handleClick">
                 <el-tab-pane :label="$t('verification.email')" name="0"></el-tab-pane>
-                <el-tab-pane :label="$t('verification.phone')" name="1"></el-tab-pane>
+                <!--<el-tab-pane :label="$t('verification.phone')" name="1"></el-tab-pane>-->
             </el-tabs>
             <el-form :model="form" :rules="rules" ref="ruleForm">
 
@@ -60,7 +60,7 @@ export default {
                 callback(new Error(this.$t('form.pwdDifferent')));
             }else{
                 callback()
-            } 
+            }
         };
         return{
             activeName:'0',
@@ -116,11 +116,11 @@ export default {
             var that = this;
             if(that.activeName == '1'){//手机
                 if(that.form.areaCode == ''){
-                    that.$message.error(that.$t('layer.emptyArea')); 
+                    that.$message.error(that.$t('layer.emptyArea'));
                     return false;
                 }
                 if(that.form.phone == ''){
-                    that.$message.error(that.$t('form.phone')); 
+                    that.$message.error(that.$t('form.phone'));
                     return false;
                 }
                 var account = that.form.phone;
@@ -128,7 +128,7 @@ export default {
                 var areaCode = that.form.areaCode;
             }else{//邮箱
                 if(that.form.email == ''){
-                    that.$message.error(that.$t('form.loginEmail')); 
+                    that.$message.error(that.$t('form.loginEmail'));
                     return false;
                 }
                 var account = that.form.email;
@@ -155,7 +155,7 @@ export default {
                             clearInterval(that.clock)
                             that.count = ''
                             that.totalTime = 600
-                            that.ifDisable = false 
+                            that.ifDisable = false
                         }
                     },1000)
                 }else{
@@ -177,7 +177,7 @@ export default {
                         var areaTypeTxt = '';
                     }else if(that.activeName == '1'){
                         if(that.form.areaType == ''){
-                            that.$message.error(that.$t('layer.emptyArea')); 
+                            that.$message.error(that.$t('layer.emptyArea'));
                             return false;
                         }
                         var account = that.form.phone;
@@ -247,7 +247,7 @@ export default {
                     }
                 }
             }
-            
+
         }
     }
 }
