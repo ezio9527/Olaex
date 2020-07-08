@@ -4,7 +4,7 @@
 		<el-row :gutter="60">
 			<el-col :xs="24" :sm="24" :md="12" :lg="12">
 				<el-form ref="form" :model="form">
-          <el-form-item class="title" prop="region" v-show="!(form.toValue == '余币宝' || form.toValue == 'earn' || form.toValue == '餘幣寶')">
+          <el-form-item class="title" prop="region" v-show="!showCoinSelecter">
             <div class="content">
               <img src="../assets/USDT.png" alt="" />
               <span>USDT</span>
@@ -12,7 +12,7 @@
             <p>{{$t('trasfer.available')}} {{abiliyPrice}} USDT </p>
           </el-form-item>
           <!--余币宝的币种选择-->
-          <el-form-item :label="$t('recharge.select')" style="display: block;text-align: right" v-show="form.toValue == '余币宝' || form.toValue == 'earn' || form.toValue == '餘幣寶'">
+          <el-form-item :label="$t('recharge.select')" style="display: block;text-align: right" v-show="showCoinSelecter">
             <img :src="coinImgAdd" slot="label" style="vertical-align: middle"/>
             <el-select v-model="form.region" :placeholder="$t('form.select')" @change="selectCoin">
               <el-option v-for="item in coinArr" :key="item.id" :value="item">
@@ -104,7 +104,10 @@ export default {
 		},
 		getFromValue(){
 			return this.form.fromValue
-		}
+		},
+    showCoinSelecter () {
+		  return this.form.fromValue == this.$t('assets.earn') || (this.form.fromValue == this.$t('assets.wallet') && this.form.toValue == this.$t('assets.earn'))
+    }
 	},
 	watch:{
 		getFromValue(newValue){
