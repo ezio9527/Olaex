@@ -4,6 +4,7 @@ module.exports =  {
 		currency:'Transactions in French currency',
 		contract:'Contractual transactions',
     lever:'Lever Transaction',
+    spot: 'Spot Transaction',
 		assets:'Asset management',
 		help:'Customer help',
 		about:'About us',
@@ -360,10 +361,10 @@ module.exports =  {
     repayMax: 'repay is max number！'
 	},
   earn: {
-    title: '持幣生息，穩健賺幣',
-    subTitle: '多種數字代幣供您選擇，靈活存取獲得更大投資空間。',
+    title: 'Money to live, Robust to earn money',
+    subTitle: 'A variety of digital tokens for you to choose from,Flexible access to obtain more investment space.',
     buy: 'BUY',
-    des: '餘幣寶支持用戶隨時存取代幣資產，按天計息，無最低存幣限制。',
+    des: 'Yu Coin bao supports users to save alternative currency assets at any time, According to the days draw, There is no minimum deposit。',
     timeLimit: 'Time limit',
     reference: 'Reference',
     prospectiveEarnings: 'Prospective earnings',

@@ -4,6 +4,7 @@ module.exports =  {
 		currency:'法幣交易',
     contract:'合約交易',
     lever:'槓桿交易',
+    spot: '幣幣交易',
 		assets:'資產管理',
 		help:'客戶幫助',
 		about:'關於我們',

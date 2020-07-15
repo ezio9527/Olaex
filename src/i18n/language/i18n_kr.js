@@ -4,6 +4,7 @@ module.exports =  {
 		currency:'피아트 거래',
 		contract:'영구 계약',
     lever:'번호하여',
+    spot: '币币交易',
 		assets:'자산 관리',
 		help:'고객 지원',
     about:'우리에 대해',

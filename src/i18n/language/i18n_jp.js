@@ -4,6 +4,7 @@ module.exports =  {
 		currency:'フィアット取引',
 		contract:'永久契約',
     lever:'てこ取引',
+    spot: 'コイン取引',
 		assets:'資産運用管理',
 		help:'お客様ヘルプ',
     about:'私たちについて',

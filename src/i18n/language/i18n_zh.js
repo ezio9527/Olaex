@@ -4,6 +4,7 @@ module.exports =  {
 		currency:'法币交易',
     contract:'永续合约',
     lever:'杠杆交易',
+    spot: '币币交易',
 		assets:'资产管理',
 		help:'客户帮助',
     about:'关于我们',
