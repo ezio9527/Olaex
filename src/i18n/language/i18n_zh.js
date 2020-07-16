@@ -159,6 +159,7 @@ module.exports =  {
 		wallet:"钱包",
 		contact:"合约",
     lever:'杠杆',
+    spot: '币币',
     currency:"法币",
     earn:"余币宝",
 		walletAssets:"钱包资产",

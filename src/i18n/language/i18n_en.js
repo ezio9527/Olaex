@@ -159,6 +159,7 @@ module.exports =  {
 		wallet:"Wallet",
 		contact:"Contract",
     lever:'lever',
+    spot: 'Spot',
 		currency:'Legal currency',
     earn:"earn",
 		walletAssets:"Wallet assets",

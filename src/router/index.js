@@ -57,6 +57,11 @@ export default new Router({
         component: () => import('@/view/lever'),
         meta:['杠杆交易']
       },{
+        path:'/spot',
+        name:'spot',
+        component: () => import('@/view/spot'),
+        meta:['杠杆交易']
+      },{
         path:'/order',
         name:'order',
         component: () => import('@/view/order'),

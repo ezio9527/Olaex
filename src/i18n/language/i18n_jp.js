@@ -159,6 +159,7 @@ module.exports =  {
 		wallet:"財布",
 		contact:"契約する",
     lever:'てこ',
+    spot: 'コイン',
     currency:"フィアット通貨",
     earn:"ユビバオ",
 		walletAssets:"ウォレット資産",

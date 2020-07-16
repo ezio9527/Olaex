@@ -6,6 +6,8 @@ NumberFormat.toFixed = function (number, places) {
   number = number + ''
   // 1.处理科学计数法
   if (/e/i.test(number)) {
+    // let base = /^\de/.exec(number)
+    // let power = /-\d*$/.exec(number) * -1
     let a = number.split('e')[0]
     let b = Math.abs(parseInt(number.split('e')[1]))
     number = '0.00000000000000000000'.substring(0, b + 2) + a.replace('.', '')
@@ -33,8 +35,11 @@ NumberFormat.toFixed = function (number, places) {
   return number
 }
 
+// 根据币种处理精度
+NumberFormat.toFixed()
+
 NumberFormat.install = function (Vue, options) {
-  Vue.prototype.NumberFormat = NumberFormat
+  Vue.prototype.$NumberFormat = NumberFormat
   Vue.NumberFormat = NumberFormat
 }
 export default NumberFormat

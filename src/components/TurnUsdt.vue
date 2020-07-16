@@ -88,17 +88,17 @@ export default {
 	},
 	computed:{
 		getTotal(){
-			var arr = [this.$t('assets.wallet'),this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever')];
+			var arr = [this.$t('assets.wallet'),this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever'),this.$t('assets.spot')];
 			this.getTotalArr = arr;
 			return arr
 		},
 		getFrom(){
-			var arr = [this.$t('assets.wallet'),this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever')];
+			var arr = [this.$t('assets.wallet'),this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever'),this.$t('assets.spot')];
 			this.getFromArr = arr;
 			return arr
 		},
 		getTo(){
-			var arr = [this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever')];
+			var arr = [this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever'),this.$t('assets.spot')];
 			this.getToArr = arr;
 			return arr
 		},
@@ -106,7 +106,7 @@ export default {
 			return this.form.fromValue
 		},
     showCoinSelecter () {
-		  return this.form.fromValue == this.$t('assets.earn') || (this.form.fromValue == this.$t('assets.wallet') && this.form.toValue == this.$t('assets.earn'))
+		  return this.form.fromValue == this.$t('assets.earn') || this.form.fromValue == this.$t('assets.spot') || this.form.toValue == this.$t('assets.spot') || (this.form.fromValue == this.$t('assets.wallet') && this.form.toValue == this.$t('assets.earn'))
     }
 	},
 	watch:{

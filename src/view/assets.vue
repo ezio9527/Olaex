@@ -11,12 +11,12 @@
             <h2 v-else class="assets_title">{{$t('nav.assets')}}</h2>
 
             <el-tabs class="titleBar" v-model="activeName" @tab-click="handleClick">
-                <el-tab-pane :label="$t('assets.account')" name="0"></el-tab-pane>
-                <el-tab-pane :label="$t('assets.recharge')" name="1"></el-tab-pane>
-                <el-tab-pane :label="$t('assets.withdraw')" name="2"></el-tab-pane>
-                <el-tab-pane :label="$t('assets.transfer')" name="3"></el-tab-pane>
-                <el-tab-pane :label="$t('assets.record')" name="4"></el-tab-pane>
-                <!--<el-tab-pane :label="$t('assets.carry')" name="5"></el-tab-pane>-->
+              <el-tab-pane :label="$t('assets.account')" name="0"></el-tab-pane>
+              <el-tab-pane :label="$t('assets.recharge')" name="1"></el-tab-pane>
+              <el-tab-pane :label="$t('assets.withdraw')" name="2"></el-tab-pane>
+              <el-tab-pane :label="$t('assets.transfer')" name="3"></el-tab-pane>
+              <el-tab-pane :label="$t('assets.record')" name="4"></el-tab-pane>
+              <!--<el-tab-pane :label="$t('assets.carry')" name="5"></el-tab-pane>-->
               <el-tab-pane :label="$t('assets.borrow')" name="6"></el-tab-pane>
               <el-tab-pane :label="$t('assets.repay')" name="7"></el-tab-pane>
             </el-tabs>
@@ -28,27 +28,28 @@
                 <el-tab-pane :label="$t('assets.contact')" name="1"></el-tab-pane>
                 <el-tab-pane :label="$t('assets.earn')" name="2"></el-tab-pane>
                 <el-tab-pane :label="$t('assets.lever')" name="3"></el-tab-pane>
+                <el-tab-pane :label="$t('assets.spot')" name="4"></el-tab-pane>
 	            </el-tabs>
 
 	            <el-table class="fishTable" :data="tableData" :empty-text="$t('tip.noRecord')">
-	                <el-table-column prop="type" :label="$t('table.coin')">
-                        <template slot-scope="scope">
-                            <div class="leftSpread">
-                                <img class="coinImg" :src="require('../assets/'+scope.row.type+'.png')" />
-                                <span>{{scope.row.type}}</span>
-                            </div>
-                        </template>
-                    </el-table-column>
-	                <el-table-column prop="totalPrice" :label="$t('table.total')">
-                        <template slot-scope="scope">
-                            <p>{{(scope.row.totalPrice).toFixed(8)}}</p>
-                        </template>
-                    </el-table-column>
-	                <el-table-column prop="usedPrice" :label="$t('table.user')">
-                        <template slot-scope="scope">
-                            <p>{{(scope.row.usedPrice).toFixed(8)}}</p>
-                        </template>
-                    </el-table-column>
+	              <el-table-column prop="type" :label="$t('table.coin')">
+                  <template slot-scope="scope">
+                    <div class="leftSpread">
+                      <img class="coinImg" :src="require('../assets/'+scope.row.type+'.png')" />
+                      <span>{{scope.row.type}}</span>
+                    </div>
+                  </template>
+                </el-table-column>
+	              <el-table-column prop="totalPrice" :label="$t('table.total')">
+                  <template slot-scope="scope">
+                    <p>{{(scope.row.totalPrice).toFixed(8)}}</p>
+                  </template>
+                </el-table-column>
+	              <el-table-column prop="usedPrice" :label="$t('table.user')">
+                  <template slot-scope="scope">
+                    <p>{{(scope.row.usedPrice).toFixed(8)}}</p>
+                  </template>
+                </el-table-column>
 	            </el-table>
 	            <page-total v-if="page.total > 10" :page="page" @pageChange="pageChange"></page-total>
             </div>
@@ -265,15 +266,15 @@ export default {
     }
     .cruntpage{
       .el-tabs__nav{
-		  display: contents;
+		    display: contents;
       	&>div:nth-child(2).is-active{
       		background: url(../assets/left-active.png) no-repeat;
       		background-size: 100% 100%;
       	}
-        &>div:nth-child(3).is-active, &>div:nth-child(4).is-active{
+        &>div:nth-child(3).is-active, &>div:nth-child(4).is-active, &>div:nth-child(5).is-active{
       		background:#87D8EA;
       	}
-      	&>div:nth-child(5).is-active{
+      	&>div:nth-child(6).is-active{
       		background: url(../assets/right-active.png) no-repeat;
       		background-size: 100% 100%;
       	}
@@ -286,10 +287,10 @@ export default {
       			background-size: 100% 100%;
       			width: 120px;
       		}
-          &:nth-child(3) {
+          &:nth-child(3),&:nth-child(4) {
             margin-right: 8px;
           }
-          &:nth-child(3),&:nth-child(4){
+          &:nth-child(3),&:nth-child(4),&:nth-child(5){
       			width:110px;
             height:40px;
             -webkit-transform:skew(-22deg);
@@ -299,7 +300,7 @@ export default {
             transform:skew(-22deg);
             background:#262A38;
       		}
-      		&:nth-child(5){
+      		&:nth-child(6){
       			background: url(../assets/right.png) no-repeat;
       			background-size: 100% 100%;
       			width: 120px;
