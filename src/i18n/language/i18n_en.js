@@ -419,6 +419,14 @@ module.exports =  {
     time: 'Time',
     buyNum: 'Buy number',
     sellNum: 'Sell number',
-    estimation: 'estimation'
+    estimation: 'estimation',
+    status: 'status',
+    NO_PAY: 'no pay',
+    PAID: 'paid',
+    PART_MATCH: 'part match',
+    ALL_MATCH: 'all match',
+    CANCEL: 'cancel',
+    FINISH: 'finish',
+    CANCEL_FINISH: 'cancel finish'
   }
 }

@@ -7,7 +7,6 @@
             <el-tab-pane :label="$t('lever.position')" name="3"></el-tab-pane>
         </el-tabs>
 
-      <template v-if="activeIndex!='0'">
         <el-table class="fishTable" :data="tableData" :empty-text="$t('tip.noRecord')">
           <el-table-column width="90" prop="matchId" label="ID"></el-table-column>
           <el-table-column prop="type" :label="$t('lever.type')"></el-table-column>
@@ -15,23 +14,17 @@
           <el-table-column prop="unit" :label="$t('lever.current')"></el-table-column>
           <el-table-column prop="numbers" :label="$t('lever.num')"></el-table-column>
           <el-table-column prop="time" :label="$t('lever.time')" ></el-table-column>
-        </el-table>
-      </template>
+          <el-table-column prop="statusTxt" :label="$t('lever.status')" ></el-table-column>
 
-      <template v-else>
-        <el-table class="fishTable" :data="tableData" :empty-text="$t('tip.noRecord')">
-          <el-table-column width="90" prop="matchId" label="ID"></el-table-column>
-          <el-table-column prop="type" :label="$t('lever.type')"></el-table-column>
-          <el-table-column prop="symbols" :label="$t('lever.pair')"></el-table-column>
-          <el-table-column prop="unit" :label="$t('lever.current')"></el-table-column>
-          <el-table-column prop="numbers" :label="$t('lever.num')"></el-table-column>
-          <el-table-column :label="$t('contract.operation')" >
-            <template slot-scope="scope">
-              <a href="#" style="color: #87D8EA;" @click="cancelEntrustFun(scope.row.matchId)">{{$t('assets.cancelEntrust')}}</a>
-            </template>
-          </el-table-column>
+          <template v-if="activeIndex=='0'">
+            <el-table-column :label="$t('contract.operation')">
+              <template slot-scope="scope">
+                <a href="#" style="color: #87D8EA;" @click="cancelEntrustFun(scope.row.matchId)">{{$t('assets.cancelEntrust')}}</a>
+              </template>
+            </el-table-column>
+          </template>
+
         </el-table>
-      </template>
 
         <pageTotal v-if="page.total > 10" :page="page" @pageChange="pageChange"></pageTotal>
 
@@ -196,6 +189,29 @@ export default {
                         break;
                     }
                     element.exitType = exitType;
+                  switch (element.status) {
+                    case 'NO_PAY':
+                      element.statusTxt = that.$t('lever.NO_PAY');
+                      break;
+                    case 'PAID':
+                      element.statusTxt = that.$t('lever.PAID');
+                      break;
+                    case 'PART_MATCH':
+                      element.statusTxt = that.$t('lever.PART_MATCH');
+                      break;
+                    case 'ALL_MATCH':
+                      element.statusTxt = that.$t('lever.ALL_MATCH');
+                      break;
+                    case 'CANCEL':
+                      element.statusTxt = that.$t('lever.CANCEL');
+                      break;
+                    case 'FINISH':
+                      element.statusTxt = that.$t('lever.FINISH');
+                      break;
+                    case 'CANCEL_FINISH':
+                      element.statusTxt = that.$t('lever.CANCEL_FINISH');
+                      break;
+                  }
                     that.tableData.push(element)
                 });
 
@@ -224,12 +240,12 @@ export default {
                 var arr = that.tableData;
                 var obj = {};
                 arr.forEach(element => {
-                if(id == element.compactId){
-                        var num = (element.pl) + '';
-                        var price = Number(num.substring(0,num.indexOf(".") + 3));
-                        element.pl = price;
-                        obj = element
-                }
+                  if(id == element.compactId){
+                     var num = (element.pl) + '';
+                     var price = Number(num.substring(0,num.indexOf(".") + 3));
+                     element.pl = price;
+                     obj = element
+                  }
                 });
                 that.averageContent = obj;
             },1000)

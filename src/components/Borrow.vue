@@ -57,7 +57,7 @@ import codeStatus from '@/config/codeStatus'
 export default {
  data(){
    return {
-     coinArr: ['USDT', 'BTC'],
+     coinArr: ['USDT', 'BTC', 'ETH'],
      coinImgAdd: require('../assets/USDT.png'),
      form: {
        region: 'USDT',

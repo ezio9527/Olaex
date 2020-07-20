@@ -415,9 +415,17 @@ module.exports =  {
     to:"に",
     mustBond:'手数料',
     abliyBond:'自由',
-    time: '时间',
-    buyNum: '买入数量',
-    sellNum: '卖出数量',
-    estimation: '估值'
+    time: '時間',
+    buyNum: '購入数量',
+    sellNum: '販売数量',
+    estimation: '推定値',
+    status: '状態',
+    NO_PAY: '未支払い',
+    PAID: '支払済',
+    PART_MATCH: '部分の仲介',
+    ALL_MATCH: '全部ひっぱる',
+    CANCEL: '廃止しました',
+    FINISH: '決済完了',
+    CANCEL_FINISH: '決済をキャンセルする'
   }
 }

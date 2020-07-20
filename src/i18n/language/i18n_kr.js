@@ -416,8 +416,16 @@ module.exports =  {
     mustBond:'필요한 마진',
     abliyBond:'자유 마진',
     time: '력하십시오',
-    buyNum: '买入数量',
-    sellNum: '卖出数量',
-    estimation: '估值'
+    buyNum: '자유자유',
+    sellNum: '필요한',
+    estimation: '횟수',
+    status: '시오',
+    NO_PAY: '연한횟',
+    PAID: '횟연한',
+    PART_MATCH: '연한',
+    ALL_MATCH: '도계관심',
+    CANCEL: '영중영중',
+    FINISH: '현재 커미',
+    CANCEL_FINISH: '현재 커미'
   }
 }

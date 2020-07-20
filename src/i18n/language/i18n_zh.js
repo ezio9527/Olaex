@@ -418,6 +418,14 @@ module.exports =  {
     time: '交易时间',
     buyNum: '买入数量',
     sellNum: '卖出数量',
-    estimation: '估值'
+    estimation: '估值',
+    status: '状态',
+    NO_PAY: '未支付',
+    PAID: '已支付',
+    PART_MATCH: '部分撮合',
+    ALL_MATCH: '全部撮合',
+    CANCEL: '已经撤销',
+    FINISH: '完成结算',
+    CANCEL_FINISH: '撤销结算'
   }
 }
