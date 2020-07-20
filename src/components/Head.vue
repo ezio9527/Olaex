@@ -11,7 +11,7 @@
                 <!--<el-menu-item index="legalCoin">{{$t('nav.currency')}}</el-menu-item>-->
                 <el-menu-item index="spot">{{$t('nav.spot')}}</el-menu-item>
                 <el-menu-item index="transaction">{{$t('nav.contract')}}</el-menu-item>
-                <el-menu-item index="lever">{{$t('nav.lever')}}</el-menu-item>
+                <!--<el-menu-item index="lever">{{$t('nav.lever')}}</el-menu-item>-->
                 <el-menu-item index="assets">{{$t('nav.assets')}}</el-menu-item>
                 <el-menu-item index="earn">{{$t('nav.earn')}}</el-menu-item>
                 <!--<el-menu-item index="contact">{{$t('nav.help')}}</el-menu-item>-->

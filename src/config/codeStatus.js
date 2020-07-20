@@ -179,7 +179,7 @@ export default function codeStatus(codeStatus,callback){
 			tip = 'Draw success'
 			break;
 		case 2043:
-			tip = i18n.t('assets.cancelEntrust')
+			tip = i18n.t('assets.entrustSuccess')
 			break;
 		case 2044:
 			tip = i18n.t('assets.cancelSuccess')

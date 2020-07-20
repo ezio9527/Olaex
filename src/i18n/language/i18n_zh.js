@@ -167,6 +167,7 @@ module.exports =  {
     currencyAssets:"法币资产",
     earnAssets:"余币宝资产",
     leverAssets:"杠杆资产",
+    spotAssets:"币币资产",
     earnings:"余币宝收益",
 		copySuccess:'复制成功',
 		copyFail:'复制失败',
@@ -187,6 +188,7 @@ module.exports =  {
 		insideInfo:'内部转入',
 		cancelEntrust:'撤销委托',
 		cancelSuccess:'撤销成功',
+    entrustSuccess: '委托成功',
     noInterest:'该类型暂无利息',
     noBalance: '余币宝余额不足'
 	},

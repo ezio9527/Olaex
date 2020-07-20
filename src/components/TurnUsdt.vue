@@ -106,7 +106,7 @@ export default {
 			return this.form.fromValue
 		},
     showCoinSelecter () {
-		  return this.form.fromValue == this.$t('assets.earn') || this.form.fromValue == this.$t('assets.spot') || this.form.toValue == this.$t('assets.spot') || (this.form.fromValue == this.$t('assets.wallet') && this.form.toValue == this.$t('assets.earn'))
+		  return this.form.fromValue != this.$t('assets.contact') && this.form.toValue != this.$t('assets.contact')
     }
 	},
 	watch:{
@@ -163,6 +163,8 @@ export default {
           }
           return;
 				}else if(that.form.fromValue == this.$t('assets.lever')){
+          typeTxt = 'LEVER';
+        }else if(that.form.fromValue == this.$t('assets.spot')){
           typeTxt = 'CURRENCY';
         }
 				var dataArr = new URLSearchParams();
@@ -211,6 +213,8 @@ export default {
             }
             return
           }else if(that.form.fromValue == this.$t('assets.lever')){
+            typeTxt = 'LEVER';
+          }else if(that.form.fromValue == this.$t('assets.spot')){
             typeTxt = 'CURRENCY';
           }
 					var toTypeTxt = '';
@@ -238,6 +242,8 @@ export default {
             }
             return
           }else if(that.form.toValue == this.$t('assets.lever')){
+            toTypeTxt = 'LEVER';
+          }else if(that.form.toValue == this.$t('assets.spot')){
             toTypeTxt = 'CURRENCY';
           }
 					dataArr.set('type',that.form.region);

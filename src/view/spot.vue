@@ -21,6 +21,10 @@
                             <li>{{$t('transaction.lossPrice')}}<span class="getValue">{{lossForth}}</span></li>
                             <li>{{$t('transaction.amountPirce')}}<span class="getValue">{{amountPirce}}</span></li>
                         </ul>
+                      <div class="switch-btn">
+                        <span :class="{active: transactionType=='0'}" @click="transactionType='0'">{{$t('nav.spot')}}</span>
+                        <span :class="{active: transactionType=='1'}" @click="transactionType='1'">{{$t('nav.lever')}}</span>
+                      </div>
                     </div>
                     <div class="picture">
                         <!-- <keep-alive> -->
@@ -28,7 +32,7 @@
                         <!-- </keep-alive> -->
                     </div>
                     <div style="padding:0 20px">
-                        <LeverRecord />
+                        <LeverRecord :transactionType="transactionType"/>
                     </div>
                 </div>
             </el-col>
@@ -116,7 +120,7 @@
                             </p>
                             <p>
                                 <span>{{$t('lever.abliyBond')}}</span>
-                                <span>{{useBond}} USDT</span>
+                                <span>{{useBond}} {{coin}}</span>
                             </p>
                         </div>
                         <div class="lastBtn">
@@ -131,12 +135,13 @@
 </template>
 <script>
 import LeverRecord from '@/components/LeverRecord'
-import { leverageApi,ticketApi,tradeListApi,leverPageApi,leverApi } from '@/api/getData'
+import { leverageApi,ticketApi,tradeListApi,currencyPageApi,currencyApi,leverPageApi,leverApi } from '@/api/getData'
 import TradeView from '@/components/TradeView'
 import codeStatus from '@/config/codeStatus'
 export default {
     data(){
         return{
+          transactionType: '0', // 交易类型：币币/杠杆
             activeType: '0',
             activeIndex:'0',
             goodPrice:1,
@@ -166,6 +171,17 @@ export default {
             getIndex:0
         }
     },
+  computed: {
+      coin () {
+        if (this.activeType == '0') {
+          // 买入
+          return 'USDT'
+        } else {
+          // 卖出
+          return this.form.region.split('/')[0]
+        }
+      }
+  },
     created(){
         var that = this;
         this.levarageFun();
@@ -250,8 +266,14 @@ export default {
         async contractFun(){//获取可用保证金
             var that = this;
             var dataArr = new URLSearchParams();
-            dataArr.set('symbols',that.form.region);
-            var res = await leverPageApi(dataArr);
+            dataArr.set('matchType',this.activeType == '0' ? 'BUY' : 'SELL');
+            dataArr.set('type',that.form.region);
+            var res;
+            if (this.transactionType == '0') {
+              res = await currencyPageApi(dataArr);
+            } else {
+              res = await leverPageApi(dataArr);
+            }
             if(res.success){
                 that.useBond = res.data.price;
                 that.feeRate = res.data.feeRate;
@@ -304,7 +326,12 @@ export default {
             dataArr.set('matchType',type);
             dataArr.set('dealWay',way);
             dataArr.set('leverageId',that.sliderValue);
-            var res = await leverApi(dataArr);
+            var res;
+            if (this.transactionType == '0') {
+              res = await currencyApi(dataArr);
+            } else {
+              res = await leverApi(dataArr);
+            }
             if(res.success){
                 codeStatus(res.code,function(msg){
                     that.$message({
@@ -325,8 +352,15 @@ export default {
 
         },
         setNum (percent) {
-          this.num = percent * (this.useBond / this.newPirce)
-          this.changeNum(this.num)
+          if (this.activeType == '0') {
+            // 买入
+            this.num = percent * (this.useBond / this.newPirce)
+            this.changeNum(this.num)
+          } else {
+            // 卖出
+            this.num = percent * this.useBond
+            this.changeNum(this.num)
+          }
         },
         changeNum(value){
             var that = this;
@@ -411,6 +445,21 @@ export default {
                 margin:0 10px;
             }
         }
+      .switch-btn {
+        position: relative;
+        height: 26px;
+        line-height: 26px;
+        border: 1px solid #87D8EA;
+        border-radius: 3px;
+        span {
+          display: inline-block;
+          cursor: pointer;
+          padding: 0 10px;
+        }
+        .active {
+          background-color: #87D8EA !important;
+        }
+      }
 
         .el-form-item__content{
             display: flex;

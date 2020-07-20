@@ -153,6 +153,8 @@ export default {
           // txt = 'LEGAL'
           txt = 'SAVING'
         }else if(that.activeIndex == '3'){
+          txt = 'LEVER'
+        }else if(that.activeIndex == '4'){
           txt = 'CURRENCY'
         }
         var dataArr = new URLSearchParams();

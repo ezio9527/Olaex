@@ -27,7 +27,7 @@
           <el-table-column prop="numbers" :label="$t('lever.num')"></el-table-column>
           <el-table-column :label="$t('contract.operation')" >
             <template slot-scope="scope">
-              <span @click="cancelEntrustFun(scope.row.matchId)">{{$t('assets.cancelEntrust')}}</span>
+              <a href="#" style="color: #87D8EA;" @click="cancelEntrustFun(scope.row.matchId)">{{$t('assets.cancelEntrust')}}</a>
             </template>
           </el-table-column>
         </el-table>
@@ -105,8 +105,9 @@
 <script>
 import codeStatus from '@/config/codeStatus'
 import pageTotal from '@/components/pageTotal'
-import { leverRecordApi,leverCancelApi,outContractApi,contractPlApi } from '@/api/getData'
+import { leverRecordApi,leverCancelApi,currencyRecordApi,currencyCancelApi,outContractApi,contractPlApi } from '@/api/getData'
 export default {
+  props:['transactionType'],
     inject:['reload'],
     data(){
         return{
@@ -160,7 +161,12 @@ export default {
             dataArr.set('type',type);
             dataArr.set('current',that.page.currentPage);
             dataArr.set('size',that.page.limit);
-            var res = await leverRecordApi(dataArr);
+            var res;
+            if (this.transactionType == '0') {
+              res = await currencyRecordApi(dataArr);
+            } else {
+              res = await leverRecordApi(dataArr);
+            }
             that.tableData = [];
             if(res.success){
                 that.page.total = Number(res.data.total);
@@ -272,7 +278,12 @@ export default {
             var that = this;
             var dataArr = new URLSearchParams();
             dataArr.set('matchId',id);
-            var res = await leverCancelApi(dataArr);
+            var res;
+            if (this.transactionType == '0') {
+              res = await currencyCancelApi(dataArr);
+            } else {
+              res = await leverCancelApi(dataArr);
+            }
             that.resultFun(res)
         },
         resultFun(res,type){

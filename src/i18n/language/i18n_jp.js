@@ -168,6 +168,7 @@ module.exports =  {
     earnAssets:"ゆびばおアセット",
     leverAssets:"てこ資産",
     earnings:"ユビバオの収入",
+    spotAssets:"コインの収入",
 		copySuccess:'コピー成功',
 		copyFail:'コピーに失敗しました',
 		copyAddress:'住所をコピー',
@@ -187,6 +188,7 @@ module.exports =  {
 		insideInfo:'内部転送',
 		cancelEntrust:'委任を取り消す',
 		cancelSuccess:'失効しました',
+    entrustSuccess: '委任しました',
     noInterest:'このタイプには関心がない',
     noBalance: 'ユビバオのバランスが不十分'
 	},

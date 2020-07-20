@@ -9,6 +9,7 @@
             <el-option :label="$t('assets.contactAssets')" value="CONTRACT"></el-option>
             <el-option :label="$t('assets.earnAssets')" value="EARN"></el-option>
             <el-option :label="$t('assets.leverAssets')" value="LEVER"></el-option>
+            <el-option :label="$t('assets.spotAssets')" value="CURRENCY"></el-option>
           </el-select>
 				</el-form-item>
 				<!-- <el-button class="themeBtn">{{$t('assetsRecord.btn')}}</el-button> -->

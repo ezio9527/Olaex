@@ -168,6 +168,7 @@ module.exports =  {
     earnAssets:"유비 바오 자산",
     leverAssets:"피아트자",
     earnings:"유비 바오의 수익",
+    spotAssets:"바오의 수익",
 		copySuccess:'복사 성공',
 		copyFail:'복사 실패',
 		copyAddress:'주소 복사',
@@ -187,6 +188,7 @@ module.exports =  {
 		insideInfo:'내부 거래',
 		cancelEntrust:'대표단 철회',
 		cancelSuccess:'해지 성공',
+    entrustSuccess: '대표단해지',
     noInterest:'이 유형에 관심이 없습니다',
     noBalance: '유비 바오의 잔고 부족'
 	},

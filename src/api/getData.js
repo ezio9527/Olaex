@@ -268,21 +268,41 @@ export const borrowInfoApi = data => fetch('/api/borrow/basic',data,true);
 export const repayApi = data => fetch('/api/repay',data,true);
 
 /**
+ * 币币交易买入卖出
+ */
+export const currencyApi = data => fetch('/api/currency',data,true);
+
+/**
+ * 币币杠杆交易买入卖出
+ */
+export const currencyCancelApi = data => fetch('/api/cancelCurrency',data,true);
+
+/**
+ * 币币交易详情
+ */
+export const currencyPageApi = data => fetch('/api/currencyPage',data,true);
+
+/**
+ * 币币交易记录
+ */
+export const currencyRecordApi = data => fetch('/api/currencyRecord',data,true);
+
+/**
  * 杠杆交易买入卖出
  */
-export const leverApi = data => fetch('/api/currency',data,true);
+export const leverApi = data => fetch('/api/lever',data,true);
 
 /**
  * 撤销杠杆交易买入卖出
  */
-export const leverCancelApi = data => fetch('/api/cancelCurrency',data,true);
+export const leverCancelApi = data => fetch('/api/cancelLever',data,true);
 
 /**
  * 杠杆交易详情
  */
-export const leverPageApi = data => fetch('/api/currencyPage',data,true);
+export const leverPageApi = data => fetch('/api/leverPage',data,true);
 
 /**
  * 杠杆交易记录
  */
-export const leverRecordApi = data => fetch('/api/currencyRecord',data,true);
+export const leverRecordApi = data => fetch('/api/leverRecord',data,true);

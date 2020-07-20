@@ -167,6 +167,7 @@ module.exports =  {
 		currencyAssets:"法幣資產",
     earnAssets:"餘幣寶資產",
     leverAssets:"槓桿資產",
+    spotAssets:"幣幣資產",
     earnings:"餘幣寶收益",
 		copySuccess:'復制成功',
 		copyFail:'復制失敗',
@@ -187,6 +188,7 @@ module.exports =  {
 		insideInfo:'內部轉入',
 		cancelEntrust:'撤銷委托',
 		cancelSuccess:'撤銷成功',
+    entrustSuccess: '委托成功',
     noInterest:'該類型暫無利息',
     noBalance: '餘幣寶餘額不足'
 	},
