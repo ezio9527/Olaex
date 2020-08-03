@@ -360,7 +360,11 @@ module.exports =  {
     leverNotBalance: '杠杆账户余额不足',
     borrowMax: '借币数量已达到最高',
     noBorrowRecord: '暂无借币记录',
-    repayMax: '还款数过高！'
+    repayMax: '还款数过高！',
+    haveRecord: '你有借币记录，无法再次借币',
+    haveRecord2: '你有借币记录，无法做币币交易',
+    haveRecord3: '你有借币记录，无法提币',
+    repayDate: '还币时间未到(30天)!'
 	},
   earn: {
     title: '持币生息，稳健赚币',

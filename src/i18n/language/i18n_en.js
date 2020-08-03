@@ -361,7 +361,11 @@ module.exports =  {
     leverNotBalance: 'lever not balance',
     borrowMax: 'borrow is max number',
     noBorrowRecord: 'not have borrow record',
-    repayMax: 'repay is max number！'
+    repayMax: 'repay is max number！',
+    haveRecord: 'You have a record of the money you borrowed. You cannot borrow again',
+    haveRecord2: 'You have a debit record and cannot trade COINS',
+    haveRecord3: 'You have a debit record and cannot withdraw your money',
+    repayDate: 'The return time has not arrived (30 days)!'
 	},
   earn: {
     title: 'Money to live, Robust to earn money',

@@ -360,7 +360,11 @@ module.exports =  {
     leverNotBalance: 'レバレッジ残高不足',
     borrowMax: '借りたお金の数量はすでに最高に達した',
     noBorrowRecord: '暫時無借幣記録',
-    repayMax: '返済額が高すぎる!'
+    repayMax: '返済額が高すぎる!',
+    haveRecord: 'あなたは借りた記録があるので,二度と借りられない',
+    haveRecord2: 'あなたは硬貨を借りた記録があるので、硬貨の取引はできません',
+    haveRecord3: 'あなたは借りた貨幣の記録があるので,持っていくことができない',
+    repayDate: 'まだ(30日)!'
 	},
   earn: {
     title: 'お金を持ち利息を稼ぎ、着実に稼ぐ',

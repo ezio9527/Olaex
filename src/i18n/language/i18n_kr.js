@@ -360,7 +360,11 @@ module.exports =  {
     leverNotBalance: '디지털 토큰, 유연한 액세',
     borrowMax: '을 통화 자산을 입금하고, 최소 ',
     noBorrowRecord: '치하는 거래에서 취소 할',
-    repayMax: '정이 존재하지 않습니！'
+    repayMax: '정이 존재하지 않습니！',
+    haveRecord: '여러분은 대여기록을 가지고 있습니다. 다시 대여할 수 없습니다.',
+    haveRecord2: '여러분은 돈의 사용 기록을 가지고 있고, 화폐로 거래할 수 없습니다.',
+    haveRecord3: '당신은 돈을 빌려준 기록이 있어서, 돈을 인출할 수 없습니다.',
+    repayDate: '환불 시간이 아직 안 되었네요 (30일)!'
 	},
   earn: {
     title: '꾸준히 돈을 버는이자를 얻기 위해 돈을 들고',

@@ -214,9 +214,18 @@ export default function codeStatus(codeStatus,callback){
     case 20007:
       tip = i18n.t('codeTxt.repayMax')
       break;
-		case 2048:
-			tip = 'Completed'
-			break;
+    case 2048:
+      tip = 'Completed'
+      break;
+    case 20008:
+      tip = i18n.t('codeTxt.repayDate')
+    case 20009:
+      tip = i18n.t('codeTxt.haveRecord3')
+    case 20010:
+      tip = i18n.t('codeTxt.haveRecord2')
+    case 20011:
+      tip = i18n.t('codeTxt.haveRecord')
+      break;
 		default:
 			break;
 	}

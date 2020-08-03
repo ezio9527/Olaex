@@ -360,7 +360,11 @@ module.exports =  {
     leverNotBalance: '槓桿賬戶餘額不足',
     borrowMax: '借幣數量已達到最高',
     noBorrowRecord: '暫無借幣記錄',
-    repayMax: '還款數過高！'
+    repayMax: '還款數過高！',
+    haveRecord: '你有借幣記錄，無法再次借幣',
+    haveRecord2: '你有借幣記錄，無法做幣幣交易',
+    haveRecord3: '你有借幣記錄，無法提幣',
+    repayDate: '還幣時間未到(30天)!'
 	},
   earn: {
 	  title: '持幣生息，穩健賺幣',
