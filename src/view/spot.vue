@@ -47,31 +47,31 @@
                                 <span>{{$t('transaction.num')}}</span>
                             </div>
                         </div>
-                        <!-- 买单 -->
-                        <ul class="riseList">
-                            <li v-for="item in buyArr" :key="item.id">
-                                <span>{{(item[0]).toFixed(1)}}</span>
-                                <span>{{(item[1]).toFixed(4)}}</span>
-                                <div class="percenttd">
-                                    <span class="percentDiv" :style="'width:'+((item[1]/buyHigh) * 100).toFixed(2)+'%'"></span>
-                                </div>
-                            </li>
-                        </ul>
+                      <!-- 卖单 -->
+                      <ul class="fallList">
+                        <li v-for="item in sellArr" :key="item.id">
+                          <span>{{(item[0]).toFixed(1)}}</span>
+                          <span>{{(item[1]).toFixed(4)}}</span>
+                          <div class="percenttd">
+                            <span class="percentDiv" :style="'width:'+((item[1]/sellHigh) * 100).toFixed(2)+'%'"></span>
+                          </div>
+                        </li>
+                      </ul>
                         <div class="conversion">
                             <span :class="rose>0 ? 'greenColor' : 'redColor'">{{newPirce}} </span>
                             <span :class="rose>0 ? 'greenColor' : 'redColor'">{{rose}}%</span>
                             <!-- <span>{{cny}} CNY</span> -->
                         </div>
-                        <!-- 卖单 -->
-                        <ul class="fallList">
-                            <li v-for="item in sellArr" :key="item.id">
-                                <span>{{(item[0]).toFixed(1)}}</span>
-                                <span>{{(item[1]).toFixed(4)}}</span>
-                                <div class="percenttd">
-                                    <span class="percentDiv" :style="'width:'+((item[1]/sellHigh) * 100).toFixed(2)+'%'"></span>
-                                </div>
-                            </li>
-                        </ul>
+                      <!-- 买单 -->
+                      <ul class="riseList">
+                        <li v-for="item in buyArr" :key="item.id">
+                          <span>{{(item[0]).toFixed(1)}}</span>
+                          <span>{{(item[1]).toFixed(4)}}</span>
+                          <div class="percenttd">
+                            <span class="percentDiv" :style="'width:'+((item[1]/buyHigh) * 100).toFixed(2)+'%'"></span>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
                     <div class="transaction_right_div">
                       <el-tabs class="titleBar" v-model="activeType" @tab-click="handleClick">
