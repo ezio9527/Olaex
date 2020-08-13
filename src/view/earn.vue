@@ -43,7 +43,7 @@
 <script>
 import Foot from '@/components/Foot'
 import codeStatus from '@/config/codeStatus'
-import { earningsApi, earnInApi } from '@/api/getData'
+import { convertApi } from '@/api/getData'
 export default {
   name: 'earn',
   components: {
@@ -75,10 +75,12 @@ export default {
         if(valid){
           const dataArr = new URLSearchParams();
           // 划转到余币宝
-          dataArr.set('surplusId', '0');
-          dataArr.set('symbols',this.form.region);
+          dataArr.set('type',this.form.region);
+          dataArr.set('from','WALLET');
+          dataArr.set('to','SAVING');
           dataArr.set('numbers',this.form.number);
-          var res = await earnInApi(dataArr);
+
+          var res = await convertApi(dataArr);
           if(res.success){
             this.$message({
               type:'success',

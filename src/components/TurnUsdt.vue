@@ -63,7 +63,7 @@
 
 <script>
 import codeStatus from '@/config/codeStatus'
-import { convertPageApi,convertApi, earnApi, earnInApi, earnOutApi } from '@/api/getData'
+import { convertPageApi,convertApi, earnApi } from '@/api/getData'
 export default {
   data(){
     return{
@@ -193,25 +193,8 @@ export default {
           }else if(that.form.fromValue == this.$t('assets.contact')){
 						typeTxt = 'CONTRACT';
           }else if(that.form.fromValue == this.$t('assets.earn')){
-            typeTxt = 'EARN';
+            typeTxt = 'SAVING';
             // 从余币宝划转出来
-            dataArr.set('surplusId', this.earnId);
-            dataArr.set('symbols',this.form.region);
-            dataArr.set('numbers',this.form.number);
-            var res = await earnOutApi(dataArr);
-            if(res.success){
-              that.$message({
-                type:'success',
-                message:that.$t('assets.trasferSuccess')
-              })
-              that.$refs[form].resetFields();
-              this.formFun()
-            }else{
-              codeStatus(res.code,function(msg){
-                that.$message.error(msg)
-              })
-            }
-            return
           }else if(that.form.fromValue == this.$t('assets.lever')){
             typeTxt = 'LEVER';
           }else if(that.form.fromValue == this.$t('assets.spot')){
@@ -224,23 +207,7 @@ export default {
 						toTypeTxt = 'CONTRACT';
           }else if(that.form.toValue == this.$t('assets.earn')){
             // 划转到余币宝
-            dataArr.set('surplusId', '0');
-            dataArr.set('symbols',this.form.region);
-            dataArr.set('numbers',this.form.number);
-            var res = await earnInApi(dataArr);
-            if(res.success){
-              that.$message({
-                type:'success',
-                message:that.$t('assets.trasferSuccess')
-              })
-              that.$refs[form].resetFields();
-              this.formFun()
-            }else{
-              codeStatus(res.code,function(msg){
-                that.$message.error(msg)
-              })
-            }
-            return
+            toTypeTxt = 'SAVING';
           }else if(that.form.toValue == this.$t('assets.lever')){
             toTypeTxt = 'LEVER';
           }else if(that.form.toValue == this.$t('assets.spot')){

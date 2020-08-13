@@ -13,10 +13,11 @@ let imgBaseUrl = '';
 if (process.env.NODE_ENV == 'development') { //开发中
   baseUrl = 'https://olaex.cc'
   // baseUrl = 'https://bitaex.hnscf.cn'
-  // baseUrl = 'http://cm.easy.echosite.cn'
+  // baseUrl = 'http://cm.cross.echosite.cn'
 }else if(process.env.NODE_ENV == 'production'){
-  // baseUrl = 'https://bitaex.hnscf.cn'
   baseUrl = 'https://olaex.cc'
+  // baseUrl = 'https://bitaex.hnscf.cn'
+  // baseUrl = 'http://cm.cross.echosite.cn'
 }
 
 export{
