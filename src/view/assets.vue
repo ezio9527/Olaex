@@ -139,7 +139,7 @@ export default {
     mounted(){
         this.coinType = this.$parent.getCoinType;
         this.walletFun();//钱包资产
-        this.earnFun();//余利宝资产
+        // this.earnFun();//余利宝资产 咋写了这个在这里？
     },
     methods:{
       async walletFun(){

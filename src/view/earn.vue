@@ -27,7 +27,7 @@
       </el-form>
       <div class="right">
         <p class="title">{{form.region + $t('nav.earn')}}</p>
-        <p class="des">余币宝支持用户随时存取代币资产，按天计息，无最低存币限制。</p>
+        <p class="des">{{$t('earn.des')}}</p>
         <div class="right-container">
           <div class="time-limit"><span>{{$t('earn.timeLimit')}}</span><span>{{$t('earn.demand')}}</span></div>
           <div class="reference"><span>{{$t('earn.reference')}}</span><span>{{earn.accrual * 365}}%</span></div>
@@ -43,7 +43,7 @@
 <script>
 import Foot from '@/components/Foot'
 import codeStatus from '@/config/codeStatus'
-import { convertApi } from '@/api/getData'
+import { earningsApi, convertApi } from '@/api/getData'
 export default {
   name: 'earn',
   components: {
