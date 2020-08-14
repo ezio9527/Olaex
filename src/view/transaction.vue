@@ -167,6 +167,10 @@ export default {
                 that.coinArr = [];
 
                 obj.forEach(element => {
+                    // 手动剔除BTCETF/USDT交易对
+                    if (element.symbol == 'BTCETF/USDT') {
+                      return
+                    }
                     if(that.form.region == element.symbol){
                         that.form.region = element.symbol;
                         that.newPirce = element.close;
