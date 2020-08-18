@@ -80,7 +80,7 @@
                             <!-- <el-input-number v-model="num" @change="addNum" @input="addNum" :placeholder="$t('transaction.num')"></el-input-number> -->
                             <el-input class="upNum" v-model="num" @input="changeNum" :placeholder="$t('transaction.num')"></el-input>
 
-                            <p>≈ {{proportion.toFixed(2)}} CNY</p>
+                            <!--<p>≈ {{proportion.toFixed(2)}} CNY</p>-->
                         </div>
                         <div class="lever_div">
                             <p style="color:#8E8E8E">{{$t('contract.lever')}}</p>
