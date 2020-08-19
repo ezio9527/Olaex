@@ -154,7 +154,7 @@ export const partenApi = () => fetch('/api/common/partenshipList',{},false);
 /**
  * 币种行情
  */
-export const ticketApi = () => fetch('/api/common/huobiTicket',{},false);
+export const ticketApi = data => fetch('/api/common/huobiTicket',data,false);
 
 /**法币页面 */
 /**

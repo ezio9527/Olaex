@@ -67,7 +67,7 @@
           })
           // // 数据体
           let dise = {
-            time: parseInt(obj.id),
+            time: parseInt(obj.id) * 1000,
             open: obj.open,
             close: obj.close,
             high: obj.high,
@@ -112,6 +112,7 @@
 			subscribeBars(symbolInfo, resolution, onRealtimeCallback, subscriberUID, onResetCacheNeededCallback) {
                 this.onRealtimeCallback = onRealtimeCallback;
                 // this.webSocket();  // 不再从火币获取数据
+        this.getData();
 			},
 
 			//获取配置信息
