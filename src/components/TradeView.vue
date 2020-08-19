@@ -6,7 +6,7 @@
 	import { widget } from '../../static/charting_library/charting_library.min.js'
 	import datafeeds from '@/js/datafees.js'
 	import { baseUrl } from '@/config/env'
-	import { klineApi } from '@/api/getData'
+	import { klineApi, ticketApi } from '@/api/getData'
 	export default {
 		props:['symbolValue'],
 		data() {
@@ -20,15 +20,15 @@
 				lengsData: 200, //结束长度
 				datafeeds: new datafeeds(this),
 				onLoadedCallback: null, //初始数据回调
-                onRealtimeCallback: null, //websocket数据回调
-                baseUrl,
+        onRealtimeCallback: null, //websocket数据回调
+        baseUrl,
 				pageRequire:0,
-				websock:null
+				websock:null,
+        ticket: null,
 			}
 		},
-		created() { 
+		created() {
 			this.symbol = this.symbolValue;
-			// console.log(this.symbolValue)
 		},
 		computed:{
 			getCoin(){
@@ -44,9 +44,39 @@
 				// self.loadChart();
 			}
 		},
-		
-		methods: {
 
+		methods: {
+		  getData () {
+		    if (this.ticket) {
+		      clearInterval(this.ticket)
+        }
+        this.ticket = setInterval(() => {
+          this.ticketFun()
+        },1000)
+      },
+      async ticketFun(){//获取K线数据
+        var dataArr = new URLSearchParams();
+        dataArr.set('period', this.interval);
+        var res = await ticketApi(dataArr);
+        if(res.success){
+          var obj
+          res.data.forEach(item => {
+            if (this.symbol == item.symbol) {
+              obj = item;
+            }
+          })
+          // // 数据体
+          let dise = {
+            time: parseInt(obj.id),
+            open: obj.open,
+            close: obj.close,
+            high: obj.high,
+            low: obj.low,
+            volume: obj.amount
+          };
+          this.onRealtimeCallback(dise)
+        }
+      },
 			filter(time) {
 				if(time == '1min')
 					return '1';
@@ -69,19 +99,19 @@
 				else if(time == '1week')
 					return '1W';
 			},
-			
+
 			//ajax
 			getBars(symbolInfo, resolution, rangeStartDate, rangeEndDate, onLoadedCallback) {
 				this.getAjaxData();
                 this.onLoadedCallback = onLoadedCallback;
-                
-                
+
+
 			},
 
 			//socket
 			subscribeBars(symbolInfo, resolution, onRealtimeCallback, subscriberUID, onResetCacheNeededCallback) {
-                this.onRealtimeCallback = onRealtimeCallback; 
-                this.webSocket();
+                this.onRealtimeCallback = onRealtimeCallback;
+                // this.webSocket();  // 不再从火币获取数据
 			},
 
 			//获取配置信息
@@ -111,16 +141,16 @@
 					self.chart.chart().executeActionById("timeScaleReset");
 				});
 			},
-			
+
 			//卸载K线
 			removeChart() {
 				if (this.chart) {
-					
+
 					// this.chart.remove();
 					// this.chart = null;
 				}
             },
-			
+
 			//加载K线图插件
 			loadChart() {
 
@@ -179,7 +209,7 @@
 						'save_chart_properties_to_local_storage',
 						"volume_force_overlay",//在主数据列的同一窗格上放置成交量指示器
 						"use_localstorage_for_settings",//允许将用户设置保存到localstorage
-						"header_chart_type",//图表类型切换 
+						"header_chart_type",//图表类型切换
 						"header_compare",//头部对比信息按钮
 						"display_market_status",
 						"header_undo_redo", //头部左右箭头
@@ -210,7 +240,7 @@
                         self.chart.createButton()
 							.attr('title', "1min")
                             .on('click', function(e) {
-								
+
 								if ($(this).hasClass("selected")) return;
 								$(this)
 								.addClass("selected")
@@ -219,7 +249,7 @@
 								.find(".selected")
 								.removeClass("selected");
 								self.interval = '1min';
-								$(this).find('span').css('color','#2178FB');  
+								$(this).find('span').css('color','#2178FB');
 								$(this)
 								.addClass("selected")
 								.parents(".group-wWM3zP_M-")
@@ -234,14 +264,14 @@
                             .attr('title', "5min")
                             .on('click', function(e) {
 								if ($(this).hasClass("selected")) return;
-								$(this) 
+								$(this)
 								.addClass("selected")
 								.parents(".group-wWM3zP_M-")
 								.siblings(".group-wWM3zP_M-")
 								.find(".apply-common-tooltip.selected")
 								.removeClass("selected");
 								self.interval = '5min';
-								$(this).find('span').css('color','#2178FB');  
+								$(this).find('span').css('color','#2178FB');
 								$(this)
 								.addClass("selected")
 								.parents(".group-wWM3zP_M-")
@@ -256,7 +286,7 @@
                             .attr('title', "30min")
                             .on('click', function(e) {
 								self.interval = '30min';
-								$(this).find('span').css('color','#2178FB');  
+								$(this).find('span').css('color','#2178FB');
 								$(this)
 								.addClass("selected")
 								.parents(".group-wWM3zP_M-")
@@ -272,7 +302,7 @@
                             .attr('title', "60min")
                             .on('click', function(e) {
 								self.interval = '60min';
-								$(this).find('span').css('color','#2178FB');  
+								$(this).find('span').css('color','#2178FB');
 								$(this)
 								.addClass("selected")
 								.parents(".group-wWM3zP_M-")
@@ -288,7 +318,7 @@
                             .attr('title', "4hour")
                             .on('click', function(e) {
 								self.interval = '4hour';
-								$(this).find('span').css('color','#2178FB');  
+								$(this).find('span').css('color','#2178FB');
 								$(this)
 								.addClass("selected")
 								.parents(".group-wWM3zP_M-")
@@ -304,7 +334,7 @@
                             .attr('title', "1day")
                             .on('click', function(e) {
 								self.interval = '1day';
-								$(this).find('span').css('color','#2178FB');  
+								$(this).find('span').css('color','#2178FB');
 								$(this)
 								.addClass("selected")
 								.parents(".group-wWM3zP_M-")
@@ -314,13 +344,13 @@
 								self.chart.setSymbol(self.symbol, "1D");
                             })
                             .append('<span style="color:  #61688a;">1D</span>');
-						
+
                         //1week
                         self.chart.createButton()
                             .attr('title', "1week")
                             .on('click', function(e) {
 								self.interval = '1week';
-								$(this).find('span').css('color','#2178FB');  
+								$(this).find('span').css('color','#2178FB');
 								$(this)
 								.addClass("selected")
 								.parents(".group-wWM3zP_M-")
@@ -330,7 +360,7 @@
 								self.chart.setSymbol(self.symbol, "1W");
                             })
                             .append('<span style="color:  #61688a;">1W</span>');
-					
+
                         //图标属性
                         self.chart.createButton()
                             .attr('title',self.$t('nav.iconName'))
@@ -340,7 +370,7 @@
                                 })
                             })
                             .append('<img src="setting.svg" width="20" align="center"/>');
-					
+
                         //指标
                         self.chart.createButton()
                             .attr('title', self.$t('nav.quota'))
@@ -387,7 +417,7 @@
                     //刻度属性文本颜色
                     // "scalesProperties.textColor": textColor,
                     // 设置坐标轴字体大小
-                    //'scalesProperties.fontSize': 16, 
+                    //'scalesProperties.fontSize': 16,
                     //不隐藏左上角标题
                     'paneProperties.legendProperties.showLegend': true,
                     'left_toolbar': false,
@@ -451,7 +481,7 @@
 				};
 
 				try {self.websock.close()} catch(e) {}
-				
+
 				self.websock = new WebSocket('wss://api.huobi.pro/ws');
 				self.websock.onopen = function () {
 					// console.log("建立联接");
@@ -468,11 +498,11 @@
 					};
 					reader.readAsArrayBuffer(blob, "utf-8");
 				}
-				
+
 				// self.websock.onclose=function(e){
 				// 	console.log(e);
 				// }
-				
+
 			},
 			handleData(msg){
 				var self = this;
@@ -505,9 +535,6 @@
 				// console.log(data)
 			}
 		},
-		created(){
-
-		},
 		mounted() {
 			let self = this;
 			//加载K线图
@@ -522,8 +549,9 @@
 		beforeDestroy(){
 			var self = this;
 			if(self.websock){
-				self.websock.close(); 
+				self.websock.close();
 			}
+      clearInterval(this.ticket)
 		}
 	}
 </script>
