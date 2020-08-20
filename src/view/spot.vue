@@ -364,7 +364,7 @@ export default {
         },
         changeNum(value){
             var that = this;
-            var patrn = /^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$|^0\.$/;
+            var patrn = /^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$|^0\.\d*$/;
             if(!(patrn.test(value))){
                 that.num = '';
                 that.proportion = 0;
