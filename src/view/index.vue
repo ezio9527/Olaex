@@ -30,7 +30,7 @@ export default {
         for (var i = 0; i < mobileAgent.length; i++) {
             if (browser.indexOf(mobileAgent[i]) != -1) {
                 isMobile = true;
-                location.href = 'http://olaex.cc:8083/api/visitor/reg/link';
+                location.href = 'http://olaex.me:8083/api/visitor/reg/link';
                 break;
             }
         }
