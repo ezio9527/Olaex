@@ -308,7 +308,7 @@ module.exports =  {
 		helpCenter:'지원 센터',
 		notice:'공식 발표',
 		upload:'다운로드',
-		tip:'Olaex따뜻한 알림 : 투자는 위험하므로 시장에 진입 할 때는주의해야합니다.'
+		tip:'Healthbank따뜻한 알림 : 투자는 위험하므로 시장에 진입 할 때는주의해야합니다.'
 	},
 	codeTxt:{
 		error:'오류',

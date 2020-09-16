@@ -258,7 +258,7 @@ export default {
                 margin-right: 20px;
             }
             .el-tabs__item.is-active{
-                border-bottom: 1px solid #87D8EA!important;
+                border-bottom: 1px solid #2d60e0!important;
             }
         }
     }
@@ -274,7 +274,7 @@ export default {
       		background-size: 100% 100%;
       	}
         &>div:nth-child(3).is-active, &>div:nth-child(4).is-active, &>div:nth-child(5).is-active{
-      		background:#87D8EA;
+      		background:#2d60e0;
       	}
       	&>div:nth-child(6).is-active{
       		background: url(../assets/right-active.png) no-repeat;

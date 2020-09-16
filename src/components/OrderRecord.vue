@@ -5,7 +5,7 @@
             <el-tab-pane :label="$t('contract.trust')" name="1"></el-tab-pane>
             <el-tab-pane :label="$t('withdraw.all')" name="2"></el-tab-pane>
         </el-tabs>
-        
+
         <el-table class="fishTable" :data="tableData" :empty-text="$t('tip.noRecord')">
             <el-table-column width="90" prop="symbols" :label="$t('contract.pair')"></el-table-column>
             <el-table-column prop="compactType" :label="$t('contract.type')">
@@ -46,7 +46,7 @@
                 </el-table-column>
                 <el-table-column prop="exitType" :label="$t('transaction.averageType')"></el-table-column>
             </div>
-            
+
             <div v-if="activeIndex != '2'">
                 <el-table-column prop="compactId" :label="$t('contract.operation')">
                     <template slot-scope="scope">
@@ -64,10 +64,10 @@
         <pageTotal v-if="page.total > 10" :page="page" @pageChange="pageChange"></pageTotal>
 
         <!-- 设置止盈止损弹窗 -->
-        <el-dialog 
+        <el-dialog
             :visible.sync="setProfit"
             :close-on-click-modal="false"
-            :before-close="setAverageCancel" 
+            :before-close="setAverageCancel"
             width="20%"
             class="dialogPadding"
             :title="$t('transaction.updateContract')">
@@ -88,10 +88,10 @@
 		</el-dialog>
 
         <!-- 确认平仓弹窗 -->
-        <el-dialog 
+        <el-dialog
             :visible.sync="sureAverage"
             :close-on-click-modal="false"
-            :before-close="closeCancel" 
+            :before-close="closeCancel"
             width="20%"
             class="dialogPadding"
             :title="$t('transaction.average')">
@@ -191,7 +191,7 @@ export default {
             if(res.success){
                 that.page.total = Number(res.data.total);
                 var obj = res.data.records;
-                
+
                 obj.forEach(element => {
                     var num = (element.pl) + '';
                     var price = Number(num.substring(0,num.indexOf(".") + 3));
@@ -230,9 +230,9 @@ export default {
 							break;
                     }
                     element.exitType = exitType;
-                    that.tableData.push(element) 
+                    that.tableData.push(element)
                 });
-                
+
             }
             // else{
             //     codeStatus(res.code,function(msg){
@@ -263,7 +263,7 @@ export default {
                         var price = Number(num.substring(0,num.indexOf(".") + 3));
                         element.pl = price;
                         obj = element
-                } 
+                }
                 });
                 that.averageContent = obj;
             },1000)
@@ -339,7 +339,7 @@ export default {
             }
         }
     },
-    
+
     beforeDestroy(){
         clearInterval(this.timer);
         clearInterval(this.averageTime);
@@ -365,7 +365,7 @@ export default {
         span{
             cursor: pointer;
             display: block;
-            color: #87D8EA;
+            color: #2d60e0;
             &:nth-last-child(1){
                 margin-right: 10px;
             }

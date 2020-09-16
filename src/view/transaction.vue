@@ -568,7 +568,7 @@ export default {
                         border: none;
                         background-color: transparent;
                         &:hover{
-                            color: #87D8EA;
+                            color: #2d60e0;
                         }
                         i{
                             color: #ffffff;

@@ -308,7 +308,7 @@ module.exports =  {
 		helpCenter:'帮助中心',
 		notice:'官方公告',
 		upload:'下载',
-		tip:'Olaex温馨提示：投资有风险，入市需谨慎。'
+		tip:'Healthbank温馨提示：投资有风险，入市需谨慎。'
 	},
 	codeTxt:{
 		error:'错误',

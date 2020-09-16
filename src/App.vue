@@ -4,7 +4,7 @@
       <router-view v-if="isRouterAlive" />
     </div>
   </div>
-</template> 
+</template>
 
 <script>
 export default {
@@ -41,7 +41,9 @@ body,html{
 	margin: 0;
 	padding: 0;
   font-size: 14px;
-  background-color: #0B0B0B;
+  /*background: -webkit-gradient(linear,left top,right top,from(#041636),to(#0b2758))!important;*/
+  /*background: linear-gradient(90deg,#041636,#0b2758)!important;*/
+  background-color: #041636;
   color: #ffffff;
 }
 body { min-height: 100%; }

@@ -1,7 +1,7 @@
 <template>
     <div class="allBox">
         <div class="formPage">
-        	<h2>{{$t('verification.logoName')+' Olaex'}}</h2>
+        	<h2>{{$t('verification.logoName')+' Healthbank'}}</h2>
 
             <p>{{$t('verification.loginTxt')}}</p>
             <el-form :model="form" ref="form">
@@ -19,7 +19,6 @@
                     <p class="fontCenter moveHand">{{$t('form.noAccount')}}<a class="themeFont" @click="$router.push('/register')">{{$t('verification.registerName')}}</a></p>
                 </div>
             </el-form>
-            <AppTxt />
 		</div>
     </div>
 </template>
@@ -97,10 +96,11 @@ export default {
 </script>
 <style lang="less">
 .formPage {
+  color: #3f475a;
 	position: relative;
-    margin: 8vh auto 40px;
+  margin: 8vh auto 40px;
 	width: 30%;
-	background-color: #1B1C27;
+	background-color: #FFF;
 	border-radius: 8px;
 	padding: 20px;
     .moveHand{

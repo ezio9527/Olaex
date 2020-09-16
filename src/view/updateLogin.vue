@@ -23,7 +23,7 @@
 	            </el-form>
 	        </el-col>
 	        <el-col :xs="24" :sm="24" :md="12" :lg="12">
-	        	
+
 	        </el-col>
 	   </el-row>
 	</div>
@@ -111,7 +111,7 @@ export default {
 		.el-input-group__append{
 			border: none;
 			background-color: transparent;
-			color: #87D8EA;
+			color: #2d60e0;
 			cursor: pointer;
 		}
 		.el-input__inner{

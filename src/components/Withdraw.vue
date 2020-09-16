@@ -248,7 +248,7 @@ export default {
 <style lang="less">
 .withdraw_div{
 	.copyClass{
-		color: #87D8EA;
+		color: #2d60e0;
 	}
 	.delClass{
 		color: #EC5E45;
@@ -319,7 +319,7 @@ export default {
 		.el-input-group__append{
 			border: none!important;
 			background-color: transparent;
-			color: #87D8EA;
+			color: #2d60e0;
 			cursor: pointer;
 		}
 		.el-input__inner{

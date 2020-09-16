@@ -203,7 +203,7 @@ export default {
                 background-color: transparent;
             }
             .el-carousel__indicator.is-active{
-                background-color:#87D8EA ;
+                background-color:#2d60e0 ;
             }
         }
     }
@@ -213,14 +213,15 @@ export default {
                 font-size: 28px;
                 margin-right: 30px;
                 font-weight: inherit;
+                color: #FFF;
             }
             .leftSpread{
                 margin-top: 50px;
                 .el-button--default{
                     background-color: transparent;
-                    border: 1px solid #87D8EA;
+                    border: 1px solid #2d60e0;
                     span{
-                        color: #87D8EA;
+                        color: #2d60e0;
                     }
                 }
             }
@@ -261,7 +262,7 @@ export default {
     }
     .downloadBox{
         padding: 40px 0;
-        background-color: #92A6ED;
+        background-color: #2558d9;
         margin: 80px 0;
         h2{
             text-shadow:0px 2px 3px rgba(80,155,172,0.3);

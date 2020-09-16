@@ -30,7 +30,7 @@ export default {
                 if(res.code == 200){
                     var arr = res.data;
                     arr.forEach(element => {
-                        that.ticketArr.push(element); 
+                        that.ticketArr.push(element);
                     });
                 }
             }, 2000);
@@ -43,7 +43,7 @@ export default {
 </script>
 <style lang="less">
 .transaction_pair{
-    background-color: #1B1C27;
+    background-color: #FFF;
     padding: 12px 0;
     overflow-x: auto;
     display: flex;

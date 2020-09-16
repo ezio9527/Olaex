@@ -33,7 +33,7 @@
 export default {
     data(){
         return{
-        	
+
         }
     },
     components:{
@@ -51,7 +51,7 @@ export default {
 			border-radius: 4px;
 			width: 44%;
 			margin: 0 60px 60px 0;
-			padding:20px; 
+			padding:20px;
 			&:nth-child(2n){
 				margin-right: 0;
 			}
@@ -59,7 +59,7 @@ export default {
 				height: 40px;
 				line-height: 40px;
 				display: inline-block;
-				background-color: #87D8EA !important;
+				background-color: #2d60e0 !important;
 				border-radius: 4px;
 				width: 100%;
 				color: #ffffff;

@@ -26,7 +26,7 @@
 	            </el-form>
 	        </el-col>
 	        <el-col :xs="24" :sm="24" :md="12" :lg="12">
-	        	
+
 	        </el-col>
 	   </el-row>
 	</div>
@@ -67,7 +67,7 @@ export default {
                         clearInterval(that.clock)
                         that.count = ''
                         that.totalTime = 600
-                        that.ifDisable = false 
+                        that.ifDisable = false
                     }
                 },1000)
 			}else{
@@ -101,7 +101,7 @@ export default {
 						setTimeout(function(){
                             that.$router.push('/set');
                         },800)
-						
+
 					}else{
 						codeStatus(res.code,function(msg){
 							that.$message.error(msg);
@@ -145,7 +145,7 @@ export default {
 		.el-input-group__append{
 			border: none;
 			background-color: transparent;
-			color: #87D8EA;
+			color: #2d60e0;
 			cursor: pointer;
 		}
 		.el-input__inner{

@@ -2,7 +2,7 @@
     <el-select class="selectArea" v-model="form.erea" @change="changeValue" :placeholder="$t('form.select')">
         <el-option v-for="item in areaArr" :key="item.id" :label="item.code" :value="item.code"></el-option>
     </el-select>
-    
+
 </template>
 <script>
 import { areaNumApi } from '@/api/getData'
@@ -56,9 +56,9 @@ export default {
             border-color: #3B3B3B!important;
         }
     }
-    
+
 }
 .el-select-dropdown__item.selected{
-    color:#87D8EA!important;
+    color:#2d60e0!important;
 }
 </style>

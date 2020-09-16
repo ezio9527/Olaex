@@ -308,7 +308,7 @@ module.exports =  {
 		helpCenter:'ヘルプセンター',
 		notice:'公式発表',
 		upload:'ダウンロード',
-		tip:'Olaex暖かいリマインダー：投資は危険であり、市場に参入するときは注意する必要があります。'
+		tip:'Healthbank暖かいリマインダー：投資は危険であり、市場に参入するときは注意する必要があります。'
 	},
 	codeTxt:{
 		error:'エラー',

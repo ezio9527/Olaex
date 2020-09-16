@@ -5,7 +5,7 @@
 	        <el-menu :default-active="personIndex" class="el-menu-demo" mode="horizontal" @select="handleNav" router>
                 <el-menu-item index="person">{{$t('person.verification')}}</el-menu-item>
                 <el-menu-item index="set">{{$t('person.set')}}</el-menu-item>
-            </el-menu> 
+            </el-menu>
             <router-view></router-view>
 	    </div>
 		<Foot />
@@ -16,8 +16,8 @@ import Foot from '@/components/Foot'
 export default {
     data(){
         return{
-            
-            
+
+
         }
     },
     computed: {
@@ -49,11 +49,11 @@ export default {
 				padding-left: 0;
 				&:hover,&:focus{
 					background-color: transparent!important;
-					color: #87D8EA;
+					color: #2d60e0;
 				}
 			}
 			.el-menu-item.is-active{
-				color: #87D8EA!important;
+				color: #2d60e0!important;
 			}
 		}
 	}

@@ -270,7 +270,7 @@ export default {
 	top: 0;
 	z-index: 999;
     width: 100%;
-    background-color: #0B0B0B;
+    background-color: #041636;
     .el-menu--horizontal>.el-menu-item:not(.is-disabled):focus, .el-menu--horizontal>.el-menu-item:not(.is-disabled):hover, .el-menu--horizontal>.el-submenu .el-submenu__title:hover{
         background-color: transparent!important;
     }
@@ -283,7 +283,7 @@ export default {
         align-items: center;
         .el-menu.el-menu--horizontal{
 			&>.el-menu-item.is-active{
-				color: #87D8EA!important;
+				color: #2d60e0!important;
 			}
 		}
         .logo_img img{
@@ -325,11 +325,11 @@ export default {
                     }
                 }
                 .el-menu-item.is-active{
-                    background-color: #87D8EA!important;
+                    background-color: #2d60e0!important;
                     color: #FFFFFF!important;
                 }
                 .el-menu-item:hover{
-                    background-color: #87D8EA!important;
+                    background-color: #2d60e0!important;
                 }
             }
         }
@@ -352,7 +352,7 @@ export default {
             }
         }
         .account{
-            color: #87D8EA;
+            color: #2d60e0;
         }
     }
 }

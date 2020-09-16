@@ -50,7 +50,6 @@
                     </p>
                 </div>
             </el-form>
-            <AppTxt />
         </div>
     </div>
 </template>
@@ -230,9 +229,10 @@ export default {
 .formPage{
     position: relative;
     margin: 8vh auto 40px;
-	width: 30%;
-	background-color: #1B1C27;
-	border-radius: 8px;
+    width: 30%;
+    background-color: #FFF;
+    color: #3f475a;
+    border-radius: 8px;
     padding: 20px;
     .el-input__icon{
         width: 100%;
@@ -262,7 +262,7 @@ export default {
         color: #8E8E8E;
     }
     .differnet{
-        color: #87D8EA;
+        color: #2d60e0;
         cursor: pointer;
     }
     .el-checkbox__inner:hover{

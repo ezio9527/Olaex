@@ -141,13 +141,13 @@ export default {
       margin: 20px auto 40px auto;
     }
     .buyBtn {
-      background: #87D8EA;
+      background: #2d60e0;
       color: white;
       display: inline-block;
       line-height: 1;
       white-space: nowrap;
       cursor: pointer;
-      border: 1px solid #87D8EA;
+      border: 1px solid #2d60e0;
       -webkit-appearance: none;
       text-align: center;
       -webkit-box-sizing: border-box;
@@ -245,8 +245,8 @@ export default {
         }
         button {
           float: right;
-          background: #87D8EA;
-          border-color: #87D8EA;
+          background: #2d60e0;
+          border-color: #2d60e0;
           color: white;
         }
       }

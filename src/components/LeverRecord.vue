@@ -19,7 +19,7 @@
           <template v-if="activeIndex=='0'">
             <el-table-column :label="$t('contract.operation')">
               <template slot-scope="scope">
-                <a href="#" style="color: #87D8EA;" @click="cancelEntrustFun(scope.row.matchId)">{{$t('assets.cancelEntrust')}}</a>
+                <a href="#" style="color: #2d60e0;" @click="cancelEntrustFun(scope.row.matchId)">{{$t('assets.cancelEntrust')}}</a>
               </template>
             </el-table-column>
           </template>
@@ -352,7 +352,7 @@ export default {
         span{
             cursor: pointer;
             display: block;
-            color: #87D8EA;
+            color: #2d60e0;
             &:nth-last-child(1){
                 margin-right: 10px;
             }

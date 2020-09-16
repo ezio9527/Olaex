@@ -449,15 +449,16 @@ export default {
         position: relative;
         height: 26px;
         line-height: 26px;
-        border: 1px solid #87D8EA;
+        border: 1px solid #2d60e0;
         border-radius: 3px;
+        color: #FFF;
         span {
           display: inline-block;
           cursor: pointer;
           padding: 0 10px;
         }
         .active {
-          background-color: #87D8EA !important;
+          background-color: #2d60e0 !important;
         }
       }
 
@@ -676,7 +677,7 @@ export default {
                         border: none;
                         background-color: transparent;
                         &:hover{
-                            color: #87D8EA;
+                            color: #2d60e0;
                         }
                         i{
                             color: #ffffff;
