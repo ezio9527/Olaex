@@ -86,7 +86,7 @@
                     </div>
                     <div class="leftSpread vertical">
                         <img src="../assets/ios.png" />
-                        <img class="qrcode" src="../assets/uploadImg.png" />
+                        <img class="qrcode" src="../assets/download_ios.png" />
                     </div>
                     <div v-if="isToken == undefined" class="leftSpread vertical">
                         <el-button @click="jumpRegister">{{$t('home.onceRe')}}</el-button>

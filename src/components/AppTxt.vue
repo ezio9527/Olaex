@@ -18,7 +18,7 @@
                     <p>IOS</p>
                 </div>
                 <el-dropdown-menu slot="dropdown">
-                    <img class="qrcode"  src="../assets/uploadImg.png" />
+                    <img class="qrcode"  src="../assets/download_ios.png" />
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
