@@ -4,7 +4,7 @@
       <router-view v-if="isRouterAlive" />
     </div>
   </div>
-</template> 
+</template>
 
 <script>
 export default {
@@ -47,7 +47,7 @@ body,html{
 body { min-height: 100%; }
 body::-webkit-scrollbar,html::-webkit-scrollbar{
   width:0px!important;display: none;
-};
+}
 html{
 	scrollbar-width: none;
 }
