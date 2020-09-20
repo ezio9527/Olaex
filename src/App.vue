@@ -49,8 +49,11 @@ body,html{
 body { min-height: 100%; }
 body::-webkit-scrollbar,html::-webkit-scrollbar{
   width:0px!important;display: none;
-};
+}
 html{
 	scrollbar-width: none;
+}
+input, textarea {
+  color: black !important;
 }
 </style>
