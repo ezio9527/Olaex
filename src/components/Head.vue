@@ -264,7 +264,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .head_div{
 	position: fixed;
 	top: 0;

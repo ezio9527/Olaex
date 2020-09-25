@@ -46,7 +46,7 @@ export default {
     }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .foot-box{
     background-color: #1B1924;
     padding: 20px 0;

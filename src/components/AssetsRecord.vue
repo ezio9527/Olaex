@@ -204,6 +204,9 @@ export default {
 			&>div{
 				margin:0 20px 0 0;
 			}
+      .el-input__inner{
+        background-color: transparent;
+      }
 		}
 	}
 }

@@ -11,7 +11,7 @@
       <el-form ref="form" :model="form" class="left">
         <el-form-item>
           <img :src="coinImgAdd" slot="label" style="vertical-align: middle"/>
-          <el-select v-model="form.region" @change="selectCoin">
+          <el-select v-model="form.region" @change="selectCoin" class="input">
             <el-option v-for="item in coinArr" :key="item.id" :value="item">
               <img v-if="item == 'USDT-ERC20' || item == 'USDT-OMIN'" src="../assets/USDT.png" />
               <img v-else :src="require('../assets/'+ item +'.png')" />
@@ -20,7 +20,7 @@
           </el-select>
         </el-form-item>
         <el-form-item :label="$t('earn.buyNum')" :rules="[{ required: true, message: $t('trasfer.turnEmpty')},{pattern:/^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$/,message:$t('trasfer.turnEmpty'),trigger:'blur'}]" prop="number">
-          <el-input v-model="form.number" autocomplete="off" :placeholder="$t('earn.inputPlaceholder')">
+          <el-input v-model="form.number" autocomplete="off" :placeholder="$t('earn.inputPlaceholder')" class="input">
             <template slot="append">{{form.region}}</template>
           </el-input>
         </el-form-item>
@@ -173,6 +173,7 @@ export default {
     margin: auto;
     width: 1000px;
     *zoom: 1;
+
     &::after {
       content: '';
       height: 0;
@@ -188,6 +189,10 @@ export default {
       width: 300px;
       padding: 20px;
       margin: 50px 0 20px 0;
+
+      .input{
+        color: #000 !important;
+      }
     }
     .right {
       float: right;
