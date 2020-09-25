@@ -60,7 +60,7 @@ export default {
         imageUrl:''
       },
       // coinArr:['USDT-ERC20','USDT-OMIN','BTC','LTC','EOS','XRP','BCH','ETH','ETC'],
-      coinArr:['USDT','BTC', 'ETH'],
+      coinArr:['USDT','BTC', 'ETH', 'EPG'],
       coinImgAdd: require('../assets/USDT.png')
     }
   },
@@ -126,8 +126,14 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .earn {
+  .el-select-dropdown__item{
+    color: #1B1924;
+  }
+  .el-input__inner{
+    background-color: transparent;
+  }
   .banner-container {
     position: relative;
     height: 420px;
@@ -189,9 +195,8 @@ export default {
       width: 300px;
       padding: 20px;
       margin: 50px 0 20px 0;
-
       .input{
-        color: #000 !important;
+        color: #1B1924 !important;
       }
     }
     .right {
