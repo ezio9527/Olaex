@@ -15,7 +15,7 @@ if (process.env.NODE_ENV == 'development') { //开发中
   // baseUrl = 'https://bitaex.hnscf.cn'
   // baseUrl = 'http://olaex.me'
 }else if(process.env.NODE_ENV == 'production'){
-  baseUrl = 'https://www.healthbtc.vip'
+  baseUrl = 'http://www.healthbtc.vip'
   // baseUrl = 'https://bitaex.hnscf.cn'
   // baseUrl = 'http://olaex.me'
 }
