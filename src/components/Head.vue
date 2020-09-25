@@ -84,7 +84,7 @@
                      <div class="user-assets betweenSpread">
                          <div class="asset-box">
                              <p><span>{{$t('nav.person')}}</span><img @click="changeInput" :src="showImg ? openImg : closeImg" alt="" /></p>
-                             <div class="leftSpread"><el-input :type="showImg == true ? 'text' : 'password'" readonly v-model="totalAssets"></el-input><span>{{coinTxt == 'USDT' ? 'BTC' : 'USDT'}}</span></div>
+                             <div class="leftSpread"><input style="background-color: transparent;border: none;color: white;" :type="showImg == true ? 'text' : 'password'" readonly v-model="totalAssets"></input><span>{{coinTxt == 'USDT' ? 'BTC' : 'USDT'}}</span></div>
                          </div>
                          <div class="leftSpread"><img @click="changeCoin" src="../assets/blocked.png" alt="" /><span>{{coinTxt}}</span></div>
                      </div>
@@ -116,6 +116,7 @@ import { baseUrl } from '@/config/env'
 import userInform from '@/config/userInform'
 import { walletApi,userOutApi } from '@/api/getData'
 export default {
+  name: 'Head',
     inject:['reload'],
     data(){
         return{
@@ -343,7 +344,7 @@ export default {
     }
     .user_box{
         .selectMenu{
-            .el-submenu__title:hover{
+          .el-submenu__title, .el-submenu__title:hover{
                 background-color: transparent!important;
             }
             .el-submenu__icon-arrow{
