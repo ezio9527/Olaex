@@ -11,17 +11,17 @@
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
-        <div>
-            <el-dropdown>
-                <div class="el-dropdown-link">
-                    <img src="../assets/ios.png" alt="" />
-                    <p>IOS</p>
-                </div>
-                <el-dropdown-menu slot="dropdown">
-                    <img class="qrcode"  src="../assets/uploadImg.png" />
-                </el-dropdown-menu>
-            </el-dropdown>
-        </div>
+        <!--<div>-->
+            <!--<el-dropdown>-->
+                <!--<div class="el-dropdown-link">-->
+                    <!--<img src="../assets/ios.png" alt="" />-->
+                    <!--<p>IOS</p>-->
+                <!--</div>-->
+                <!--<el-dropdown-menu slot="dropdown">-->
+                    <!--<img class="qrcode"  src="../assets/uploadImg.png" />-->
+                <!--</el-dropdown-menu>-->
+            <!--</el-dropdown>-->
+        <!--</div>-->
     </div>
 </template>
 <style lang="less">

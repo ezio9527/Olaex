@@ -84,10 +84,10 @@
                         <img src="../assets/android.png" />
                         <img class="qrcode" src="../assets/download_android.png" />
                     </div>
-                    <div class="leftSpread vertical">
-                        <img src="../assets/ios.png" />
-                        <img class="qrcode" src="../assets/uploadImg.png" />
-                    </div>
+                    <!--<div class="leftSpread vertical">-->
+                        <!--<img src="../assets/ios.png" />-->
+                        <!--<img class="qrcode" src="../assets/uploadImg.png" />-->
+                    <!--</div>-->
                     <div v-if="isToken == undefined" class="leftSpread vertical">
                         <el-button @click="jumpRegister">{{$t('home.onceRe')}}</el-button>
                     </div>
@@ -209,6 +209,8 @@ export default {
     }
     .market{
         .container{
+          /*color: black;*/
+          /*background-color: white;*/
             h2{
                 font-size: 28px;
                 margin-right: 30px;

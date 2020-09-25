@@ -227,6 +227,9 @@ export default {
 </script>
 <style lang="less">
 .formPage{
+  input, textarea {
+    color: black !important;
+  }
     position: relative;
     margin: 8vh auto 40px;
     width: 30%;

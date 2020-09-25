@@ -53,7 +53,4 @@ body::-webkit-scrollbar,html::-webkit-scrollbar{
 html{
 	scrollbar-width: none;
 }
-input, textarea {
-  color: black !important;
-}
 </style>

@@ -217,12 +217,15 @@ export default {
     }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .formPage {
+  input, textarea {
+    color: black !important;
+  }
 	position: relative;
-    margin: 8vh auto 40px;
+  margin: 8vh auto 40px;
 	width: 30%;
-	background-color: #1B1C27;
+	background-color: #FFF;
 	border-radius: 8px;
 	padding: 20px;
 	.themeFont {

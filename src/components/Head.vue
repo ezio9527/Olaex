@@ -33,16 +33,16 @@
                           </el-dropdown-menu>
                       </el-dropdown>
                   </div>
-                  <div>
-                      <el-dropdown>
-                          <div class="el-dropdown-link">
-                            <img class="twoName" src="../assets/ios.png" alt="" />
-                          </div>
-                          <el-dropdown-menu slot="dropdown">
-                            <img class="qrcode"  src="../assets/uploadImg.png" />
-                          </el-dropdown-menu>
-                      </el-dropdown>
-                  </div>
+                  <!--<div>-->
+                      <!--<el-dropdown>-->
+                          <!--<div class="el-dropdown-link">-->
+                            <!--<img class="twoName" src="../assets/ios.png" alt="" />-->
+                          <!--</div>-->
+                          <!--<el-dropdown-menu slot="dropdown">-->
+                            <!--<img class="qrcode"  src="../assets/uploadImg.png" />-->
+                          <!--</el-dropdown-menu>-->
+                      <!--</el-dropdown>-->
+                  <!--</div>-->
               </div>
 							<!-- 切换中英文 -->
 							<div class="change_language">
