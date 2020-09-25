@@ -82,7 +82,7 @@ export default {
       abiliyPrice:0,
       earnId: '', // 余币宝提币收益ID
       // coinArr:['USDT-ERC20','USDT-OMIN','BTC','LTC','EOS','XRP','BCH','ETH','ETC'],
-      coinArr:['USDT', 'BTC','ETH'],
+      coinArr: ['USDT', 'BTC', 'ETH', 'EPG'],
       coinImgAdd: require('../assets/USDT.png')
     }
 	},
