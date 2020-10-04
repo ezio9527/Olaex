@@ -19,22 +19,19 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('earn.buyNum')" :rules="[{ required: true, message: $t('trasfer.turnEmpty')},{pattern:/^(0(\.\d*[1-9]+\d*)?)$|^([1-9]\d*)(\.\d*)?$/,message:$t('trasfer.turnEmpty'),trigger:'blur'}]" prop="number">
-          <el-input v-model="form.number" autocomplete="off" :placeholder="$t('earn.inputPlaceholder')">
+        <el-form-item :label="$t('earn.buyNum')" :rules="[{ required: true, trigger:'blur' }]" prop="number">
+          <el-input v-model="form.number" autocomplete="off" :placeholder="$t('earn.inputPlaceholder')" @input="number">
             <template slot="append">{{form.region}}</template>
           </el-input>
         </el-form-item>
+        <p>{{$t('trasfer.available')}}: {{wallet[form.region]}}    {{$t('earn.rate')}}: {{rate}}</p>
+        <el-form-item :label="$t('earn.buyNum')" :rules="[{ required: true, trigger:'blur' }]" prop="number">
+          <el-input v-model="form.targetNumber" autocomplete="off" :placeholder="$t('earn.inputPlaceholder')" @input="targetNumber">
+            <template slot="append">LHC</template>
+          </el-input>
+        </el-form-item>
+        <el-button type="button" @click="submit('form')">{{$t('earn.buy')}}</el-button>
       </el-form>
-      <div class="right">
-        <p class="title">{{form.region + $t('nav.earn')}}</p>
-        <p class="des">{{$t('earn.des')}}</p>
-        <div class="right-container">
-          <div class="time-limit"><span>{{$t('earn.timeLimit')}}</span><span>{{$t('earn.demand')}}</span></div>
-          <div class="reference"><span>{{$t('earn.reference')}}</span><span>{{earn.accrual * 365}}%</span></div>
-          <div class="prospective"><span>{{$t('earn.prospectiveEarnings')}}</span><span>{{earn.accrual * form.number}}/{{$t('earn.day')}}</span></div>
-          <el-button type="button" @click="submit('form')">{{$t('earn.buy')}}</el-button>
-        </div>
-      </div>
     </div>
     <foot/>
   </div>
@@ -43,7 +40,7 @@
 <script>
 import Foot from '@/components/Foot'
 import codeStatus from '@/config/codeStatus'
-import { earningsApi, convertApi } from '@/api/getData'
+import { walletApi, ticketApi, conversionApi } from '@/api/getData'
 export default {
   name: 'earn',
   components: {
@@ -55,10 +52,13 @@ export default {
       form:{
         region:'USDT',
         link:'',
-        number:'1',
         asset:'',
+        number:'0',
+        targetNumber:'0',
         imageUrl:''
       },
+      wallet: {},
+      market: {},
       // coinArr:['USDT-ERC20','USDT-OMIN','BTC','LTC','EOS','XRP','BCH','ETH','ETC'],
       coinArr:['USDT','BTC', 'ETH'],
       coinImgAdd: require('../assets/USDT.png')
@@ -67,6 +67,16 @@ export default {
   computed: {
     earn () {
       return this.earnData[this.form.region] || {accrual: ''}
+    },
+    rate () {
+      if (this.form.region === 'USDT') {
+        return 1
+      } else {
+        const selectPrice = (this.market[this.form.region + '/USDT'] || { price: 0}).price
+        const lhcPrice = (this.market['LHC/USDT'] || { price: 0}).price
+        console.log(this.market[this.form.region + '/USDT'], this.form.region + '/USDT')
+        return selectPrice / lhcPrice
+      }
     }
   },
   methods: {
@@ -74,13 +84,9 @@ export default {
       this.$refs[form].validate(async (valid) => {
         if(valid){
           const dataArr = new URLSearchParams();
-          // 划转到余币宝
           dataArr.set('type',this.form.region);
-          dataArr.set('from','WALLET');
-          dataArr.set('to','SAVING');
           dataArr.set('numbers',this.form.number);
-
-          var res = await convertApi(dataArr);
+          var res = await conversionApi(dataArr);
           if(res.success){
             this.$message({
               type:'success',
@@ -95,33 +101,67 @@ export default {
         }
       })
     },
-    async qryEarnings () {
-      let dataArr = new URLSearchParams();
-      let res = await earningsApi(dataArr);
-      if(res.success){
-        this.coinArr = []
-        res.data.records.forEach(item => {
-          this.earnData[item.type] = item
-          this.coinArr.push(item.type)
-        })
-        this.$set(this.form, 'region', this.coinArr[0] || 'USDT')
-        this.selectCoin(this.coinArr[0])
-      }else{
-        codeStatus(res.code,msg => {
-          this.$message.error(msg)
-        })
-      }
-    },
     selectCoin(value){
+      this.$set(this.form, 'number', '0')
+      this.$set(this.form, 'targetNumber', '0')
       if(value == 'USDT-ERC20' || value == 'USDT-OMIN'){
         this.coinImgAdd = require('../assets/USDT.png')
       }else{
         this.coinImgAdd = require('../assets/'+ value +'.png')
       }
+    },
+    async walletFun() {
+      var that = this;
+      var dataArr = new URLSearchParams();
+      dataArr.set('valuation', 'USDT');//BTC
+      dataArr.set('hide', 'N');
+      dataArr.set('type', 'WALLET');
+      var res = await walletApi(dataArr);
+      that.tableData = [];
+      if (res.success) {
+        const list = res.data.list;
+        const obj = {}
+        const coinArr = []
+        list.forEach(item => {
+          coinArr.push(item.type)
+          obj[item.type] = item.usedPrice
+        })
+        this.coinArr = coinArr
+        this.wallet = obj
+      }
+    },
+    async ticketFun(){//获取币种
+      var res = await ticketApi();
+      if(res.success){
+        const obj = {}
+        res.data.forEach(item => {
+          obj[item.symbol] = {
+            price: item.close
+          }
+        });
+        this.market = obj
+      }
+    },
+    number (val) {
+      if (val === '0') {
+        this.$set(this.form, 'targetNumber', 0)
+      } else {
+        const targetNumber = (val * this.rate).toFixed(8)
+        this.$set(this.form, 'targetNumber', targetNumber)
+      }
+    },
+    targetNumber (val) {
+      if (val === '0') {
+        this.$set(this.form, 'number', 0)
+      } else {
+        const number = (val * this.rate).toFixed(8)
+        this.$set(this.form, 'number', number)
+      }
     }
   },
   created () {
-    this.qryEarnings()
+    this.walletFun();//钱包资产
+    this.ticketFun();
   }
 }
 </script>
@@ -181,74 +221,18 @@ export default {
       clear: both;
       display: block;
     }
-    .left, .right {
+    .left {
       float: left;
       background-color: #262A38;
       border-radius: 2px;
-      width: 300px;
+      width: 100%;
       padding: 20px;
       margin: 50px 0 20px 0;
-    }
-    .right {
-      float: right;
-      width: 500px;
-      p {
-        margin: auto;
-      }
-      .title {
-        font-size: 26px;
-      }
-      .des {
-        margin: 10px 0 20px 0;
-      }
-      .right-container {
-        *zoom: 1;
-        &::after {
-          content: '';
-          height: 0;
-          line-height: 0;
-          visibility: hidden;
-          clear: both;
-          display: block;
-        }
-        span {
-          display: block;
-        }
-        .time-limit, .reference, .prospective {
-          float: left;
-          margin-right: 20px;
-          *zoom: 1;
-          &::after {
-            content: '';
-            height: 0;
-            line-height: 0;
-            visibility: hidden;
-            clear: both;
-            display: block;
-          }
-        }
-        .time-limit {
-          span:last-child {
-            font-size: 24px;
-          }
-        }
-        .reference {
-          span:last-child {
-            color: #22c63f;
-            font-size: 24px;
-          }
-        }
-        .prospective {
-          span:last-child {
-            font-size: 24px;
-          }
-        }
-        button {
-          float: right;
-          background: #87D8EA;
-          border-color: #87D8EA;
-          color: white;
-        }
+      button {
+        float: right;
+        background: #87D8EA;
+        border-color: #87D8EA;
+        color: white;
       }
     }
   }

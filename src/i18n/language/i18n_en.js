@@ -309,7 +309,7 @@ module.exports =  {
 		helpCenter:'Help center',
 		notice:'Official announcement',
 		upload:'download',
-		tip:'Olaex warm reminder: investment is risky, and you need to be cautious when entering the market.'
+		tip:'LHC warm reminder: investment is risky, and you need to be cautious when entering the market.'
 	},
 	codeTxt:{
 		error:'error',
@@ -379,7 +379,8 @@ module.exports =  {
     day: 'Day',
     success: 'Purchase succeeded',
     buyNum: 'Desired Purchase Quantity',
-    inputPlaceholder: 'Desired Purchase Quantity'
+    inputPlaceholder: 'Desired Purchase Quantity',
+    rate: 'Rate'
   },
   borrow: {
     title: 'borrow',

@@ -10,7 +10,7 @@
               <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleNav" router>
                 <!--<el-menu-item index="legalCoin">{{$t('nav.currency')}}</el-menu-item>-->
                 <el-menu-item index="spot">{{$t('nav.spot')}}</el-menu-item>
-                <el-menu-item index="transaction">{{$t('nav.contract')}}</el-menu-item>
+                <!--<el-menu-item index="transaction">{{$t('nav.contract')}}</el-menu-item>-->
                 <!--<el-menu-item index="lever">{{$t('nav.lever')}}</el-menu-item>-->
                 <el-menu-item index="assets">{{$t('nav.assets')}}</el-menu-item>
                 <el-menu-item index="earn">{{$t('nav.earn')}}</el-menu-item>
@@ -22,28 +22,28 @@
 				<el-col :xs="24" :sm="24" :md="8" :lg="8">
 					<div class="right_nav">
 						<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleNav" router>
-              <div class="leftSpread">
-                  <div>
-                      <el-dropdown>
-                          <div class="el-dropdown-link">
-                              <img class="twoName" src="../assets/android.png" alt="" />
-                          </div>
-                          <el-dropdown-menu slot="dropdown">
-                              <img class="qrcode" src="../assets/download_android.png" />
-                          </el-dropdown-menu>
-                      </el-dropdown>
-                  </div>
-                  <div>
-                      <el-dropdown>
-                          <div class="el-dropdown-link">
-                            <img class="twoName" src="../assets/ios.png" alt="" />
-                          </div>
-                          <el-dropdown-menu slot="dropdown">
-                            <img class="qrcode"  src="../assets/download_ios.png" />
-                          </el-dropdown-menu>
-                      </el-dropdown>
-                  </div>
-              </div>
+              <!--<div class="leftSpread">-->
+                  <!--<div>-->
+                      <!--<el-dropdown>-->
+                          <!--<div class="el-dropdown-link">-->
+                              <!--<img class="twoName" src="../assets/android.png" alt="" />-->
+                          <!--</div>-->
+                          <!--<el-dropdown-menu slot="dropdown">-->
+                              <!--<img class="qrcode" src="../assets/download_android.png" />-->
+                          <!--</el-dropdown-menu>-->
+                      <!--</el-dropdown>-->
+                  <!--</div>-->
+                  <!--<div>-->
+                      <!--<el-dropdown>-->
+                          <!--<div class="el-dropdown-link">-->
+                            <!--<img class="twoName" src="../assets/ios.png" alt="" />-->
+                          <!--</div>-->
+                          <!--<el-dropdown-menu slot="dropdown">-->
+                            <!--<img class="qrcode"  src="../assets/download_ios.png" />-->
+                          <!--</el-dropdown-menu>-->
+                      <!--</el-dropdown>-->
+                  <!--</div>-->
+              <!--</div>-->
 							<!-- 切换中英文 -->
 							<div class="change_language">
                 <el-dropdown @command="handleCommand" v-loading.fullscreen.lock="fullscreenLoading">
@@ -54,8 +54,8 @@
                     <!--<el-dropdown-item command="zh"><span>中文简体</span></el-dropdown-item>-->
                     <el-dropdown-item command="en"><span>English</span></el-dropdown-item>
                     <el-dropdown-item command="tw"><span>中文繁體</span></el-dropdown-item>
-                    <el-dropdown-item command="jp"><span>日本語</span></el-dropdown-item>
-                    <el-dropdown-item command="kr"><span>한국어</span></el-dropdown-item>
+                    <!--<el-dropdown-item command="jp"><span>日本語</span></el-dropdown-item>-->
+                    <!--<el-dropdown-item command="kr"><span>한국어</span></el-dropdown-item>-->
                   </el-dropdown-menu>
                 </el-dropdown>
 							</div>
@@ -287,7 +287,7 @@ export default {
 			}
 		}
         .logo_img img{
-            width: 112px;
+            /*width: 112px;*/
             height: 44px;
         }
         .el-icon-search,.logo_img:hover,.el-input__suffix:hover{

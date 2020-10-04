@@ -8,7 +8,7 @@ module.exports =  {
 		assets:'資產管理',
 		help:'客戶幫助',
 		about:'關於我們',
-    earn:'餘幣寶',
+    earn:'LHC兌換',
 		log:'登錄',
 		register:'註冊',
 		Language:'中文繁體',
@@ -308,7 +308,7 @@ module.exports =  {
 		helpCenter:'幫助中心',
 		notice:'官方公告',
 		upload:'下載',
-		tip:'Olaex溫馨提示：投資有風險，入市需謹慎。'
+		tip:'LHC溫馨提示：投資有風險，入市需謹慎。'
 	},
 	codeTxt:{
 		error:'錯誤',
@@ -367,9 +367,9 @@ module.exports =  {
     repayDate: '還幣時間未到(30天)!'
 	},
   earn: {
-	  title: '持幣生息，穩健賺幣',
-    subTitle: '多種數字代幣供您選擇，靈活存取獲得更大投資空間。',
-    buy: '開始申購',
+	  title: 'LHC穩健投資，多幣兌換',
+    subTitle: '多種數字代幣供您選擇，靈活兌換獲得更大投資空間。',
+    buy: '開始兌換',
     des: '餘幣寶支持用戶隨時存取代幣資產，按天計息，無最低存幣限制。',
     timeLimit: '期限',
     reference: '參考年化',

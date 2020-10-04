@@ -12,7 +12,7 @@
 					</ul>
 				</div>
 				<div class="foot-center footLayout">
-					<img class="logo" src="../assets/logo.png" alt="olaex" />
+					<img class="logo" src="../assets/logo.png" alt="LHC" />
 					<div class="verticalBar">
 						<p class="title">{{$t('foot.read')}}</p>
 						<p><router-link to="agreement">{{$t('foot.agree')}}</router-link></p>
@@ -80,8 +80,8 @@ export default {
         margin: 20px 0;
         padding: 20px 0;
         .logo{
-            width: 110px;
-            height: 40px;
+            /*width: 110px;*/
+            height: 80px;
             margin-right: 120px;
         }
         .title{

@@ -306,3 +306,8 @@ export const leverPageApi = data => fetch('/api/leverPage',data,true);
  * 杠杆交易记录
  */
 export const leverRecordApi = data => fetch('/api/leverRecord',data,true);
+
+/**
+ * 兑换币
+ */
+export const conversionApi = data => fetch('/api/conversionCoin',data,true);
