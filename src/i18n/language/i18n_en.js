@@ -8,7 +8,7 @@ module.exports =  {
 		assets:'Asset management',
 		help:'Customer help',
 		about:'About us',
-    earn:'Earn',
+    earn:'New ',
 		log:'Sign in',
 		register:'Register',
 		Language:'English',

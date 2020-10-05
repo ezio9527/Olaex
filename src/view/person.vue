@@ -3,9 +3,9 @@
         <div class="container">
         	<h2>{{$t('person.title')}}</h2>
 	        <el-menu :default-active="personIndex" class="el-menu-demo" mode="horizontal" @select="handleNav" router>
-                <el-menu-item index="person">{{$t('person.verification')}}</el-menu-item>
+                <!--<el-menu-item index="person">{{$t('person.verification')}}</el-menu-item>-->
                 <el-menu-item index="set">{{$t('person.set')}}</el-menu-item>
-            </el-menu> 
+            </el-menu>
             <router-view></router-view>
 	    </div>
 		<Foot />
@@ -16,8 +16,8 @@ import Foot from '@/components/Foot'
 export default {
     data(){
         return{
-            
-            
+
+
         }
     },
     computed: {
