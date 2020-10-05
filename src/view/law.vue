@@ -1,5 +1,5 @@
 <template>
-  <div class="privacy_div">
+  <div class="law_div">
     <div class="container">
       <h2>{{$t('foot.secret')}}</h2>
       <div class="content">
@@ -75,7 +75,7 @@ export default {
 }
 </script>
 <style lang="less">
-  .privacy_div {
+  .law_div {
     h2 {
       font-weight: initial;
       font-size: 28px;

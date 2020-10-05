@@ -97,6 +97,11 @@ export default new Router({
         component: () => import('@/view/privacy'),
         meta:['隐私条例']
       },{
+        path:'/law',
+        name:'law',
+        component: () => import('@/view/law'),
+        meta:['法律声明']
+      },{
         path:'/notice',
         name:'notice',
         component: () => import('@/view/notice'),

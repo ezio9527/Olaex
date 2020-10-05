@@ -17,7 +17,7 @@
 						<p class="title">{{$t('foot.read')}}</p>
 						<p><router-link to="agreement">{{$t('foot.agree')}}</router-link></p>
 						<p><router-link to="privacy">{{$t('foot.secret')}}</router-link></p>
-						<p><router-link to="privacy">{{$t('foot.Legal')}}</router-link></p>
+						<p><router-link to="law">{{$t('foot.Legal')}}</router-link></p>
 					</div>
 					<div class="verticalBar">
 						<p class="title">{{$t('foot.help')}}</p>
