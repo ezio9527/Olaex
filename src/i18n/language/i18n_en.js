@@ -8,7 +8,7 @@ module.exports =  {
 		assets:'Asset management',
 		help:'Customer help',
 		about:'About us',
-    earn:'New ',
+    earn:'LHC Convert',
 		log:'Sign in',
 		register:'Register',
 		Language:'English',
