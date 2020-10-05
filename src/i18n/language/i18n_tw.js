@@ -8,7 +8,7 @@ module.exports =  {
 		assets:'資產管理',
 		help:'客戶幫助',
 		about:'關於我們',
-    earn:'新幣認購',
+    earn:'LHC認購',
 		log:'登錄',
 		register:'註冊',
 		Language:'中文繁體',
