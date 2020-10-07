@@ -63,7 +63,7 @@
 
 <script>
 import codeStatus from '@/config/codeStatus'
-import { convertPageApi,convertApi, earnApi } from '@/api/getData'
+import { convertPageApi,convertApi, earnApi, ticketApi } from '@/api/getData'
 export default {
   data(){
     return{
@@ -82,23 +82,23 @@ export default {
       abiliyPrice:0,
       earnId: '', // 余币宝提币收益ID
       // coinArr:['USDT-ERC20','USDT-OMIN','BTC','LTC','EOS','XRP','BCH','ETH','ETC'],
-      coinArr:['USDT', 'BTC','ETH'],
+      coinArr:['USDT', 'BTC','ETH', 'LHC'],
       coinImgAdd: require('../assets/USDT.png')
     }
 	},
 	computed:{
 		getTotal(){
-			var arr = [this.$t('assets.wallet'),this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever'),this.$t('assets.spot')];
+			var arr = [this.$t('assets.wallet'),this.$t('assets.spot')];
 			this.getTotalArr = arr;
 			return arr
 		},
 		getFrom(){
-			var arr = [this.$t('assets.wallet'),this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever'),this.$t('assets.spot')];
+			var arr = [this.$t('assets.wallet'),this.$t('assets.spot')];
 			this.getFromArr = arr;
 			return arr
 		},
 		getTo(){
-			var arr = [this.$t('assets.contact'),this.$t('assets.earn'),this.$t('assets.lever'),this.$t('assets.spot')];
+			var arr = [this.$t('assets.spot')];
 			this.getToArr = arr;
 			return arr
 		},
@@ -118,12 +118,27 @@ export default {
 		var that = this;
 		that.form.fromValue = that.getFrom[0];
 		that.form.toValue = that.getTo[0]
+    // this.ticketFun();
 	},
 	mounted(){
 		var that = this;
 
 	},
 	methods:{
+    ticketFun() {//币种行情
+      var that = this;
+      var timer = setInterval(async () => {
+        var res = await ticketApi();
+        that.ticketArr = [];
+        if (res.code == 200) {
+          clearInterval(timer)
+          var arr = res.data;
+          that.coinArr = arr.map(item => {
+            return item.symbol.replace('/USDT', '')
+          });
+        }
+      }, 2000);
+    },
 		changeBoxFun(){
 			var that = this;
 			var fromArr = that.getFromArr;

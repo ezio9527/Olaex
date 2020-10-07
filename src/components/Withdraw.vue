@@ -74,7 +74,7 @@
 import pageTotal from '@/components/pageTotal'
 import codeStatus from '@/config/codeStatus'
 import AssetPage from '@/components/AssetPage'
-import { withdrawPageApi,withdrawCoinApi,addAddressApi,walletAddressApi } from '@/api/getData'
+import { withdrawPageApi,withdrawCoinApi,addAddressApi,walletAddressApi, ticketApi } from '@/api/getData'
 import clip from '@/config/clipboard'
 export default {
     data(){
@@ -111,8 +111,23 @@ export default {
 	},
 	mounted(){
 		this.withInform();
+    this.ticketFun();
 	},
 	methods:{
+    ticketFun() {//币种行情
+      var that = this;
+      var timer = setInterval(async () => {
+        var res = await ticketApi();
+        that.ticketArr = [];
+        if (res.code == 200) {
+          clearInterval(timer)
+          var arr = res.data;
+          that.coinArr = arr.map(item => {
+            return item.symbol.replace('/USDT', '')
+          });
+        }
+      }, 2000);
+    },
 		async withInform(){
 			var that = this;
 			var data = new URLSearchParams();

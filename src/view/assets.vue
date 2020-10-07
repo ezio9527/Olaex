@@ -15,7 +15,7 @@
         <el-tab-pane :label="$t('assets.account')" name="0"></el-tab-pane>
         <el-tab-pane :label="$t('assets.recharge')" name="1"></el-tab-pane>
         <el-tab-pane :label="$t('assets.withdraw')" name="2"></el-tab-pane>
-        <!--<el-tab-pane :label="$t('assets.transfer')" name="3"></el-tab-pane>-->
+        <el-tab-pane :label="$t('assets.transfer')" name="3"></el-tab-pane>
         <el-tab-pane :label="$t('assets.record')" name="4"></el-tab-pane>
         <!--<el-tab-pane :label="$t('assets.carry')" name="5"></el-tab-pane>-->
         <!--<el-tab-pane :label="$t('assets.borrow')" name="6"></el-tab-pane>-->

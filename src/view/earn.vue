@@ -134,11 +134,14 @@ export default {
       var res = await ticketApi();
       if(res.success){
         const obj = {}
+        const arr = []
         res.data.forEach(item => {
+          arr.push(item.symbol.replace('/USDT', ''))
           obj[item.symbol] = {
             price: item.close
           }
         });
+        this.coinArr = arr
         this.market = obj
       }
     },
