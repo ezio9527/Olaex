@@ -101,7 +101,7 @@ export default {
   },
   created() {
     this.addressFun();
-    this.ticketFun();
+    // this.ticketFun();
   },
   methods: {
     ticketFun() {//币种行情

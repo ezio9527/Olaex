@@ -50,6 +50,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-self: start;
+    justify-content: center;
     li {
       width: 220px;
       text-align: center;

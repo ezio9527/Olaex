@@ -83,7 +83,9 @@ export default async(url, data, ifToken) => {
 						window.location.reload();
 					},1000)
 				}
-				router.push('/login');
+        if (router.app.$route.name !== 'register') {
+          router.push('/login');
+        }
 				return responseJson
 			}else if(response.status == 500){
 				Vue.prototype.$message.error(i18n.t('codeTxt.serviceError'));

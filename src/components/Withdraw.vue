@@ -111,7 +111,7 @@ export default {
 	},
 	mounted(){
 		this.withInform();
-    this.ticketFun();
+    // this.ticketFun();
 	},
 	methods:{
     ticketFun() {//币种行情

@@ -87,7 +87,7 @@ module.exports =  {
 		title_4:'多端設備',
 		introduceContent_1:'安全透明，合規交易',
 		introduceContent_2:'卓越技術團隊，頂級智能引擎',
-		introduceContent_3:'最順暢的USDT永續合約交易服務',
+		introduceContent_3:'最順暢的USDT平台交易服務',
 		introduceContent_4:'兼顧瀏覽器，手機IOS及Android  APP',
 		experice:'機構及市場交易體驗',
 		contract:"合約交易",
