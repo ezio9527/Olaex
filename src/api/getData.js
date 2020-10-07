@@ -311,3 +311,9 @@ export const leverRecordApi = data => fetch('/api/leverRecord',data,true);
  * 兑换币
  */
 export const conversionApi = data => fetch('/api/conversionCoin',data,true);
+
+/**
+ * 兑换币汇率
+ */
+export const conversionRateApi = data => fetch('/api/conversionPrea',data,true);
+

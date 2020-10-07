@@ -386,7 +386,12 @@ module.exports =  {
     day: '每天',
     success: '申购成功',
     buyNum: '申購數量',
-    inputPlaceholder: '請輸入申購數量'
+    inputPlaceholder: '請輸入申購數量',
+    type: '幣種',
+    number: '數量',
+    rate: '匯率',
+    convert: '實際兌換',
+    time: '時間'
   },
   borrow: {
     title: '借幣',

@@ -388,7 +388,11 @@ module.exports =  {
     success: 'Purchase succeeded',
     buyNum: 'Desired Purchase Quantity',
     inputPlaceholder: 'Desired Purchase Quantity',
-    rate: 'Rate'
+    type: 'symbol',
+    number: 'number',
+    rate: 'rate',
+    convert: 'convert',
+    time: 'time'
   },
   borrow: {
     title: 'borrow',
