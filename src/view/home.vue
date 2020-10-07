@@ -45,34 +45,32 @@
           </ul>
         </div>
       </div>
-      <!-- 介绍app -->
-      <div class="article">
-        <h2>{{$t('home.experice')}}</h2>
-        <div class="article_box">
-          <div v-if="lang == 'zh'">
-            <img src="../assets/zh.png" alt=""/>
-          </div>
-          <div v-else-if="lang == 'jp'">
-            <img src="../assets/jp.png" alt=""/>
-          </div>
-          <div v-else>
-            <img src="../assets/en.png" alt=""/>
-          </div>
-          <ul>
-            <li>
-              <p>{{$t('home.coin')}}</p>
-              <span>{{$t('home.coinTxt')}}</span>
-            </li>
-            <li>
-              <p>{{$t('home.contract')}}</p>
-              <span>{{$t('home.contractTxt')}}</span>
-            </li>
-            <li>
-              <p>{{$t('home.assets')}}</p>
-              <span>{{$t('home.assetsTxt')}}</span>
-            </li>
-          </ul>
-        </div>
+    </div>
+    <!-- 介绍 -->
+    <div class="introduce">
+      <div class="container">
+        <h1>LHC  eXchange - Make users more focused on trading</h1>
+        <h3>Providing secure and reliable digital asset trading and asset management services to millions of users worldwide</h3>
+        <el-row>
+          <el-col :span="8">
+            <img src="../assets/home_1.png"/>
+            <h4>Safety and trustworthiness</h4>
+            <p>Five years'experience in digital assets financial services</p>
+            <p>Professional Distributed Architecture and Anti-DDOS System</p>
+          </el-col>
+          <el-col :span="8">
+            <img src="../assets/home_2.png"/>
+            <h4>High-end High-quality</h4>
+            <p>Rapid asset transfer and unimpeded trading</p>
+            <p>Establishment of Trading Service Centers in Several Countries</p>
+          </el-col>
+          <el-col :span="8">
+            <img src="../assets/home_3.png"/>
+            <h4>Customer first</h4>
+            <p>Fast, efficient trading experience</p>
+            <p>Set up a 100% investor protection fund</p>
+          </el-col>
+        </el-row>
       </div>
     </div>
     <!-- 下载app -->
@@ -257,6 +255,23 @@ export default {
               width: 260px;
             }
           }
+        }
+      }
+    }
+    .introduce {
+      background-color: #f9f8ff;
+      color: black;
+      text-align: center;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      .container {
+        width: 1200px;
+        margin: auto;
+        h1, h3 {
+          text-align: left;
+        }
+        h3 {
+          margin-bottom: 40px;
         }
       }
     }

@@ -3,13 +3,13 @@
 			<div class="container">
 				<div class="footLayout far">
 					<h3>{{$t('foot.concat')}}</h3>
-					<ul class="footLayout">
-						<li><a href="javascript:;"><img src="../assets/foot-facebook.png" alt="facebook" /></a></li>
-						<li><a href="javascript:;"><img src="../assets/foot-weibo.png" alt="weibo" /></a></li>
-						<li><a href="javascript:;"><img src="../assets/foot-wechat.png" alt="weixin" /></a></li>
-						<li><a href="javascript:;"><img src="../assets/foot-qq.png" alt="qq" /></a></li>
-						<li><a href="javascript:;"><img src="../assets/foot-tel.png" alt="tel" /></a></li>
-					</ul>
+					<!--<ul class="footLayout">-->
+						<!--<li><a href="javascript:;"><img src="../assets/foot-facebook.png" alt="facebook" /></a></li>-->
+						<!--<li><a href="javascript:;"><img src="../assets/foot-weibo.png" alt="weibo" /></a></li>-->
+						<!--<li><a href="javascript:;"><img src="../assets/foot-wechat.png" alt="weixin" /></a></li>-->
+						<!--<li><a href="javascript:;"><img src="../assets/foot-qq.png" alt="qq" /></a></li>-->
+						<!--<li><a href="javascript:;"><img src="../assets/foot-tel.png" alt="tel" /></a></li>-->
+					<!--</ul>-->
 				</div>
 				<div class="foot-center footLayout">
 					<img class="logo" src="../assets/logo.png" alt="LHC" />

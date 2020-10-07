@@ -25,7 +25,7 @@
 	            </el-form>
 	        </el-col>
 	        <el-col :xs="24" :sm="24" :md="12" :lg="12">
-	        	
+
 	        </el-col>
 	   </el-row>
 	</div>
@@ -45,7 +45,7 @@ export default {
         	},
         	ifDisable:false,
             count:'',
-            totalTime:600,
+            totalTime:120,
         }
     },
     methods:{
@@ -65,8 +65,8 @@ export default {
                     if(that.totalTime < 0){
                         clearInterval(that.clock)
                         that.count = ''
-                        that.totalTime = 600
-                        that.ifDisable = false 
+                        that.totalTime = 120
+                        that.ifDisable = false
                     }
                 },1000)
 			}else{

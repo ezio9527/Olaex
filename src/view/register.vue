@@ -88,7 +88,7 @@ export default {
       eyeImg: require('../assets/eye_close.png'),
       ifDisable: false,
       count: '',
-      totalTime: 600,
+      totalTime: 120,
       userFormVisible: false,
       userContent: '',
       clock: null,
@@ -155,7 +155,7 @@ export default {
             if (that.totalTime < 0) {
               clearInterval(that.clock)
               that.count = ''
-              that.totalTime = 600
+              that.totalTime = 120
               that.ifDisable = false
             }
           }, 1000)
