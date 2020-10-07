@@ -8,7 +8,7 @@
     </div>
 
     <div class="introduce">
-      <h1>LHC官方网站：<a href="http://www.lhc.ink/">http://www.lhc.ink/</a></h1>
+      <h1>LHC官方网站：<a href="http://www.lhc.ink/" target="_blank">http://www.lhc.ink/</a></h1>
       <h2>全名：生命密码基因健康链</h2>
       <h2>编号：LHC</h2>
       <p>基因作为支撑世界万物生命的基本构造和性能的神秘密码，储存着世间万物生命的种族、血脉、繁育、生长、凋亡等过程的全部信息，演绎着生命的繁衍、细胞分裂和蛋白质合成等重要生理过程。生物体的生、长、衰、病、老、死等一切生命现象都与基因有关，它是决定生命健康的内在因素。为促进基因健康领域整体向前发展，解决当前基因市场普遍存在的痛点问题，LHC 创始技术团队以分布式的生命基因健康应用为核心，以区块链底层技术为纽带，以LHC币为媒介，创新建立生命密码基因健康链(LHC)。LHC完全革新目前基因健康市场的基因数据存储方式和底层协议，引入POC共识机制，从去中心化程度、实用性、技术可靠性、抗封锁性考虑、开创多种基因健康合约和交易生态。LHC在未来将实现分布式网络、Ledger 、共识、网关、分布式节点全员认证交易、币币种交易、数字资产兑换等全场景基础性生态功能，协同完成DeFi金融创新的全面升级，打造基因健康最强共识，建立公平民主的智能利益分配体系，推动基因健康智能合约自动正向循环。LHC首创“区块链+基因健康”的商业模式，它将成为每个用户畅通无阻穿梭在区块链世界和基因健康世界的合约通证，它将是每个用户获取所有附加服务和应用的关键钥匙，。创建一个可自循环、自孵化、自进化、自创新、去中心化，更加高效透明、安全可信的多元化基因健康数字合约生态圈。
@@ -21,7 +21,7 @@
       <p>5.     发售定价方式：逐轮价格不低于上涨1.5%的递增式发售</p>
       <p>6.     初始发售价格：1LHC=0.03USDT</p>
       <p>7.     公开上市交易时间：2021年1月</p>
-      <p>8.     相关链接：http://www.lhc.ink/down/LHC.pdf</p>
+      <p>8.     相关链接：<a href="http://www.lhc.ink/down/LHC.pdf" target="_blank">http://www.lhc.ink/down/LHC.pdf</a></p>
     </div>
     <div class="earn-container" id="earn">
       <el-form ref="form" :model="form" class="left">
@@ -40,6 +40,7 @@
             <template slot="append">{{form.region}}</template>
           </el-input>
         </el-form-item>
+        <p>BTC≥0.001&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;USDT≥100&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;ETH≥0.3</p>
         <p>{{$t('trasfer.available')}}: {{wallet[form.region]}}    {{$t('earn.rate')}}: {{coinConversion}}</p>
         <el-form-item :label="$t('earn.buyNum')" :rules="[{ required: true, trigger:'blur' }]" prop="number">
           <el-input v-model="form.targetNumber" autocomplete="off" :placeholder="$t('earn.inputPlaceholder')" @input="targetNumber" disabled>
@@ -163,12 +164,9 @@ export default {
       if (res.success) {
         const list = res.data.list;
         const obj = {}
-        const coinArr = []
         list.forEach(item => {
-          coinArr.push(item.type)
           obj[item.type] = item.usedPrice
         })
-        this.coinArr = coinArr
         this.wallet = obj
       }
     },
@@ -226,7 +224,7 @@ export default {
   },
   created () {
     this.walletFun();//钱包资产
-    this.ticketFun();
+    // this.ticketFun();
     this.getRate();
     this.recordFun();
   }
@@ -281,6 +279,7 @@ export default {
     border-radius: 2px;
     padding: 20px;
     margin: auto;
+    margin-top: 50px;
     width: 1200px;
     *zoom: 1;
     -webkit-box-sizing: border-box;
@@ -294,10 +293,6 @@ export default {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    .el-input.is-disabled.el-input__inner {
-      background: none;
-      border: none;
-    }
     &::after {
       content: '';
       height: 0;
