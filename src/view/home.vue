@@ -41,7 +41,7 @@
       <div class="container">
         <h1>{{$t('home.introduce')}}</h1>
         <p>{{$t('home.title_1')}}{{$t('home.title_2')}}{{$t('home.title_3')}}{{$t('home.title_4')}}</p>
-        <span>{{$t('home.introduceContent_1')}},{{$t('home.introduceContent_2')}},{{$t('home.introduceContent_3')}}</span>
+        <p>{{$t('home.introduceContent_1')}},{{$t('home.introduceContent_2')}},{{$t('home.introduceContent_3')}}</p>
         <img class="imgFull" src="../assets/home5.png" alt=""/>
       </div>
     </div>
@@ -291,6 +291,9 @@ export default {
         }
         h1 {
           margin-top: 150px;
+        }
+        p {
+          width: 600px;
         }
       }
     }
