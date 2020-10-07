@@ -20,32 +20,32 @@
       </div>
       <Trade/>
     </div>
-    <div class="container">
-      <!-- 服务优势 -->
-      <div class="article">
-        <h2>{{$t('home.introduce')}}</h2>
-        <div class="article_box">
-          <ul>
-            <li>
-              <p>{{$t('home.title_1')}}</p>
-              <span>{{$t('home.introduceContent_1')}}</span>
-            </li>
-            <li>
-              <p>{{$t('home.title_2')}}</p>
-              <span>{{$t('home.introduceContent_2')}}</span>
-            </li>
-            <li>
-              <p>{{$t('home.title_3')}}</p>
-              <span>{{$t('home.introduceContent_3')}}</span>
-            </li>
-            <li>
-              <p>{{$t('home.title_4')}}</p>
-              <span>{{$t('home.introduceContent_4')}}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <!--<div class="container">-->
+      <!--&lt;!&ndash; 服务优势 &ndash;&gt;-->
+      <!--<div class="article">-->
+        <!--<h2>{{$t('home.introduce')}}</h2>-->
+        <!--<div class="article_box">-->
+          <!--<ul>-->
+            <!--<li>-->
+              <!--<p>{{$t('home.title_1')}}</p>-->
+              <!--<span>{{$t('home.introduceContent_1')}}</span>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<p>{{$t('home.title_2')}}</p>-->
+              <!--<span>{{$t('home.introduceContent_2')}}</span>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<p>{{$t('home.title_3')}}</p>-->
+              <!--<span>{{$t('home.introduceContent_3')}}</span>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<p>{{$t('home.title_4')}}</p>-->
+              <!--<span>{{$t('home.introduceContent_4')}}</span>-->
+            <!--</li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
     <!-- 介绍 -->
     <div class="introduce">
       <div class="container">
@@ -267,6 +267,9 @@ export default {
       .container {
         width: 1200px;
         margin: auto;
+        img {
+          width: 160px;
+        }
         h1, h3 {
           text-align: left;
         }

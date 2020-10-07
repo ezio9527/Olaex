@@ -95,6 +95,11 @@ export default {
       getTwoLang: ''
     }
   },
+  mounted () {
+    const tempStr = this.$route.query.inviteCode
+    const inviteCode = window.atob(tempStr)
+    this.$set(this.form, 'invite', inviteCode)
+  },
   methods: {
     selectValue(item) {//选择区号
       var that = this;

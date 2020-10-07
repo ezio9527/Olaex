@@ -267,7 +267,9 @@ module.exports =  {
 		assetsTip:'用於充幣、提幣時進行安全驗證。',
 		emailTip:'用於登錄、提幣、找回密碼、修改安全設置時進行安全驗證。',
 		reset:'重置',
-		updatePwd:'修改成功'
+		updatePwd:'修改成功',
+    invite: '邀請鏈接',
+    inviteTip: '用於邀請其他用戶進行註冊'
 	},
 	table:{
 		time:"時間",

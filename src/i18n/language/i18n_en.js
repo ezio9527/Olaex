@@ -267,7 +267,9 @@ module.exports =  {
 		assetsTip:'It is used for security verification when charging and withdrawing currency.',
 		emailTip:'Used for security verification when logging in, withdrawing currency, retrieving password and modifying security settings.',
 		reset:'Reset',
-		updatePwd:'Modification succeeded'
+		updatePwd:'Modification succeeded',
+    invite: 'Invites URL',
+    inviteTip: 'It is used to invite others,and register'
 	},
 	table:{
 		time:"Time",

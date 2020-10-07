@@ -53,7 +53,7 @@
                   <el-dropdown-menu class="changeBg" slot="dropdown">
                     <!--<el-dropdown-item command="zh"><span>中文简体</span></el-dropdown-item>-->
                     <el-dropdown-item command="en"><span>English</span></el-dropdown-item>
-                    <!--<el-dropdown-item command="tw"><span>中文繁體</span></el-dropdown-item>-->
+                    <el-dropdown-item command="tw"><span>中文繁體</span></el-dropdown-item>
                     <!--<el-dropdown-item command="jp"><span>日本語</span></el-dropdown-item>-->
                     <!--<el-dropdown-item command="kr"><span>한국어</span></el-dropdown-item>-->
                   </el-dropdown-menu>

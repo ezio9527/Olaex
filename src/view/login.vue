@@ -79,6 +79,7 @@ export default {
             });
             var data = res.data;
             sessionStorage.setItem('userToken', data.token);
+            sessionStorage.setItem('inviteCode', data.inviteCode);
             // that.$refs[form].resetFields();
             that.reload();
             that.$router.push('/');
