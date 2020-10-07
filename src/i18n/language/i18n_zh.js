@@ -99,6 +99,12 @@ module.exports =  {
 		once:'即刻下载',
 		onceRe:'即刻注册',
 		together:'合作平台',
+    symbol: '交易對',
+    newPrice: '最新價格',
+    rose: '24小時變更',
+    high: '24H高',
+    low: '24H低',
+    vol: '24小時成交量'
 	},
 	contract:{
 		title:'合约交易订单',

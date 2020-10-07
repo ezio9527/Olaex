@@ -18,7 +18,32 @@
           <el-button @click="checkPair">{{$t('home.checkPair')}}</el-button>
         </div>
       </div>
-      <Trade/>
+      <Trade @update="updateTicket"/>
+    </div>
+    <el-table :data="ticketData" class="table">
+      <el-table-column prop="symbol" :label="$t('home.symbol')"></el-table-column>
+      <el-table-column prop="newPrice" :label="$t('home.newPrice')">
+        <template slot-scope="scope">
+          <span :class="{up: scope.row.up, down: !scope.row.up}">{{ scope.row.newPrice }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="rose" :label="$t('home.rose')">
+        <template slot-scope="scope">
+          <span :class="{up: scope.row.up, down: !scope.row.up}">{{ scope.row.rose }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="high" :label="$t('home.high')"></el-table-column>
+      <el-table-column prop="low" :label="$t('home.low')"></el-table-column>
+      <el-table-column prop="vol" :label="$t('home.vol')"></el-table-column>
+    </el-table>
+    <!--装逼图-->
+    <div class="show">
+      <div class="container">
+        <h1>{{$t('home.introduce')}}</h1>
+        <p>{{$t('home.title_1')}}{{$t('home.title_2')}}{{$t('home.title_3')}}{{$t('home.title_4')}}</p>
+        <span>{{$t('home.introduceContent_1')}},{{$t('home.introduceContent_2')}},{{$t('home.introduceContent_3')}}</span>
+        <img class="imgFull" src="../assets/home5.png" alt=""/>
+      </div>
     </div>
     <!--<div class="container">-->
       <!--&lt;!&ndash; 服务优势 &ndash;&gt;-->
@@ -119,7 +144,8 @@ export default {
       bannerArr: [],//banner图
       partenArr: [],//合作平台数据
       isToken: sessionStorage.getItem('userToken'),
-      lang: sessionStorage.getItem('language')
+      lang: sessionStorage.getItem('language'),
+      ticketData: []
     }
   },
   created() {
@@ -129,6 +155,19 @@ export default {
     this.bannerFun();
   },
   methods: {
+    updateTicket (data) {
+      this.ticketData = data.map(item => {
+        return {
+          symbol: item.symbol,
+          newPrice: item.close.toFixed(2),
+          rose: (item.rose * 100).toFixed(2) + '%',
+          up: item.rose >= 0,
+          high: item.high.toFixed(2),
+          low: item.low.toFixed(2),
+          vol: item.vol
+        }
+      })
+    },
     async partenFun() {//合作平台
       var that = this;
       var res = await partenApi();
@@ -225,6 +264,36 @@ export default {
         }
       }
     }
+    .table {
+      width: 1200px;
+      margin: 50px auto;
+      .up {
+        color: #6FC1A1;
+      }
+      .down {
+        color: #EC5E45;
+      }
+    }
+    .show {
+      background: url("../assets/home4.png");
+      height: 586px;
+      .container {
+        width: 1200px;
+        height: 100%;
+        margin: auto;
+        overflow: hidden;
+        position: relative;
+        img {
+          width: 556px;
+          position: absolute;
+          top: 150px;
+          right: 0;
+        }
+        h1 {
+          margin-top: 150px;
+        }
+      }
+    }
     .article {
       h2 {
         margin: 40px 0;
@@ -259,8 +328,8 @@ export default {
       }
     }
     .introduce {
-      background-color: #f9f8ff;
-      color: black;
+      background-color: black;
+      color: white;
       text-align: center;
       padding-top: 50px;
       padding-bottom: 50px;

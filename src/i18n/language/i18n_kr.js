@@ -99,6 +99,12 @@ module.exports =  {
 		once:'지금 다운로드',
 		onceRe:'지금 등록하세요',
 		together:'협력 플랫폼',
+    symbol: '交易對',
+    newPrice: '最新價格',
+    rose: '24小時變更',
+    high: '24H高',
+    low: '24H低',
+    vol: '24小時成交量'
 	},
 	contract:{
 		title:'계약 거래 오더',

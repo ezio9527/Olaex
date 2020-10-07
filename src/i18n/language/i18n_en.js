@@ -98,7 +98,13 @@ module.exports =  {
 		assetsTxt:'Transparent asset management',
 		once:'Download now',
 		onceRe:'Register now',
-		together:'Cooperation platform'
+		together:'Cooperation platform',
+    symbol: 'symbol',
+    newPrice: 'new price',
+    rose: '24H rose',
+    high: '24H high',
+    low: '24H low',
+    vol: '24 vol'
 	},
 	contract:{
 		title:'Contract order',

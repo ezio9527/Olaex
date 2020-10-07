@@ -2,7 +2,7 @@
     <div class="foot-box">
 			<div class="container">
 				<div class="footLayout far">
-					<h3>{{$t('foot.concat')}}</h3>
+					<!--<h3>{{$t('foot.concat')}}</h3>-->
 					<!--<ul class="footLayout">-->
 						<!--<li><a href="javascript:;"><img src="../assets/foot-facebook.png" alt="facebook" /></a></li>-->
 						<!--<li><a href="javascript:;"><img src="../assets/foot-weibo.png" alt="weibo" /></a></li>-->
@@ -26,7 +26,9 @@
 						<p><router-link to="notice">{{$t('foot.notice')}}</router-link></p>
 					</div>
 					<div class="verticalBar">
-						<p class="title"><router-link to="article">{{$t('nav.about')}}</router-link></p>
+            <p class="title"><router-link to="article">{{$t('nav.about')}}</router-link></p>
+            <p><router-link to="">{{$t('foot.concat')}}</router-link></p>
+            <p><router-link to="">security@lhc114.com</router-link></p>
 					</div>
 					<!-- <div>
 						<p class="title">App {{$t('foot.upload')}}</p>
