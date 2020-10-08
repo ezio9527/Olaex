@@ -41,7 +41,7 @@
           </el-input>
         </el-form-item>
         <p>BTC≥0.001&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;USDT≥100&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;ETH≥0.3</p>
-        <p>{{$t('trasfer.available')}}: {{wallet[form.region]}}    {{$t('earn.rate')}}: {{coinConversion}}</p>
+        <p>{{$t('trasfer.available')}}: {{wallet[form.region]}}    {{$t('earn.rate')}}: {{rate}}</p>
         <el-form-item :label="$t('earn.buyNum')" :rules="[{ required: true, trigger:'blur' }]" prop="number">
           <el-input v-model="form.targetNumber" autocomplete="off" :placeholder="$t('earn.inputPlaceholder')" @input="targetNumber" disabled>
             <template slot="append">LHC</template>
@@ -105,7 +105,7 @@ export default {
       } else {
         const selectPrice = (this.market[this.form.region + '/USDT'] || { price: 0}).price
         const lhcPrice = (this.market['LHC/USDT'] || { price: 0}).price
-        return selectPrice / lhcPrice
+        return selectPrice / (lhcPrice * this.coinConversion)
       }
     }
   },
@@ -189,7 +189,7 @@ export default {
       if (val === '0') {
         this.$set(this.form, 'targetNumber', 0)
       } else {
-        const targetNumber = (val * this.coinConversion).toFixed(8)
+        const targetNumber = (val * this.rate).toFixed(8)
         this.$set(this.form, 'targetNumber', targetNumber)
       }
     },
@@ -224,7 +224,7 @@ export default {
   },
   created () {
     this.walletFun();//钱包资产
-    // this.ticketFun();
+    this.ticketFun();
     this.getRate();
     this.recordFun();
   }

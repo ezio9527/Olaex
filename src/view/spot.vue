@@ -85,7 +85,7 @@
             </el-tabs>
             <div class="priceBox">
               <el-input-number v-if="activeIndex == '0'" v-model="goodPrice" @change="addPrice" @input="addPrice"
-                               :min="1" :placeholder="$t('transaction.goodPrice')"></el-input-number>
+                               :placeholder="$t('transaction.goodPrice')"></el-input-number>
               <el-input v-else autocomplete="off" disabled :placeholder="$t('transaction.market')"></el-input>
               <!-- <el-input-number v-model="num" @change="addNum" @input="addNum" :placeholder="$t('transaction.num')"></el-input-number> -->
               <el-input class="upNum" v-model="num" @input="changeNum"
