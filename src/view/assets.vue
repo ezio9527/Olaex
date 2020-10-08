@@ -51,6 +51,11 @@
               <p>{{(scope.row.usedPrice).toFixed(8)}}</p>
             </template>
           </el-table-column>
+          <el-table-column prop="lockedPrice" :label="$t('table.frozen')">
+            <template slot-scope="scope">
+              <p>{{(scope.row.lockedPrice).toFixed(8)}}</p>
+            </template>
+          </el-table-column>
         </el-table>
         <page-total v-if="page.total > 10" :page="page" @pageChange="pageChange"></page-total>
       </div>

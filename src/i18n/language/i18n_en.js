@@ -392,7 +392,20 @@ module.exports =  {
     number: 'number',
     rate: 'rate',
     convert: 'convert',
-    time: 'time'
+    time: 'time',
+    introduce1: 'LHC official website:',
+    introduce2: 'Chain name:Life Code Gene Health Chain',
+    introduce3: 'Number: LHC',
+    introduce4: 'Genes, as the secret code that supports the basic structure and performance of life in the world, store all the information of the race, blood, breeding, growth, apoptosis and other processes of life in the world, it deduces the important physiological process of life, such as reproduction, cell division and protein synthesis.All life phenomena, such as growth, Senescence, disease and death, are related to genes,Genes are the internal factors that determine life and health. In order to promote the development of the field of gene health and solve the common pain point problem in the gene market, the LHC founding technology team takes the distributed application of life gene health as the core and the bottom technology of blockchain as the link, take the LHC as the medium, innovatively establishes the Life Code Gene Health Chain (LHC) .The LHC completely revolutionizes the way of gene data storage and the underlying protocol in the current gene health market, introducing the POC consensus mechanism, from the degree of decentralization, practicality, technical reliability, anti-blocking consideration, create a variety of genetic health contracts and trading ecology.In the future, the LHC will realize the basic ecological functions of the whole scene, such as distributed network, Ledger, consensus, gateway, distributed node, authentication transaction, currency transaction, exchange of digital assets, and cooperate to complete the overall upgrade of DeFi financial innovation, we will build the strongest consensus on genetic health, establish a fair and democratic intelligent benefit distribution system, and promote the automatic positive circulation of genetic health intelligent contracts.LHC pioneered the "blockchain + gene health" business model, which will become the contract token for every user to travel freely in the blockchain world and the gene health world, and it will be the key for each user to obtain all the additional services and applications.We will jointly create a self-cycling, self-incubation, self-evolution, self-innovation, decentralized, more efficient, transparent, safe and credible diversity of digital contract ecosystem genetic health.',
+    introduce5: 'LHC issue time plan;',
+    introduce6: 'Token type: ERS-20',
+    introduce7: 'Total issue:1 billion',
+    introduce8: 'Sale to early members: 40% of the total amount, and can be freely traded in the secondary market after 3 months of lock-in period',
+    introduce9: 'Initial issue date: October 2020',
+    introduce10: 'Pricing method: incremental sale with price not lower than 1.5% increase',
+    introduce11: 'Initial selling price: 1lhc = 0.03USDT',
+    introduce12: 'Time for public listing: January 2021',
+    introduce13: 'For details, please click the link:'
   },
   borrow: {
     title: 'borrow',

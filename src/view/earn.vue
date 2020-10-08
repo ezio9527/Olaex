@@ -8,20 +8,20 @@
     </div>
 
     <div class="introduce">
-      <h1>LHC官方网站：<a href="http://www.lhc.ink/" target="_blank">http://www.lhc.ink/</a></h1>
-      <h2>全名：生命密码基因健康链</h2>
-      <h2>编号：LHC</h2>
-      <p>基因作为支撑世界万物生命的基本构造和性能的神秘密码，储存着世间万物生命的种族、血脉、繁育、生长、凋亡等过程的全部信息，演绎着生命的繁衍、细胞分裂和蛋白质合成等重要生理过程。生物体的生、长、衰、病、老、死等一切生命现象都与基因有关，它是决定生命健康的内在因素。为促进基因健康领域整体向前发展，解决当前基因市场普遍存在的痛点问题，LHC 创始技术团队以分布式的生命基因健康应用为核心，以区块链底层技术为纽带，以LHC币为媒介，创新建立生命密码基因健康链(LHC)。LHC完全革新目前基因健康市场的基因数据存储方式和底层协议，引入POC共识机制，从去中心化程度、实用性、技术可靠性、抗封锁性考虑、开创多种基因健康合约和交易生态。LHC在未来将实现分布式网络、Ledger 、共识、网关、分布式节点全员认证交易、币币种交易、数字资产兑换等全场景基础性生态功能，协同完成DeFi金融创新的全面升级，打造基因健康最强共识，建立公平民主的智能利益分配体系，推动基因健康智能合约自动正向循环。LHC首创“区块链+基因健康”的商业模式，它将成为每个用户畅通无阻穿梭在区块链世界和基因健康世界的合约通证，它将是每个用户获取所有附加服务和应用的关键钥匙，。创建一个可自循环、自孵化、自进化、自创新、去中心化，更加高效透明、安全可信的多元化基因健康数字合约生态圈。
 
-      LHC发行上线规划：</p>
-      <p>1.     To ken类型：ERC-20</p>
-      <p>2.     发行总量：10亿枚</p>
-      <p>3.     早期会员开放发售：总量40%，锁定期3个月后可在二级市场自由交易</p>
-      <p>4.     初始发售时间：2020年10月</p>
-      <p>5.     发售定价方式：逐轮价格不低于上涨1.5%的递增式发售</p>
-      <p>6.     初始发售价格：1LHC=0.03USDT</p>
-      <p>7.     公开上市交易时间：2021年1月</p>
-      <p>8.     相关链接：<a href="http://www.lhc.ink/down/LHC.pdf" target="_blank">http://www.lhc.ink/down/LHC.pdf</a></p>
+      <h1>{{$t('earn.introduce1')}}<a href="http://www.lhc.ink/" target="_blank">http://www.lhc.ink/</a></h1>
+      <h2>{{$t('earn.introduce2')}}</h2>
+      <h2>{{$t('earn.introduce3')}}</h2>
+      <p>{{$t('earn.introduce4')}}</p>
+      <p>{{$t('earn.introduce5')}}</p>
+      <p>{{$t('earn.introduce6')}}</p>
+      <p>{{$t('earn.introduce7')}}</p>
+      <p>{{$t('earn.introduce8')}}</p>
+      <p>{{$t('earn.introduce9')}}</p>
+      <p>{{$t('earn.introduce10')}}</p>
+      <p>{{$t('earn.introduce11')}}</p>
+      <p>{{$t('earn.introduce12')}}</p>
+      <p>{{$t('earn.introduce13')}}<a href="http://www.lhc.ink/down/LHC.pdf" target="_blank">http://www.lhc.ink/down/LHC.pdf</a></p>
     </div>
     <div class="earn-container" id="earn">
       <el-form ref="form" :model="form" class="left">

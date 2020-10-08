@@ -45,20 +45,20 @@
               <!--</div>-->
               <!--</div>-->
               <!-- 切换中英文 -->
-              <div class="change_language">
-                <el-dropdown @command="handleCommand" v-loading.fullscreen.lock="fullscreenLoading">
-                  <span class="el-dropdown-link">
-                      {{$t('nav.Language')}}<i class="el-icon-arrow-down el-icon--right"></i>
-                  </span>
-                  <el-dropdown-menu class="changeBg" slot="dropdown">
+              <!--<div class="change_language">-->
+                <!--<el-dropdown @command="handleCommand" v-loading.fullscreen.lock="fullscreenLoading">-->
+                  <!--<span class="el-dropdown-link">-->
+                      <!--{{$t('nav.Language')}}<i class="el-icon-arrow-down el-icon&#45;&#45;right"></i>-->
+                  <!--</span>-->
+                  <!--<el-dropdown-menu class="changeBg" slot="dropdown">-->
                     <!--<el-dropdown-item command="zh"><span>中文简体</span></el-dropdown-item>-->
-                    <el-dropdown-item command="en"><span>English</span></el-dropdown-item>
-                    <el-dropdown-item command="tw"><span>中文繁體</span></el-dropdown-item>
+                    <!--<el-dropdown-item command="en"><span>English</span></el-dropdown-item>-->
+                    <!--<el-dropdown-item command="tw"><span>中文繁體</span></el-dropdown-item>-->
                     <!--<el-dropdown-item command="jp"><span>日本語</span></el-dropdown-item>-->
                     <!--<el-dropdown-item command="kr"><span>한국어</span></el-dropdown-item>-->
-                  </el-dropdown-menu>
-                </el-dropdown>
-              </div>
+                  <!--</el-dropdown-menu>-->
+                <!--</el-dropdown>-->
+              <!--</div>-->
               <div class="noTokenBox" v-if="getToken == null">
                 <el-menu-item index="login">{{$t('nav.log')}}</el-menu-item>
                 <el-menu-item index="register">{{$t('nav.register')}}</el-menu-item>
