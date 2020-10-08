@@ -129,7 +129,7 @@
 					'has_intraday': true,
 					'has_no_volume': false,//是否将成交量独立出来
 					'description': symbol,
-					'pricescale':  100,//刻度值,保留小数，如：2位小数传100，
+					'pricescale':  1000000,//刻度值,保留小数，如：2位小数传100，
 					'ticker': symbol,
 				}
 			},

@@ -9,7 +9,7 @@
 
     <div class="introduce">
 
-      <h1>{{$t('earn.introduce1')}}<a href="http://www.lhc.ink/" target="_blank">http://www.lhc.ink/</a></h1>
+      <h1>{{$t('earn.introduce1')}}<a href="https://www.lhc.ink/" target="_blank">https://www.lhc.ink/</a></h1>
       <h2>{{$t('earn.introduce2')}}</h2>
       <h2>{{$t('earn.introduce3')}}</h2>
       <p>{{$t('earn.introduce4')}}</p>
@@ -21,7 +21,7 @@
       <p>{{$t('earn.introduce10')}}</p>
       <p>{{$t('earn.introduce11')}}</p>
       <p>{{$t('earn.introduce12')}}</p>
-      <p>{{$t('earn.introduce13')}}<a href="http://www.lhc.ink/down/LHC.pdf" target="_blank">http://www.lhc.ink/down/LHC.pdf</a></p>
+      <p>{{$t('earn.introduce13')}}<a href="https://www.lhc.ink/down/LHC.pdf" target="_blank">https://www.lhc.ink/down/LHC.pdf</a></p>
     </div>
     <div class="earn-container" id="earn">
       <el-form ref="form" :model="form" class="left">
