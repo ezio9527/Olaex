@@ -101,7 +101,7 @@ export default {
     },
     rate () {
       if (this.form.region === 'USDT') {
-        return 1
+        return (this.market['LHC/USDT'] || {price: 0}).price
       } else {
         const selectPrice = (this.market[this.form.region + '/USDT'] || { price: 0}).price
         const lhcPrice = (this.market['LHC/USDT'] || { price: 0}).price
@@ -181,7 +181,7 @@ export default {
             price: item.close
           }
         });
-        this.coinArr = arr
+        // this.coinArr = arr
         this.market = obj
       }
     },
