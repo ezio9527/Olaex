@@ -28,9 +28,15 @@ export default {
       })
     }
   },
-  created () {
+  updated () {
     if (/(android)/i.test(navigator.userAgent.toLocaleLowerCase()) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-      window.location.href = mobileBaseUrl
+      if (this.$route.name === 'register') {
+        // 注册页面单独指定去往注册页
+        window.location.href = window.location.href.replace(window.location.origin + '/#', mobileBaseUrl)
+      } else {
+        // 其它页面统一去往首页
+        window.location.href = mobileBaseUrl
+      }
     }
   }
 }
