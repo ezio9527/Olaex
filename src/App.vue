@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mobileBaseUrl } from './config/env'
 export default {
   name: 'App',
   provide(){
@@ -25,6 +26,11 @@ export default {
       this.$nextTick(function(){
         this.isRouterAlive = true;
       })
+    }
+  },
+  created () {
+    if (/(android)/i.test(navigator.userAgent.toLocaleLowerCase()) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+      window.location.href = mobileBaseUrl
     }
   }
 }

@@ -9,14 +9,18 @@
 
 let baseUrl = '';
 let imgBaseUrl = '';
+let mobileBaseUrl = '';
 
 if (process.env.NODE_ENV == 'development') { //开发中
   baseUrl = 'https://api.lhc114.com'
+  mobileBaseUrl = 'https://m.lhc114.com'
 }else if(process.env.NODE_ENV == 'production'){
   baseUrl = 'https://api.lhc114.com'
+  mobileBaseUrl = 'https://m.lhc114.com'
 }
 
 export{
-    baseUrl,
-    imgBaseUrl
+  baseUrl,
+  imgBaseUrl,
+  mobileBaseUrl
 }
