@@ -12,12 +12,8 @@ let imgBaseUrl = '';
 
 if (process.env.NODE_ENV == 'development') { //开发中
   baseUrl = 'https://api.lhc114.com'
-  // baseUrl = 'https://bitaex.hnscf.cn'
-  // baseUrl = 'http://cm.cross.echosite.cn'
 }else if(process.env.NODE_ENV == 'production'){
   baseUrl = 'https://api.lhc114.com'
-  // baseUrl = 'https://bitaex.hnscf.cn'
-  // baseUrl = 'http://cm.cross.echosite.cn'
 }
 
 export{
