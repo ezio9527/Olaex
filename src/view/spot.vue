@@ -29,7 +29,7 @@
           </div>
           <div class="picture">
             <!-- <keep-alive> -->
-            <TradeView :symbolValue="form.region"/>
+            <TradeView :symbolValue="form.region" @updateData="updateData"/>
             <!-- </keep-alive> -->
           </div>
           <div style="padding:0 20px">
@@ -199,14 +199,38 @@ export default {
     }
   },
   created() {
-    var that = this;
+    // var that = this;
     this.levarageFun();
-    that.wTimerList = setInterval(function () {
-      that.ticketFun()
-    }, 1000)
+    // that.wTimerList = setInterval(function () {
+      // that.ticketFun()
+    // }, 1000)
 
   },
   methods: {
+    updateData (data) {
+      this.coinArr = [];
+      data.forEach(element => {
+        if (this.form.region == element.symbol) {
+          this.form.region = element.symbol;
+          this.newPirce = element.close;
+          this.highForth = element.high;
+          this.lossForth = element.low;
+          this.rose = ((element.rose) * 100).toFixed(2);
+          this.amountPirce = element.amount;
+          this.cny = element.cny;
+          var img = element.symbol.substr(0, 3);
+          this.coinImg = require('../assets/' + img + '.png');
+          if (this.getIndex == 0) {
+            this.goodPrice = element.close
+          }
+        }
+        var imgValue = element.symbol.substr(0, 3);
+        element.updateImg = require('../assets/' + imgValue + '.png');
+        this.coinArr.push(element);
+      });
+      this.getIndex = this.getIndex + 1;
+      this.tradeFun();
+    },
     async ticketFun() {//获取币种
       var that = this;
       var res = await ticketApi();

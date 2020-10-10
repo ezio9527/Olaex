@@ -75,6 +75,7 @@
             volume: obj.amount
           };
           this.onRealtimeCallback(dise)
+          this.$emit('updateData', res.data)
         }
       },
 			filter(time) {
