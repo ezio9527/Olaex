@@ -12,7 +12,7 @@
 					</ul>
 				</div>
 				<div class="foot-center footLayout">
-					<img class="logo" src="../assets/logo.png" alt="olaex" />
+					<img class="logo" src="../assets/logo.png" alt="CFFEX" />
 					<div class="verticalBar">
 						<p class="title">{{$t('foot.read')}}</p>
 						<p><router-link to="agreement">{{$t('foot.agree')}}</router-link></p>

@@ -309,7 +309,7 @@ module.exports =  {
 		helpCenter:'Help center',
 		notice:'Official announcement',
 		upload:'download',
-		tip:'Olaex warm reminder: investment is risky, and you need to be cautious when entering the market.'
+		tip:'CFFEX warm reminder: investment is risky, and you need to be cautious when entering the market.'
 	},
 	codeTxt:{
 		error:'error',

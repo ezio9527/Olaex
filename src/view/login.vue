@@ -1,7 +1,7 @@
 <template>
     <div class="allBox">
         <div class="formPage">
-        	<h2>{{$t('verification.logoName')+' Olaex'}}</h2>
+        	<h2>{{$t('verification.logoName')+' CFFEX'}}</h2>
 
             <p>{{$t('verification.loginTxt')}}</p>
             <el-form :model="form" ref="form">
