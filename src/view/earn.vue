@@ -101,11 +101,12 @@ export default {
     },
     rate () {
       if (this.form.region === 'USDT') {
-        return 1 / (this.market['LHC/USDT'] || {price: 1}).price
+        return (1 / (this.market['LHC/USDT'] || {price: 1}).price)  * this.coinConversion
       } else {
         const selectPrice = (this.market[this.form.region + '/USDT'] || { price: 0}).price
         const lhcPrice = (this.market['LHC/USDT'] || { price: 0}).price
-        return selectPrice / (lhcPrice * this.coinConversion)
+        console.log(selectPrice, lhcPrice, this.coinConversion)
+        return (selectPrice / lhcPrice) * this.coinConversion
       }
     }
   },
@@ -214,7 +215,7 @@ export default {
       if (res.success) {
         that.page.total = Number(res.data.records.total);
         that.recordData = res.data.records.records.filter(item => {
-          return item.flowType === 'CONVERT_OUT'
+          return item.flowType === 'CONVERT_IN'
         }).map(item => {
           item.convertNum = (item.remark.split(':')[1] || 0) * item.flowPrice
           return item
