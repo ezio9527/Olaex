@@ -193,6 +193,8 @@ export default {
         return callback(new Error(this.$t('verification.numMustNum')))
       } else if (Number(value) > this.wallet[this.form.region]) {
         return callback(new Error(this.$t('verification.numGreaterBalance')))
+      } else {
+        callback()
       }
     },
     number (val) {
