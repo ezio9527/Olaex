@@ -30,7 +30,10 @@ module.exports =  {
 		agree:'我已阅读并同意',
 		reset:'重置',
 		return:'返回登录页',
-		myself:'不能指定自己'
+		myself:'不能指定自己',
+    numLessZero: '数量不能小于零',
+    numMustNum: '数量必须为数字',
+    numGreaterBalance: '数量不能大于可用余额'
 	},
 	form:{
 		account:'邮箱或手机号码',

@@ -30,7 +30,10 @@ module.exports =  {
 		agree:'I have read and agree',
 		reset:'Reset',
 		return:'Return to login page',
-		myself:'You cannot specify yourself'
+		myself:'You cannot specify yourself',
+    numLessZero: 'The quantity cannot be less than zero',
+    numMustNum: 'The quantity must be a number',
+    numGreaterBalance: 'The quantity must not be greater than the available balance'
 	},
 	form:{
 		account:'Email or mobile number',

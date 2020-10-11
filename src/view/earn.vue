@@ -35,7 +35,7 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('earn.buyNum')" :rules="[{ required: true, trigger:'blur' }]" prop="number">
+        <el-form-item :label="$t('earn.buyNum')" :rules="[{ required: true, trigger:'blur' }, { validator: validateNumber, trigger: 'blur' }]" prop="number">
           <el-input v-model="form.number" autocomplete="off" :placeholder="$t('earn.inputPlaceholder')" @input="number">
             <template slot="append">{{form.region}}</template>
           </el-input>
@@ -53,8 +53,8 @@
     <el-table :data="recordData" class="table">
       <el-table-column prop="flowCoin" :label="$t('earn.type')"></el-table-column>
       <el-table-column prop="flowPrice" :label="$t('earn.number')"></el-table-column>
-      <el-table-column prop="remark" :label="$t('earn.rate')"></el-table-column>
-      <el-table-column prop="convertNum" :label="$t('earn.convert')"></el-table-column>
+      <!--<el-table-column prop="remark" :label="$t('earn.rate')"></el-table-column>-->
+      <!--<el-table-column prop="convertNum" :label="$t('earn.convert')"></el-table-column>-->
       <el-table-column prop="createTime" :label="$t('earn.time')"></el-table-column>
     </el-table>
     <foot/>
@@ -184,6 +184,15 @@ export default {
         });
         // this.coinArr = arr
         this.market = obj
+      }
+    },
+    validateNumber (rule, value, callback) {
+      if (Number(value) <= 0) {
+        return callback(new Error($t('verification.numLessZero')))
+      } else if (!Number(value)) {
+        return callback(new Error($t('verification.numMustNum')))
+      } else if (Number(value) > this.wallet[this.form.region]) {
+        return callback(new Error($t('verification.numGreaterBalance')))
       }
     },
     number (val) {
