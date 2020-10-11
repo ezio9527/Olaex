@@ -193,6 +193,12 @@ export default {
         return callback(new Error(this.$t('verification.numMustNum')))
       } else if (Number(value) > this.wallet[this.form.region]) {
         return callback(new Error(this.$t('verification.numGreaterBalance')))
+      } else if (this.form.region === 'BTC' && Number(value) < 0.001) {
+        return callback(new Error('BTC≥0.001'))
+      }  else if (this.form.region === 'USDT' && Number(value) < 100) {
+        return callback(new Error('USDT≥100'))
+      }  else if (this.form.region === 'ETH' && Number(value) < 0.3) {
+        return callback(new Error('ETH≥0.3'))
       } else {
         callback()
       }
