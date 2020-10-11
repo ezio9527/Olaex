@@ -11,13 +11,9 @@ let baseUrl = '';
 let imgBaseUrl = '';
 
 if (process.env.NODE_ENV == 'development') { //开发中
-  baseUrl = 'https://olaex.me'
-  // baseUrl = 'https://bitaex.hnscf.cn'
-  // baseUrl = 'http://cm.cross.echosite.cn'
+  baseUrl = 'http://cffex.cc:8083'
 }else if(process.env.NODE_ENV == 'production'){
-  baseUrl = 'https://olaex.me'
-  // baseUrl = 'https://bitaex.hnscf.cn'
-  // baseUrl = 'http://cm.cross.echosite.cn'
+  baseUrl = 'http://cffex.cc:8083'
 }
 
 export{

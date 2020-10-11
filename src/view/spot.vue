@@ -21,10 +21,10 @@
                             <li>{{$t('transaction.lossPrice')}}<span class="getValue">{{lossForth}}</span></li>
                             <li>{{$t('transaction.amountPirce')}}<span class="getValue">{{amountPirce}}</span></li>
                         </ul>
-                      <div class="switch-btn">
-                        <span :class="{active: transactionType=='0'}" @click="transactionType='0'">{{$t('nav.spot')}}</span>
-                        <span :class="{active: transactionType=='1'}" @click="transactionType='1'">{{$t('nav.lever')}}</span>
-                      </div>
+                      <!--<div class="switch-btn">-->
+                        <!--<span :class="{active: transactionType=='0'}" @click="transactionType='0'">{{$t('nav.spot')}}</span>-->
+                        <!--<span :class="{active: transactionType=='1'}" @click="transactionType='1'">{{$t('nav.lever')}}</span>-->
+                      <!--</div>-->
                     </div>
                     <div class="picture">
                         <!-- <keep-alive> -->
