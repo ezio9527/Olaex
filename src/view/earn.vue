@@ -215,7 +215,7 @@ export default {
       if (res.success) {
         that.page.total = Number(res.data.records.total);
         that.recordData = res.data.records.records.filter(item => {
-          return item.flowType === 'CONVERT_IN'
+          return item.flowType === 'TRANSFER_IN'
         }).map(item => {
           item.convertNum = (item.remark.split(':')[1] || 0) * item.flowPrice
           return item
