@@ -188,11 +188,11 @@ export default {
     },
     validateNumber (rule, value, callback) {
       if (Number(value) <= 0) {
-        return callback(new Error($t('verification.numLessZero')))
+        return callback(new Error(this.$t('verification.numLessZero')))
       } else if (!Number(value)) {
-        return callback(new Error($t('verification.numMustNum')))
+        return callback(new Error(this.$t('verification.numMustNum')))
       } else if (Number(value) > this.wallet[this.form.region]) {
-        return callback(new Error($t('verification.numGreaterBalance')))
+        return callback(new Error(this.$t('verification.numGreaterBalance')))
       }
     },
     number (val) {
