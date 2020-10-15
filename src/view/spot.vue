@@ -50,8 +50,8 @@
                       <!-- 卖单 -->
                       <ul class="fallList">
                         <li v-for="item in sellArr" :key="item.id">
-                          <span>{{(item[0]).toFixed(1)}}</span>
-                          <span>{{(item[1]).toFixed(4)}}</span>
+                          <span>{{(item[0]).toFixed(6)}}</span>
+                          <span>{{(item[1]).toFixed(6)}}</span>
                           <div class="percenttd">
                             <span class="percentDiv" :style="'width:'+((item[1]/sellHigh) * 100).toFixed(2)+'%'"></span>
                           </div>
@@ -65,8 +65,8 @@
                       <!-- 买单 -->
                       <ul class="riseList">
                         <li v-for="item in buyArr" :key="item.id">
-                          <span>{{(item[0]).toFixed(1)}}</span>
-                          <span>{{(item[1]).toFixed(4)}}</span>
+                          <span>{{(item[0]).toFixed(6)}}</span>
+                          <span>{{(item[1]).toFixed(6)}}</span>
                           <div class="percenttd">
                             <span class="percentDiv" :style="'width:'+((item[1]/buyHigh) * 100).toFixed(2)+'%'"></span>
                           </div>

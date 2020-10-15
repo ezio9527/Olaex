@@ -11,13 +11,9 @@ let baseUrl = '';
 let imgBaseUrl = '';
 
 if (process.env.NODE_ENV == 'development') { //开发中
-  // baseUrl = 'https://healthbtc.vip'
-  // baseUrl = 'https://bitaex.hnscf.cn'
-  baseUrl = 'http://api.lhc114.com/'
+  baseUrl = 'https://healthbtc.vip'
 }else if(process.env.NODE_ENV == 'production'){
-  // baseUrl = 'https://healthbtc.vip'
-  // baseUrl = 'https://bitaex.hnscf.cn'
-  baseUrl = 'http://api.lhc114.com/'
+  baseUrl = 'https://healthbtc.vip'
 }
 
 export{
