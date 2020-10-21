@@ -178,10 +178,11 @@ export default {
         var obj = res.data;
         if (that.coinType == 'USDT') {
           that.totalPrice = (obj.valuationTotalPrice).toFixed(8);
+          that.cny = (obj.cny).toFixed(2);
         } else {
           that.totalPrice = (obj.valuationTotalPrice).toFixed(4);
+          that.cny = that.totalPrice
         }
-        that.cny = (obj.cny).toFixed(2);
         that.tableData = obj.list;
       }
     },
