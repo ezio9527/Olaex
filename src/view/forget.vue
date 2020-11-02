@@ -5,7 +5,7 @@
       <p>{{$t('verification.forgetTxt')}}</p>
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane :label="$t('verification.email')" name="0"></el-tab-pane>
-        <!--<el-tab-pane :label="$t('verification.phone')" name="1"></el-tab-pane>-->
+        <el-tab-pane :label="$t('verification.phone')" name="1"></el-tab-pane>
       </el-tabs>
       <el-form :model="form" :rules="rules" ref="ruleForm">
 
